@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeShield Enterprise | Next-Gen AI Security Platform</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Marked.js for Gemini Markdown rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.4); }
+        ::-webkit-scrollbar-thumb { background: rgba(51, 65, 85, 0.6); border-radius: 9999px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(14, 165, 233, 0.5); }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen font-sans selection:bg-sky-500 selection:text-slate-950 flex flex-col relative overflow-x-hidden antialiased">
+    
+    <!-- Ambient Backdrop Glows -->
+    <div class="fixed top-0 left-1/4 w-[600px] h-[600px] bg-sky-600/10 rounded-full blur-[140px] pointer-events-none z-0"></div>
+    <div class="fixed bottom-0 right-1/4 w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[140px] pointer-events-none z-0"></div>
+
+    <!-- Top Navigation Bar -->
+    <header class="border-b border-slate-800/80 bg-slate-900/60 backdrop-blur-xl sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center space-x-3.5">
+                <div class="bg-gradient-to-tr from-sky-500 via-blue-600 to-indigo-600 p-2.5 rounded-2xl text-slate-950 font-bold text-xl shadow-lg shadow-sky-500/25">🛡️</div>
+                <div>
+                    <h1 class="text-base font-bold text-white flex items-center gap-2">
+                        CodeShield Enterprise 
+                        <span class="text-[10px] bg-sky-500/10 text-sky-400 border border-sky-500/20 px-2.5 py-0.5 rounded-full font-semibold uppercase tracking-wider">Secure Workspace</span>
+                    </h1>
+                    <p class="text-xs text-slate-400">Multi-Vector Code Audit & Gemini AI Security Intelligence</p>
+                </div>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <div class="hidden sm:flex items-center space-x-2.5 bg-slate-900/90 px-3.5 py-1.5 rounded-xl border border-slate-800 text-xs shadow-inner">
+                    <span class="relative flex h-2 w-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                    </span>
+                    <span id="userNameDisplay" class="text-slate-200 font-semibold">Developer</span>
+                </div>
+                <button onclick="logout()" class="text-xs bg-slate-900 hover:bg-rose-500/10 hover:text-rose-400 hover:border-rose-500/30 text-slate-300 px-3.5 py-1.5 rounded-xl border border-slate-800 transition duration-200 shadow-sm">
+                    Sign Out
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Workspace Container -->
+    <main class="max-w-7xl mx-auto px-6 py-8 flex-1 w-full space-y-6 relative z-10">
+        
+        <!-- Repository Submission Card -->
+        <div class="bg-gradient-to-b from-slate-900/90 to-slate-900/60 border border-slate-800/80 rounded-2xl p-6 shadow-2xl backdrop-blur-xl relative overflow-hidden group">
+            <div class="absolute inset-0 bg-gradient-to-r from-sky-500/5 via-transparent to-purple-500/5 opacity-50 pointer-events-none"></div>
+            <div class="relative z-10">
+                <div class="flex items-center justify-between mb-2">
+                    <h2 class="text-base font-semibold text-white flex items-center gap-2">
+                        <span>📦 Repository Submission</span>
+                    </h2>
+                    <span class="text-[10px] bg-slate-800/80 text-slate-300 border border-slate-700/60 px-2.5 py-0.5 rounded-md font-mono">ZIP Upload</span>
+                </div>
+                <p class="text-xs text-slate-400 mb-5">Upload your project repository archive to execute automated static checks and securely record isolated session audit logs.</p>
+                <form id="uploadForm" class="flex flex-col md:flex-row items-center gap-4">
+                    <input type="file" id="projectZip" name="projectZip" accept=".zip" required
+                        class="block w-full text-xs text-slate-400 file:mr-4 file:py-3 file:px-5 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-sky-500/10 file:text-sky-400 hover:file:bg-sky-500/20 file:cursor-pointer bg-slate-950/80 border border-slate-800/80 rounded-xl p-2 cursor-pointer focus:outline-none focus:border-sky-500 transition shadow-inner">
+                    <button type="submit" id="scanBtn"
+                        class="w-full md:w-auto bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-slate-950 font-bold px-8 py-3.5 rounded-xl transition duration-200 text-xs shadow-lg shadow-sky-500/25 shrink-0 flex items-center justify-center space-x-2">
+                        <span>⚡ Run Security Scan</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Loading Spinner -->
+        <div id="loading" class="hidden text-center py-12 bg-slate-900/40 border border-slate-800/60 rounded-2xl backdrop-blur-md">
+            <div class="inline-block animate-spin rounded-full h-9 w-9 border-4 border-sky-500 border-t-transparent mb-3"></div>
+            <p class="text-slate-200 text-xs font-semibold tracking-wide">Executing multi-vector static analyzer across workspace files...</p>
+            <p class="text-slate-500 text-[11px] mt-1">Isolating audit results to user session</p>
+        </div>
+
+        <!-- Side-by-Side Grid Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+            
+            <!-- Left Panel: User-Specific Audit Logs & Results (2 Columns) -->
+            <div class="lg:col-span-2 space-y-6">
+                
+                <!-- History Log Card -->
+                <div id="historyCard" class="bg-gradient-to-b from-slate-900/90 to-slate-900/60 border border-slate-800/80 rounded-2xl p-6 shadow-2xl backdrop-blur-xl space-y-4 min-h-[500px] flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between border-b border-slate-800/80 pb-3.5">
+                            <div>
+                                <h3 class="text-sm font-semibold text-white flex items-center gap-2">
+                                    <span>📁 My Secure Audit Logs</span>
+                                </h3>
+                                <p class="text-xs text-slate-400 mt-0.5">Confidential scan records tied exclusively to your account</p>
+                            </div>
+                            <span id="scanCountBadge" class="text-[10px] bg-sky-500/10 text-sky-400 border border-sky-500/20 px-3 py-1 rounded-full font-semibold">0 Saved Scans</span>
+                        </div>
+                        <div id="scanHistoryList" class="space-y-2.5 max-h-[370px] overflow-y-auto pr-1">
+                            <!-- Dynamically loaded -->
+                            <p class="text-xs text-slate-500 text-center py-16">No previous scan records found for your account. Upload a ZIP archive above to start.</p>
+                        </div>
+                    </div>
+                    <div class="border-t border-slate-800/60 pt-3 text-[11px] text-slate-500 flex justify-between items-center">
+                        <span>Encrypted Account Session</span>
+                        <span>Strict Multi-User Isolation Active</span>
+                    </div>
+                </div>
+
+                <!-- Scan Results Container (Hidden initially) -->
+                <div id="resultsContainer" class="hidden bg-gradient-to-b from-slate-900/90 to-slate-900/60 border border-slate-800/80 rounded-2xl overflow-hidden shadow-2xl backdrop-blur-xl min-h-[500px] flex flex-col justify-between">
+                    <div>
+                        <div class="px-6 py-4 border-b border-slate-800/80 flex justify-between items-center bg-slate-950/40">
+                            <div>
+                                <h3 id="resultTitle" class="font-semibold text-white text-sm">Vulnerability Audit Log</h3>
+                                <p id="resultSub" class="text-xs text-slate-400 mt-0.5">Scan results ready for review</p>
+                            </div>
+                            <div class="flex items-center gap-2.5">
+                                <button onclick="showHistoryView()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs font-medium px-3.5 py-1.5 rounded-xl transition shadow-sm">
+                                    ⬅ Back to Logs
+                                </button>
+                                <button onclick="downloadJSON()" class="bg-sky-500/10 hover:bg-sky-500/20 text-sky-400 border border-sky-500/30 text-xs font-medium px-3.5 py-1.5 rounded-xl transition shadow-sm">
+                                    📥 Export JSON
+                                </button>
+                            </div>
+                        </div>
+                        <div class="overflow-x-auto max-h-[410px]">
+                            <table class="w-full text-left border-collapse">
+                                <thead class="sticky top-0 bg-slate-950 text-slate-400 text-[10px] uppercase tracking-wider border-b border-slate-800">
+                                    <tr>
+                                        <th class="py-3 px-5">Vulnerability Type</th>
+                                        <th class="py-3 px-5">File Path & Line</th>
+                                        <th class="py-3 px-5">Detected Snippet</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="findingsTableBody" class="divide-y divide-slate-800/60 text-xs text-slate-300">
+                                    <!-- Dynamic rows -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Panel: Interactive Gemini Chatbot Box (1 Column) -->
+            <div class="bg-gradient-to-b from-slate-900/90 to-slate-900/60 border border-slate-800/80 rounded-2xl shadow-2xl backdrop-blur-xl flex flex-col h-[500px]">
+                <!-- Chat Header -->
+                <div class="px-5 py-4 border-b border-slate-800/80 flex items-center justify-between bg-slate-950/40 rounded-t-2xl">
+                    <div class="flex items-center space-x-2.5">
+                        <div class="bg-purple-500/10 border border-purple-500/20 p-2 rounded-xl text-purple-400 text-sm">🤖</div>
+                        <div>
+                            <h3 class="font-bold text-white text-xs">Gemini AI Assistant</h3>
+                            <p class="text-[10px] text-purple-400 font-medium">Server .env Key Active</p>
+                        </div>
+                    </div>
+                    <button onclick="clearChat()" class="text-[10px] bg-slate-800/80 hover:bg-slate-700 text-slate-400 px-2.5 py-1 rounded-lg border border-slate-700/60 transition">
+                        Clear
+                    </button>
+                </div>
+
+                <!-- Chat Stream -->
+                <div id="chatMessages" class="flex-1 p-4 overflow-y-auto space-y-3 text-xs">
+                    <div class="bg-purple-950/30 border border-purple-800/30 rounded-xl p-3 text-purple-200 leading-relaxed shadow-inner">
+                        👋 Welcome! I am your Gemini AI Security Assistant. Ask me any question below regarding code fixes, security advisories, or bug remediation!
+                    </div>
+                </div>
+
+                <!-- Chat Input Form -->
+                <form id="chatForm" onsubmit="sendChatMessage(event)" class="p-3 border-t border-slate-800/80 bg-slate-950/50 rounded-b-2xl flex gap-2">
+                    <input type="text" id="chatInput" placeholder="Ask Gemini security questions..." required
+                        class="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-purple-500 transition shadow-inner">
+                    <button type="submit" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-semibold px-4 py-2.5 rounded-xl text-xs transition shadow-md shadow-purple-600/20 shrink-0">
+                        Send
+                    </button>
+                </form>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Script Logic -->
+    <script>
+        const user = JSON.parse(localStorage.getItem('codeshield_user'));
+        if (!user) {
+            window.location.href = '/login.html';
+        } else {
+            document.getElementById('userNameDisplay').textContent = user.name;
+        }
+
+        function logout() {
+            localStorage.removeItem('codeshield_user');
+            window.location.href = '/login.html';
+        }
+
+        let allScans = [];
+        let currentFindings = [];
+        let currentScanFilename = '';
+
+        async function fetchScanHistory() {
+            try {
+                const res = await fetch(`http://localhost:5000/api/scans?email=${encodeURIComponent(user.email)}`);
+                const data = await res.json();
+                if (data.success) {
+                    allScans = data.scans;
+                    renderScanHistory(allScans);
+                }
+            } catch (err) {
+                console.error("Failed to fetch scan history:", err);
+            }
+        }
+
+        function renderScanHistory(scans) {
+            const list = document.getElementById('scanHistoryList');
+            document.getElementById('scanCountBadge').textContent = `${scans.length} Saved Scans`;
+
+            if (scans.length === 0) {
+                list.innerHTML = `<p class="text-xs text-slate-500 text-center py-16">No previous scan records found for your account. Upload a ZIP archive above to start.</p>`;
+                return;
+            }
+
+            list.innerHTML = '';
+            scans.forEach((scan) => {
+                const badgeColor = scan.total > 0 ? 'bg-rose-500/10 text-rose-400 border-rose-500/20' : 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20';
+                const item = `
+                    <div onclick="loadScanResult(${scan.id})" class="bg-slate-950/70 hover:bg-slate-800/60 border border-slate-800/80 hover:border-sky-500/30 rounded-xl p-3.5 flex items-center justify-between cursor-pointer transition duration-200 group shadow-sm">
+                        <div class="space-y-1">
+                            <p class="text-xs font-semibold text-slate-200 group-hover:text-sky-300 transition flex items-center gap-2">
+                                <span>📦 ${scan.filename}</span>
+                            </p>
+                            <p class="text-[10px] text-slate-400 font-mono">Recorded: ${scan.timestamp}</p>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="px-2.5 py-1 rounded-md text-[10px] font-semibold border ${badgeColor}">${scan.total} Issues</span>
+                            <span class="text-slate-500 group-hover:text-sky-400 transition text-xs">➔</span>
+                        </div>
+                    </div>
+                `;
+                list.innerHTML += item;
+            });
+        }
+
+        function loadScanResult(scanId) {
+            const scan = allScans.find(s => s.id === scanId);
+            if (!scan) return;
+
+            currentFindings = scan.findings;
+            currentScanFilename = scan.filename;
+            displayFindings(scan.findings, scan.filename, scan.timestamp);
+        }
+
+        function displayFindings(findings, filename, timestamp) {
+            const findingsTableBody = document.getElementById('findingsTableBody');
+            findingsTableBody.innerHTML = '';
+
+            document.getElementById('resultTitle').textContent = `Audit Report: ${filename}`;
+            document.getElementById('resultSub').textContent = `Scanned on ${timestamp} — Total Threats: ${findings.length}`;
+
+            if (findings.length === 0) {
+                findingsTableBody.innerHTML = `<tr><td colspan="3" class="py-8 px-5 text-center text-emerald-400 font-medium">✅ Safe Repository! No vulnerabilities detected.</td></tr>`;
+            } else {
+                findings.forEach((f) => {
+                    const badgeColor = f.type === 'TODO Comment' ? 'bg-amber-500/10 text-amber-400 border-amber-500/20' : 'bg-rose-500/10 text-rose-400 border-rose-500/20';
+                    const row = `
+                        <tr class="hover:bg-slate-800/50 transition">
+                            <td class="py-3.5 px-5"><span class="px-2 py-0.5 rounded text-[10px] font-semibold border ${badgeColor}">${f.type}</span></td>
+                            <td class="py-3.5 px-5 font-mono text-sky-300">${f.file} <span class="text-slate-500">(L${f.line})</span></td>
+                            <td class="py-3.5 px-5"><code class="bg-slate-950 px-2 py-1 rounded text-rose-300 text-[11px] font-mono block max-w-xs truncate border border-slate-800">${escapeHtml(f.content)}</code></td>
+                        </tr>
+                    `;
+                    findingsTableBody.innerHTML += row;
+                });
+            }
+
+            document.getElementById('historyCard').classList.add('hidden');
+            document.getElementById('resultsContainer').classList.remove('hidden');
+        }
+
+        function showHistoryView() {
+            document.getElementById('resultsContainer').classList.add('hidden');
+            document.getElementById('historyCard').classList.remove('hidden');
+            fetchScanHistory();
+        }
+
+        const uploadForm = document.getElementById('uploadForm');
+        const loading = document.getElementById('loading');
+
+        uploadForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const fileInput = document.getElementById('projectZip');
+            if (fileInput.files.length === 0) return;
+
+            const formData = new FormData();
+            formData.append('projectZip', fileInput.files[0]);
+            formData.append('email', user.email);
+
+            loading.classList.remove('hidden');
+
+            try {
+                const response = await fetch('http://localhost:5000/api/scan', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+                if (data.success) {
+                    await fetchScanHistory();
+                    loadScanResult(data.scanId);
+                } else {
+                    alert('Error: ' + data.error);
+                }
+            } catch (err) {
+                console.error(err);
+                alert('Failed to connect to backend server.');
+            } finally {
+                loading.classList.add('hidden');
+            }
+        });
+
+        // Chatbot Implementation
+        const chatMessages = document.getElementById('chatMessages');
+        let chatHistory = [];
+
+        function appendMessage(role, text) {
+            const msgDiv = document.createElement('div');
+            if (role === 'user') {
+                msgDiv.className = 'bg-sky-950/60 border border-sky-800/40 text-sky-200 rounded-xl p-3 ml-4 text-xs font-sans shadow-sm';
+                msgDiv.textContent = text;
+            } else {
+                msgDiv.className = 'bg-slate-950 border border-slate-800/80 text-slate-200 rounded-xl p-3 mr-4 space-y-1.5 text-xs font-sans shadow-sm';
+                msgDiv.innerHTML = marked.parse(text);
+            }
+            chatMessages.appendChild(msgDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        async function sendChatMessage(e) {
+            if (e) e.preventDefault();
+            const input = document.getElementById('chatInput');
+            const text = input.value.trim();
+            if (!text) return;
+
+            input.value = '';
+            appendMessage('user', text);
+            chatHistory.push({ role: 'user', text: text });
+
+            const typingDiv = document.createElement('div');
+            typingDiv.id = 'typingIndicator';
+            typingDiv.className = 'text-slate-500 italic text-[11px] animate-pulse px-1';
+            typingDiv.textContent = 'Gemini AI is generating response...';
+            chatMessages.appendChild(typingDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            try {
+                const res = await fetch('http://localhost:5000/api/ai-chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ messages: chatHistory })
+                });
+
+                const data = await res.json();
+                document.getElementById('typingIndicator')?.remove();
+
+                if (data.success) {
+                    appendMessage('model', data.reply);
+                    chatHistory.push({ role: 'model', text: data.reply });
+                } else {
+                    alert(data.error);
+                }
+            } catch (err) {
+                console.error(err);
+                document.getElementById('typingIndicator')?.remove();
+                alert('Failed to connect to Gemini AI.');
+            }
+        }
+
+        function clearChat() {
+            chatHistory = [];
+            chatMessages.innerHTML = `
+                <div class="bg-purple-950/30 border border-purple-800/30 rounded-xl p-3 text-purple-200 leading-relaxed shadow-inner">
+                    👋 Chat cleared. Ask me any question below!
+                </div>
+            `;
+        }
+
+        function downloadJSON() {
+            if (currentFindings.length === 0) return;
+            const exportData = { filename: currentScanFilename, timestamp: new Date().toISOString(), total: currentFindings.length, findings: currentFindings };
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(exportData, null, 4));
+            const downloadAnchor = document.createElement('a');
+            downloadAnchor.setAttribute("href", dataStr);
+            downloadAnchor.setAttribute("download", `codeshield_audit_${Date.now()}.json`);
+            document.body.appendChild(downloadAnchor);
+            downloadAnchor.click();
+            downloadAnchor.remove();
+        }
+
+        function escapeHtml(text) {
+            return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        }
+
+        fetchScanHistory();
+    </script>
+</body>
+</html>

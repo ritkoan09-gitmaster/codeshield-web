@@ -1,0 +1,153 @@
+[
+  {
+    "id": 1794161364717,
+    "userEmail": "aja@gmail.com",
+    "filename": "test_project.zip.zip",
+    "timestamp": "8/11/2026, 11:39:24 pm",
+    "total": 7,
+    "findings": [
+      {
+        "file": "config.js",
+        "line": 6,
+        "type": "Hardcoded Password",
+        "content": "password: \"SuperSecretPassword123\", // HIGH: Hardcoded Password"
+      },
+      {
+        "file": "config.js",
+        "line": 7,
+        "type": "AWS Access Key",
+        "content": "apiKey: \"AKIAIOSFODNN7EXAMPLE\",       // CRITICAL: AWS Access Key"
+      },
+      {
+        "file": "config.js",
+        "line": 7,
+        "type": "Generic API Key",
+        "content": "apiKey: \"AKIAIOSFODNN7EXAMPLE\",       // CRITICAL: AWS Access Key"
+      },
+      {
+        "file": "config.js",
+        "line": 8,
+        "type": "GitHub Token",
+        "content": "githubToken: \"ghp_1234567890abcdefghijklmnopqrstuvwxyzAB\" // CRITICAL: GitHub Token"
+      },
+      {
+        "file": "config.js",
+        "line": 12,
+        "type": "SQL Injection Risk",
+        "content": "const query = \"SELECT * FROM users WHERE username = '\" + req.body.user + \"'\";"
+      },
+      {
+        "file": "config.js",
+        "line": 15,
+        "type": "Insecure HTTP URL",
+        "content": "const apiEndpoint = \"http://api.unsecure-server.com/v1/data\";"
+      },
+      {
+        "file": "config.js",
+        "line": 18,
+        "type": "TODO Comment",
+        "content": "// TODO: Refactor database connection pool before production build!"
+      }
+    ]
+  },
+  {
+    "id": 1794160655483,
+    "filename": "test_project.zip.zip",
+    "timestamp": "8/11/2026, 11:27:35 pm",
+    "total": 7,
+    "findings": [
+      {
+        "file": "config.js",
+        "line": 6,
+        "type": "Hardcoded Password",
+        "content": "password: \"SuperSecretPassword123\", // HIGH: Hardcoded Password"
+      },
+      {
+        "file": "config.js",
+        "line": 7,
+        "type": "AWS Access Key",
+        "content": "apiKey: \"AKIAIOSFODNN7EXAMPLE\",       // CRITICAL: AWS Access Key"
+      },
+      {
+        "file": "config.js",
+        "line": 7,
+        "type": "Generic API Key",
+        "content": "apiKey: \"AKIAIOSFODNN7EXAMPLE\",       // CRITICAL: AWS Access Key"
+      },
+      {
+        "file": "config.js",
+        "line": 8,
+        "type": "GitHub Token",
+        "content": "githubToken: \"ghp_1234567890abcdefghijklmnopqrstuvwxyzAB\" // CRITICAL: GitHub Token"
+      },
+      {
+        "file": "config.js",
+        "line": 12,
+        "type": "SQL Injection Risk",
+        "content": "const query = \"SELECT * FROM users WHERE username = '\" + req.body.user + \"'\";"
+      },
+      {
+        "file": "config.js",
+        "line": 15,
+        "type": "Insecure HTTP URL",
+        "content": "const apiEndpoint = \"http://api.unsecure-server.com/v1/data\";"
+      },
+      {
+        "file": "config.js",
+        "line": 18,
+        "type": "TODO Comment",
+        "content": "// TODO: Refactor database connection pool before production build!"
+      }
+    ]
+  },
+  {
+    "id": 1794160626192,
+    "filename": "test_project.zip.zip",
+    "timestamp": "8/11/2026, 11:27:06 pm",
+    "total": 7,
+    "findings": [
+      {
+        "file": "config.js",
+        "line": 6,
+        "type": "Hardcoded Password",
+        "content": "password: \"SuperSecretPassword123\", // HIGH: Hardcoded Password"
+      },
+      {
+        "file": "config.js",
+        "line": 7,
+        "type": "AWS Access Key",
+        "content": "apiKey: \"AKIAIOSFODNN7EXAMPLE\",       // CRITICAL: AWS Access Key"
+      },
+      {
+        "file": "config.js",
+        "line": 7,
+        "type": "Generic API Key",
+        "content": "apiKey: \"AKIAIOSFODNN7EXAMPLE\",       // CRITICAL: AWS Access Key"
+      },
+      {
+        "file": "config.js",
+        "line": 8,
+        "type": "GitHub Token",
+        "content": "githubToken: \"ghp_1234567890abcdefghijklmnopqrstuvwxyzAB\" // CRITICAL: GitHub Token"
+      },
+      {
+        "file": "config.js",
+        "line": 12,
+        "type": "SQL Injection Risk",
+        "content": "const query = \"SELECT * FROM users WHERE username = '\" + req.body.user + \"'\";"
+      },
+      {
+        "file": "config.js",
+        "line": 15,
+        "type": "Insecure HTTP URL",
+        "content": "const apiEndpoint = \"http://api.unsecure-server.com/v1/data\";"
+      },
+      {
+        "file": "config.js",
+        "line": 18,
+        "type": "TODO Comment",
+        "content": "// TODO: Refactor database connection pool before production build!"
+      }
+    ]
+  }
+]
