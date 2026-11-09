@@ -146,7 +146,7 @@ app.get('/api/scans', (req, res) => {
     res.json({ success: true, scans: userScans });
 });
 
-// Gemini AI Chat Endpoint
+// CodeShield AI Chat Endpoint
 app.post('/api/ai-chat', async (req, res) => {
     const { messages } = req.body;
     const apiKey = process.env.GEMINI_API_KEY;
@@ -179,8 +179,8 @@ app.post('/api/ai-chat', async (req, res) => {
 
         res.json({ success: true, reply: response.text });
     } catch (error) {
-        console.error('Gemini Chat Error:', error);
-        res.status(500).json({ error: 'Failed to get response from Gemini AI.' });
+        console.error('CodeShield Chat Error:', error);
+        res.status(500).json({ error: 'Failed to get response from CodeShield AI.' });
     }
 });
 

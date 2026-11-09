@@ -20,50 +20,64 @@
             --purple-box: #44174E;
         }
 
+        html, body {
+            max-width: 100vw;
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: #04060C;
             color: #FFFFFF;
-            overflow-x: hidden;
-            margin: 0;
-            padding: 0;
         }
 
-        /* 1. Vivid Live Motion Gradient Background (Rich colors, NOT faded, NOT over-blurred) */
+        /* 1. Vivid Live Motion Gradient Background (Deep Navy & Sapphire, Zero Green) */
         .live-motion-canvas {
             background-color: #04060C;
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(5, 150, 105, 0.45) 0%, transparent 55%),
-                radial-gradient(circle at 90% 80%, rgba(37, 99, 235, 0.45) 0%, transparent 55%);
+                radial-gradient(circle at 15% 25%, rgba(26, 61, 99, 0.45) 0%, transparent 60%),
+                radial-gradient(circle at 85% 75%, rgba(37, 99, 235, 0.45) 0%, transparent 60%);
             position: relative;
             min-height: 100vh;
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: hidden;
         }
 
-        /* Vivid Moving Radiant Gradient Disks (Clearly visible, active drifting motion, medium-slow speed) */
+        /* Vivid Moving Radiant Gradient Disks (Clearly visible, pure blue/navy, zero green) */
         .vivid-glow-blue {
             position: fixed;
             top: -8%;
             right: -8%;
             width: 750px;
             height: 750px;
-            background: radial-gradient(circle, rgba(37, 99, 235, 0.78) 0%, rgba(30, 58, 138, 0.5) 45%, transparent 72%);
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.72) 0%, rgba(30, 58, 138, 0.5) 45%, transparent 72%);
             border-radius: 50%;
             pointer-events: none;
             z-index: 0;
             animation: floatWaveBlue 8.5s ease-in-out infinite alternate;
         }
 
-        .vivid-glow-green {
+        .vivid-glow-navy {
             position: fixed;
             bottom: -8%;
             left: -8%;
             width: 820px;
             height: 820px;
-            background: radial-gradient(circle, rgba(16, 185, 129, 0.78) 0%, rgba(5, 150, 105, 0.5) 48%, transparent 72%);
+            background: radial-gradient(circle, rgba(26, 61, 99, 0.78) 0%, rgba(10, 25, 49, 0.5) 48%, transparent 72%);
             border-radius: 50%;
             pointer-events: none;
             z-index: 0;
-            animation: floatWaveGreen 10s ease-in-out infinite alternate;
+            animation: floatWaveNavy 10s ease-in-out infinite alternate;
         }
 
         @keyframes floatWaveBlue {
@@ -72,7 +86,7 @@
             100% { transform: translate(-40px, 140px) scale(0.95); }
         }
 
-        @keyframes floatWaveGreen {
+        @keyframes floatWaveNavy {
             0% { transform: translate(0, 0) scale(1); }
             50% { transform: translate(90px, -90px) scale(1.18); }
             100% { transform: translate(140px, -40px) scale(0.92); }
@@ -115,6 +129,8 @@
             -webkit-backdrop-filter: blur(24px);
             border-bottom: 1.5px solid rgba(0, 0, 0, 0.08);
             box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.25);
+            width: 100%;
+            max-width: 100vw;
         }
 
         /* Refined Executive Profile Button */
@@ -313,26 +329,26 @@
 </head>
 <body class="live-motion-canvas flex flex-col relative selection:bg-[#44174E] selection:text-white">
 
-    <!-- 1. Vivid Live Motion Background Auras (Clearly Visible & In Continuous Motion) -->
+    <!-- 1. Vivid Live Motion Background Auras (Pure Blue & Ocean Navy, Zero Green) -->
     <div class="vivid-glow-blue"></div>
-    <div class="vivid-glow-green"></div>
+    <div class="vivid-glow-navy"></div>
 
     <!-- Enhanced High-Contrast White Navigation Bar -->
     <header class="clean-navbar sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between gap-3">
+        <div class="w-full max-w-7xl mx-auto px-3 sm:px-6 py-2.5 sm:py-3.5 flex items-center justify-between gap-2 sm:gap-3">
             
             <!-- Logo & Brand Header -->
-            <div class="flex items-center gap-3 shrink-0">
-                <div class="w-10 h-10 rounded-xl bg-[#44174E] text-white flex items-center justify-center shadow-md">
-                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <div class="flex items-center gap-2 sm:gap-3 shrink-0 min-w-0">
+                <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-[#44174E] text-white flex items-center justify-center shadow-md shrink-0">
+                    <svg class="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                         <path d="m9 12 2 2 4-4"/>
                     </svg>
                 </div>
-                <div>
-                    <div class="flex items-center gap-2">
-                        <span class="text-base sm:text-lg font-extrabold text-[#0F172A] tracking-tight">CodeShield</span>
-                        <span class="text-[10px] font-bold uppercase px-2 py-0.5 rounded-md bg-[#44174E] text-white">
+                <div class="min-w-0">
+                    <div class="flex items-center gap-1.5 sm:gap-2">
+                        <span class="text-sm sm:text-lg font-extrabold text-[#0F172A] tracking-tight truncate">CodeShield</span>
+                        <span class="text-[9px] sm:text-[10px] font-bold uppercase px-1.5 sm:px-2 py-0.5 rounded bg-[#44174E] text-white shrink-0">
                             Enterprise
                         </span>
                     </div>
@@ -344,40 +360,40 @@
 
             <!-- Navbar Center Status Badge (Visible on Desktop & Tablet) -->
             <div class="hidden lg:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-xs text-[#0F172A]">
-                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                <span class="w-2 h-2 rounded-full bg-blue-500 animate-ping"></span>
                 <span class="font-bold">SAST Engine Active</span>
                 <span class="text-slate-400">•</span>
                 <span class="text-[#44174E] font-bold">CodeShield AI Online</span>
             </div>
 
             <!-- Right: Enhanced Profile Button & Sign Out Button -->
-            <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
+            <div class="flex items-center gap-1.5 sm:gap-3 shrink-0">
                 
                 <!-- Enhanced Profile Container (Toggles Account Popup) -->
                 <div class="relative">
-                    <button id="profileBtn" onclick="toggleProfilePopup(event)" class="btn-profile-box px-3 sm:px-3.5 py-1.5 flex items-center gap-2 text-xs font-semibold focus:outline-none">
-                        <div class="w-7 h-7 rounded-full bg-[#44174E] text-white flex items-center justify-center font-bold text-xs shadow-sm">
-                            <span id="userAvatar">D</span>
+                    <button id="profileBtn" onclick="toggleProfilePopup(event)" class="btn-profile-box px-2 sm:px-3.5 py-1 sm:py-1.5 flex items-center gap-1.5 sm:gap-2 text-xs font-semibold focus:outline-none">
+                        <div class="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#44174E] text-white flex items-center justify-center font-bold text-xs shadow-sm shrink-0">
+                            <span id="userAvatar">S</span>
                         </div>
-                        <span id="userNameDisplay" class="max-w-[100px] sm:max-w-[130px] truncate text-[#0F172A]">
-                            Developer
+                        <span id="userNameDisplay" class="max-w-[75px] xs:max-w-[100px] sm:max-w-[130px] truncate text-[#0F172A]">
+                            Security Lead
                         </span>
-                        <svg id="chevronIcon" class="w-3.5 h-3.5 text-slate-500 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <svg id="chevronIcon" class="w-3 h-3 sm:w-3.5 sm:h-3.5 text-slate-500 transition-transform duration-200 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
                     </button>
 
                     <!-- User Account Popup Modal -->
-                    <div id="profilePopup" class="profile-popup hidden absolute right-0 mt-2.5 w-80 p-5 z-50">
+                    <div id="profilePopup" class="profile-popup hidden absolute right-0 mt-2.5 w-[calc(100vw-24px)] max-w-xs sm:w-80 p-4 sm:p-5 z-50">
                         <div class="flex items-start justify-between border-b border-slate-100 pb-4 mb-4">
                             <div class="flex items-center gap-3">
-                                <div class="w-12 h-12 rounded-2xl bg-[#44174E] text-white flex items-center justify-center font-bold text-lg shadow-md relative">
-                                    <span id="popupUserAvatar">D</span>
+                                <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-[#44174E] text-white flex items-center justify-center font-bold text-base sm:text-lg shadow-md relative shrink-0">
+                                    <span id="popupUserAvatar">S</span>
                                     <span class="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-emerald-500 border-2 border-white"></span>
                                 </div>
-                                <div>
-                                    <h4 id="popupUserName" class="font-bold text-sm text-[#0F172A] leading-tight">Developer</h4>
-                                    <p id="popupUserEmail" class="text-xs text-slate-500 mt-0.5 truncate max-w-[160px]">developer@company.com</p>
+                                <div class="min-w-0">
+                                    <h4 id="popupUserName" class="font-bold text-sm text-[#0F172A] leading-tight truncate">Security Lead</h4>
+                                    <p id="popupUserEmail" class="text-xs text-slate-500 mt-0.5 truncate max-w-[150px] sm:max-w-[170px]">lead@codeshield.internal</p>
                                     <span class="inline-block mt-1 text-[10px] font-bold px-2 py-0.5 rounded bg-[#44174E]/10 text-[#44174E] uppercase">
                                         Security Lead
                                     </span>
@@ -425,7 +441,7 @@
                 </div>
 
                 <!-- Enhanced Sign Out Pill Button -->
-                <button onclick="logout()" title="Sign Out of Session" class="btn-signout-box px-3.5 sm:px-4 py-1.5 sm:py-2 text-xs flex items-center gap-2">
+                <button onclick="logout()" title="Sign Out of Session" class="btn-signout-box px-2.5 sm:px-4 py-1.5 sm:py-2 text-xs flex items-center gap-1.5 sm:gap-2 shrink-0">
                     <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
                         <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
                         <polyline points="16 17 21 12 16 7"></polyline>
@@ -439,39 +455,39 @@
     </header>
 
     <!-- Main Workspace Container -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 flex-1 w-full relative z-10">
+    <main class="w-full max-w-7xl mx-auto px-3 sm:px-6 flex-1 relative z-10 overflow-x-hidden">
 
         <!-- Command Viewport Section: Prominent Hero + Analytics Strip on Initial Open -->
-        <section class="min-h-[calc(100vh-80px)] flex flex-col justify-between pt-8 pb-10 sm:pt-14 sm:pb-12 lg:pt-16 lg:pb-14">
+        <section class="min-h-[calc(100vh-80px)] flex flex-col justify-between pt-6 pb-8 sm:pt-12 sm:pb-12 lg:pt-16 lg:pb-14 w-full max-w-full">
             
-            <!-- Hero Sizing (Larger, Commanding & Centered, Solid Black Badge + Bright White Content) -->
-            <div class="text-center space-y-5 sm:space-y-6 max-w-4xl mx-auto my-auto">
-                <div class="hero-badge-black inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs sm:text-sm font-mono text-white shadow-xl">
-                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span class="font-bold tracking-wide text-white">ENTERPRISE STATIC ANALYSIS • POWERED BY CODESHIELD AI</span>
+            <!-- Hero Sizing (Commanding & Centered, Solid Black Badge + Bright White Content, Fully Responsive) -->
+            <div class="text-center space-y-4 sm:space-y-6 max-w-4xl mx-auto my-auto w-full px-1">
+                <div class="hero-badge-black inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-1.5 sm:py-2 rounded-full text-[10px] xs:text-xs font-mono text-white shadow-xl max-w-[94vw] text-center">
+                    <span class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
+                    <span class="font-bold tracking-tight sm:tracking-wide text-white break-words">ENTERPRISE STATIC ANALYSIS • POWERED BY CODESHIELD AI</span>
                 </div>
                 
-                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.12]">
+                <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.14] break-words px-2">
                     Build & Audit Code
                     <span class="block text-white mt-1">
                         Directly In Your Workspace
                     </span>
                 </h1>
 
-                <p class="text-sm sm:text-base sm:leading-relaxed text-white max-w-2xl mx-auto font-medium px-2">
+                <p class="text-xs sm:text-base sm:leading-relaxed text-slate-300 max-w-2xl mx-auto font-normal px-2">
                     Automated multi-vector vulnerability scanning combined with composable CodeShield AI security intelligence. Stream-scan your repositories locally to detect exposed cryptographic credentials, SQL injection risks, and technical debt with zero code leaks.
                 </p>
 
-                <!-- Capability chips -->
-                <div class="flex flex-wrap items-center justify-center gap-2.5 pt-1 text-xs font-semibold text-white">
-                    <span class="px-3.5 py-1.5 rounded-xl bg-black border border-white/20 shadow-sm text-white">⚡ O(1) Stream Parser</span>
-                    <span class="px-3.5 py-1.5 rounded-xl bg-black border border-white/20 shadow-sm text-white">🔒 100% Local Archive Extraction</span>
-                    <span class="px-3.5 py-1.5 rounded-xl bg-black border border-white/20 shadow-sm text-white">🛡️ Multi-Vector Threat Engine</span>
-                    <span class="px-3.5 py-1.5 rounded-xl bg-black border border-white/20 shadow-sm text-white">🤖 1-Click AI Patch Remediation</span>
+                <!-- Capability chips (Fully Responsive Wrap, No Horizontal Overflow) -->
+                <div class="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2.5 pt-1 text-[11px] sm:text-xs font-semibold text-white px-2">
+                    <span class="px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-xl bg-black border border-white/20 shadow-sm text-white shrink-0">⚡ O(1) Stream Parser</span>
+                    <span class="px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-xl bg-black border border-white/20 shadow-sm text-white shrink-0">🔒 100% Local Archive Extraction</span>
+                    <span class="px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-xl bg-black border border-white/20 shadow-sm text-white shrink-0">🛡️ Multi-Vector Threat Engine</span>
+                    <span class="px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-xl bg-black border border-white/20 shadow-sm text-white shrink-0">🤖 1-Click AI Patch Remediation</span>
                 </div>
 
                 <!-- Subtle Scroll Down Indicator -->
-                <div class="pt-4 flex justify-center">
+                <div class="pt-3 sm:pt-4 flex justify-center">
                     <a href="#workspaceContent" class="inline-flex items-center gap-2 text-xs font-mono text-white/80 hover:text-white transition-colors bg-black/60 px-4 py-1.5 rounded-full border border-white/20">
                         <span>Scroll Down to Scan Code</span>
                         <svg class="w-3.5 h-3.5 animate-bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -484,74 +500,74 @@
             <!-- Analytics Strip (The Only Component Visible Below Hero on First Load, styled in Bento style) -->
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4 pt-6">
                 
-                <!-- Health Score -->
-                <div class="purple-card p-5 sm:p-6 flex flex-col justify-between group cursor-pointer">
-                    <div class="flex items-start justify-between gap-3 mb-3">
+                <!-- Card 1: Health Score (Functional: Opens Health Score Modal & Details) -->
+                <div onclick="openHealthDetails()" class="purple-card p-3.5 sm:p-5 sm:p-6 flex flex-col justify-between group cursor-pointer" title="Click to view Security Health details">
+                    <div class="flex items-start justify-between gap-2 mb-2 sm:mb-3">
                         <div>
-                            <span class="text-xs font-semibold uppercase tracking-wider text-slate-300 block mb-1">
+                            <span class="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-slate-300 block mb-0.5 sm:mb-1">
                                 Security Health Index
                             </span>
-                            <div class="flex items-baseline gap-2">
-                                <span id="hudGrade" class="text-2xl sm:text-3xl font-extrabold text-white">
+                            <div class="flex items-baseline gap-1.5 sm:gap-2">
+                                <span id="hudGrade" class="text-xl sm:text-3xl font-extrabold text-white">
                                     A+
                                 </span>
-                                <span id="hudStatusText" class="text-xs text-emerald-400 font-bold">Optimal</span>
+                                <span id="hudStatusText" class="text-[11px] sm:text-xs text-emerald-400 font-bold">Optimal</span>
                             </div>
                         </div>
-                        <div class="w-10 h-10 rounded-xl bg-black/50 border border-white/15 flex items-center justify-center text-white shrink-0 group-hover:border-white transition-colors">
-                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-black/50 border border-white/15 flex items-center justify-center text-white shrink-0 group-hover:border-white transition-colors">
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                             </svg>
                         </div>
                     </div>
-                    <div class="flex items-center gap-1.5 text-xs font-semibold text-white group-hover:text-purple-200 transition-colors pt-2 border-t border-white/10">
+                    <div class="flex items-center gap-1.5 text-[11px] sm:text-xs font-semibold text-white group-hover:text-purple-200 transition-colors pt-2 border-t border-white/10">
                         <span>View Details</span>
                         <svg class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </div>
                 </div>
 
-                <!-- Total Recorded Audits -->
-                <div class="purple-card p-5 sm:p-6 flex flex-col justify-between group cursor-pointer" onclick="showHistoryView()">
-                    <div class="flex items-start justify-between gap-3 mb-3">
+                <!-- Card 2: Total Recorded Audits (Functional: Switches to History View and Scrolls Down) -->
+                <div onclick="openAuditHistory()" class="purple-card p-3.5 sm:p-5 sm:p-6 flex flex-col justify-between group cursor-pointer" title="Click to view Audit History">
+                    <div class="flex items-start justify-between gap-2 mb-2 sm:mb-3">
                         <div>
-                            <span class="text-xs font-semibold uppercase tracking-wider text-slate-300 block mb-1">
+                            <span class="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-slate-300 block mb-0.5 sm:mb-1">
                                 Recorded Audits
                             </span>
-                            <div class="flex items-baseline gap-2">
-                                <span id="hudTotalScans" class="text-2xl sm:text-3xl font-extrabold text-white">
+                            <div class="flex items-baseline gap-1.5 sm:gap-2">
+                                <span id="hudTotalScans" class="text-xl sm:text-3xl font-extrabold text-white">
                                     0
                                 </span>
-                                <span class="text-xs text-slate-300">Sessions</span>
+                                <span class="text-[11px] sm:text-xs text-slate-300">Sessions</span>
                             </div>
                         </div>
-                        <div class="w-10 h-10 rounded-xl bg-black/50 border border-white/15 flex items-center justify-center text-white shrink-0 group-hover:border-white transition-colors">
-                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-black/50 border border-white/15 flex items-center justify-center text-white shrink-0 group-hover:border-white transition-colors">
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
                             </svg>
                         </div>
                     </div>
-                    <div class="flex items-center gap-1.5 text-xs font-semibold text-white group-hover:text-purple-200 transition-colors pt-2 border-t border-white/10">
+                    <div class="flex items-center gap-1.5 text-[11px] sm:text-xs font-semibold text-white group-hover:text-purple-200 transition-colors pt-2 border-t border-white/10">
                         <span>Audit History</span>
                         <svg class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </div>
                 </div>
 
-                <!-- Detection Vectors -->
-                <div class="purple-card p-5 sm:p-6 flex flex-col justify-between group cursor-pointer">
-                    <div class="flex items-start justify-between gap-3 mb-3">
+                <!-- Card 3: Detection Rules (Functional: Opens Rule Catalog Modal with All 7 Threat Vectors) -->
+                <div onclick="openRuleCatalog()" class="purple-card p-3.5 sm:p-5 sm:p-6 flex flex-col justify-between group cursor-pointer" title="Click to browse Rule Catalog">
+                    <div class="flex items-start justify-between gap-2 mb-2 sm:mb-3">
                         <div>
-                            <span class="text-xs font-semibold uppercase tracking-wider text-slate-300 block mb-1">
+                            <span class="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-slate-300 block mb-0.5 sm:mb-1">
                                 Detection Rules
                             </span>
-                            <div class="flex items-baseline gap-2">
-                                <span class="text-2xl sm:text-3xl font-extrabold text-white">
+                            <div class="flex items-baseline gap-1.5 sm:gap-2">
+                                <span class="text-xl sm:text-3xl font-extrabold text-white">
                                     7
                                 </span>
-                                <span class="text-xs text-slate-300">Vectors</span>
+                                <span class="text-[11px] sm:text-xs text-slate-300">Vectors</span>
                             </div>
                         </div>
-                        <div class="w-10 h-10 rounded-xl bg-black/50 border border-white/15 flex items-center justify-center text-white shrink-0 group-hover:border-white transition-colors">
-                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-black/50 border border-white/15 flex items-center justify-center text-white shrink-0 group-hover:border-white transition-colors">
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <circle cx="12" cy="12" r="10"></circle>
                                 <line x1="22" y1="12" x2="18" y2="12"></line>
                                 <line x1="6" y1="12" x2="2" y2="12"></line>
@@ -560,32 +576,32 @@
                             </svg>
                         </div>
                     </div>
-                    <div class="flex items-center gap-1.5 text-xs font-semibold text-white group-hover:text-purple-200 transition-colors pt-2 border-t border-white/10">
+                    <div class="flex items-center gap-1.5 text-[11px] sm:text-xs font-semibold text-white group-hover:text-purple-200 transition-colors pt-2 border-t border-white/10">
                         <span>Rule Catalog</span>
                         <svg class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </div>
                 </div>
 
-                <!-- CodeShield AI Copilot -->
-                <div class="purple-card p-5 sm:p-6 flex flex-col justify-between group cursor-pointer" onclick="document.getElementById('chatInput').focus()">
-                    <div class="flex items-start justify-between gap-3 mb-3">
+                <!-- Card 4: CodeShield AI Copilot (Functional: Scrolls directly to Copilot & Focuses Chat) -->
+                <div onclick="openAICopilot()" class="purple-card p-3.5 sm:p-5 sm:p-6 flex flex-col justify-between group cursor-pointer" title="Click to open CodeShield AI Copilot">
+                    <div class="flex items-start justify-between gap-2 mb-2 sm:mb-3">
                         <div>
-                            <span class="text-xs font-semibold uppercase tracking-wider text-slate-300 block mb-1">
+                            <span class="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-slate-300 block mb-0.5 sm:mb-1">
                                 AI Copilot
                             </span>
-                            <div class="flex items-baseline gap-2">
-                                <span class="text-xl sm:text-2xl font-bold text-white">
+                            <div class="flex items-baseline gap-1.5 sm:gap-2">
+                                <span class="text-base sm:text-2xl font-bold text-white truncate">
                                     CodeShield AI
                                 </span>
                             </div>
                         </div>
-                        <div class="w-10 h-10 rounded-xl bg-black/50 border border-white/15 flex items-center justify-center text-white shrink-0 group-hover:border-white transition-colors">
-                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-black/50 border border-white/15 flex items-center justify-center text-white shrink-0 group-hover:border-white transition-colors">
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
                             </svg>
                         </div>
                     </div>
-                    <div class="flex items-center gap-1.5 text-xs font-semibold text-white group-hover:text-purple-200 transition-colors pt-2 border-t border-white/10">
+                    <div class="flex items-center gap-1.5 text-[11px] sm:text-xs font-semibold text-white group-hover:text-purple-200 transition-colors pt-2 border-t border-white/10">
                         <span>Open Copilot</span>
                         <svg class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </div>
@@ -927,6 +943,185 @@
 
     </main>
 
+    <!-- 1. Security Health Index Details Modal -->
+    <div id="healthModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-3 sm:p-4">
+        <div class="purple-card w-full max-w-lg p-5 sm:p-7 border border-white/20 shadow-2xl relative">
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between border-b border-white/15 pb-4 mb-5">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-black border border-white/20 flex items-center justify-center text-white">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="text-base sm:text-lg font-bold text-white tracking-tight">Security Health Index</h3>
+                        <p class="text-xs text-slate-300">Automated Threat Scoring Matrix</p>
+                    </div>
+                </div>
+                <button onclick="closeHealthDetails()" class="text-slate-400 hover:text-white p-1 rounded-lg">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Grade Criteria Breakdown -->
+            <div class="space-y-2.5 mb-6">
+                <div class="p-3 rounded-xl bg-black/60 border border-white/10 flex items-center justify-between">
+                    <div class="flex items-center gap-2.5">
+                        <span class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 font-extrabold text-xs flex items-center justify-center border border-emerald-500/40">A+</span>
+                        <span class="text-xs font-semibold text-white">Optimal (Zero Vulnerabilities)</span>
+                    </div>
+                    <span class="text-[11px] text-slate-400">0 Flags</span>
+                </div>
+                <div class="p-3 rounded-xl bg-black/60 border border-white/10 flex items-center justify-between">
+                    <div class="flex items-center gap-2.5">
+                        <span class="w-7 h-7 rounded-lg bg-blue-500/20 text-blue-300 font-extrabold text-xs flex items-center justify-center border border-blue-500/40">A</span>
+                        <span class="text-xs font-semibold text-white">Minor Debt / Stubs Only</span>
+                    </div>
+                    <span class="text-[11px] text-slate-400">TODOs only</span>
+                </div>
+                <div class="p-3 rounded-xl bg-black/60 border border-white/10 flex items-center justify-between">
+                    <div class="flex items-center gap-2.5">
+                        <span class="w-7 h-7 rounded-lg bg-yellow-500/20 text-yellow-300 font-extrabold text-xs flex items-center justify-center border border-yellow-500/40">B</span>
+                        <span class="text-xs font-semibold text-white">Moderate Threat Vectors</span>
+                    </div>
+                    <span class="text-[11px] text-slate-400">1-2 Secrets</span>
+                </div>
+                <div class="p-3 rounded-xl bg-black/60 border border-white/10 flex items-center justify-between">
+                    <div class="flex items-center gap-2.5">
+                        <span class="w-7 h-7 rounded-lg bg-orange-500/20 text-orange-300 font-extrabold text-xs flex items-center justify-center border border-orange-500/40">D</span>
+                        <span class="text-xs font-semibold text-white">Elevated Risk Detected</span>
+                    </div>
+                    <span class="text-[11px] text-slate-400">3-5 Secrets</span>
+                </div>
+                <div class="p-3 rounded-xl bg-black/60 border border-white/10 flex items-center justify-between">
+                    <div class="flex items-center gap-2.5">
+                        <span class="w-7 h-7 rounded-lg bg-rose-500/20 text-rose-300 font-extrabold text-xs flex items-center justify-center border border-rose-500/40">F</span>
+                        <span class="text-xs font-semibold text-white">Critical Exposure Vector</span>
+                    </div>
+                    <span class="text-[11px] text-slate-400">&gt;5 Secrets</span>
+                </div>
+            </div>
+
+            <!-- Modal Action Buttons -->
+            <div class="flex items-center justify-end gap-3 pt-2">
+                <button onclick="closeHealthDetails()" class="btn-action-ghost px-4 py-2 text-xs font-semibold">
+                    Close
+                </button>
+                <button onclick="jumpToScanFromHealth()" class="btn-action-primary px-5 py-2 text-xs font-bold flex items-center gap-2">
+                    <span>Inspect Current Findings</span>
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Detection Rule Catalog Modal -->
+    <div id="ruleCatalogModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-3 sm:p-4">
+        <div class="purple-card w-full max-w-2xl p-5 sm:p-7 border border-white/20 shadow-2xl relative max-h-[90vh] flex flex-col">
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between border-b border-white/15 pb-4 mb-4 shrink-0">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-black border border-white/20 flex items-center justify-center text-white">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="22" y1="12" x2="18" y2="12"></line>
+                            <line x1="6" y1="12" x2="2" y2="12"></line>
+                            <line x1="12" y1="6" x2="12" y2="2"></line>
+                            <line x1="12" y1="22" x2="12" y2="18"></line>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="text-base sm:text-lg font-bold text-white tracking-tight">Active Detection Vectors</h3>
+                        <p class="text-xs text-slate-300">7 Proprietary SAST Static Analysis Rules</p>
+                    </div>
+                </div>
+                <button onclick="closeRuleCatalog()" class="text-slate-400 hover:text-white p-1 rounded-lg">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Rules List (Scrollable) -->
+            <div class="space-y-2.5 overflow-y-auto pr-1 flex-1">
+                <div class="p-3 rounded-xl bg-black/60 border border-white/10">
+                    <div class="flex items-center justify-between mb-1">
+                        <span class="text-xs font-bold text-white">1. AWS &amp; Cloud IAM Credentials</span>
+                        <span class="badge-critical text-[9px] font-bold px-2 py-0.5 rounded-full uppercase">Critical Secret</span>
+                    </div>
+                    <p class="text-[11px] text-slate-300">Detects exposed AWS Access Key IDs (AKIA/ASIA) and secret access keys in source files.</p>
+                </div>
+
+                <div class="p-3 rounded-xl bg-black/60 border border-white/10">
+                    <div class="flex items-center justify-between mb-1">
+                        <span class="text-xs font-bold text-white">2. GitHub / GitLab Personal Access Tokens</span>
+                        <span class="badge-critical text-[9px] font-bold px-2 py-0.5 rounded-full uppercase">Critical Secret</span>
+                    </div>
+                    <p class="text-[11px] text-slate-300">Identifies leaked fine-grained or classic tokens (ghp_, gho_, glpat_) and OAuth tokens.</p>
+                </div>
+
+                <div class="p-3 rounded-xl bg-black/60 border border-white/10">
+                    <div class="flex items-center justify-between mb-1">
+                        <span class="text-xs font-bold text-white">3. Database &amp; Secret Keys</span>
+                        <span class="badge-critical text-[9px] font-bold px-2 py-0.5 rounded-full uppercase">Critical Secret</span>
+                    </div>
+                    <p class="text-[11px] text-slate-300">Flags raw database connection strings, JWT signing keys, and hardcoded passwords.</p>
+                </div>
+
+                <div class="p-3 rounded-xl bg-black/60 border border-white/10">
+                    <div class="flex items-center justify-between mb-1">
+                        <span class="text-xs font-bold text-white">4. SQL Injection (Interpolated Queries)</span>
+                        <span class="badge-critical text-[9px] font-bold px-2 py-0.5 rounded-full uppercase">SQL Injection</span>
+                    </div>
+                    <p class="text-[11px] text-slate-300">Matches direct string concatenation or template literals passed to database queries.</p>
+                </div>
+
+                <div class="p-3 rounded-xl bg-black/60 border border-white/10">
+                    <div class="flex items-center justify-between mb-1">
+                        <span class="text-xs font-bold text-white">5. Plaintext HTTP &amp; Insecure Endpoints</span>
+                        <span class="badge-warning text-[9px] font-bold px-2 py-0.5 rounded-full uppercase">Protocol Risk</span>
+                    </div>
+                    <p class="text-[11px] text-slate-300">Detects unencrypted HTTP URLs in production endpoints susceptible to MITM interception.</p>
+                </div>
+
+                <div class="p-3 rounded-xl bg-black/60 border border-white/10">
+                    <div class="flex items-center justify-between mb-1">
+                        <span class="text-xs font-bold text-white">6. Dangerous Dynamic Execution (eval)</span>
+                        <span class="badge-warning text-[9px] font-bold px-2 py-0.5 rounded-full uppercase">Code Smell</span>
+                    </div>
+                    <p class="text-[11px] text-slate-300">Identifies eval(), Function() constructor, and unsafe dynamic execution patterns.</p>
+                </div>
+
+                <div class="p-3 rounded-xl bg-black/60 border border-white/10">
+                    <div class="flex items-center justify-between mb-1">
+                        <span class="text-xs font-bold text-white">7. Technical Security Debt</span>
+                        <span class="badge-info text-[9px] font-bold px-2 py-0.5 rounded-full uppercase">Code Debt</span>
+                    </div>
+                    <p class="text-[11px] text-slate-300">Scans for unaddressed TODO/FIXME markers tagged with security or temporary bypasses.</p>
+                </div>
+            </div>
+
+            <!-- Modal Action Buttons -->
+            <div class="flex items-center justify-between gap-3 pt-4 border-t border-white/15 shrink-0 mt-3">
+                <span class="text-xs text-slate-400 hidden sm:inline">All 7 rules execute concurrently during archive upload</span>
+                <div class="flex items-center gap-2 ml-auto">
+                    <button onclick="closeRuleCatalog()" class="btn-action-ghost px-4 py-2 text-xs font-semibold">
+                        Close
+                    </button>
+                    <button onclick="jumpToUploadFromRules()" class="btn-action-primary px-5 py-2 text-xs font-bold flex items-center gap-2">
+                        <span>Scan Codebase Now</span>
+                        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Custom In-App Toast -->
     <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
         <div class="purple-card px-4 py-3 flex items-center gap-2.5 shadow-2xl bg-[#44174E] border border-white">
@@ -946,13 +1141,70 @@
         if (!user) {
             window.location.href = '/login.html';
         } else {
-            document.getElementById('userNameDisplay').textContent = user.name || 'Developer';
-            document.getElementById('userAvatar').textContent = (user.name ? user.name[0] : 'D').toUpperCase();
+            // Automatically clean/sanitize any stale demo user data from existing localStorage
+            if (user.name && /raj\s*shamani/i.test(user.name)) {
+                user.name = 'Security Lead';
+                user.email = 'lead@codeshield.internal';
+                localStorage.setItem('codeshield_user', JSON.stringify(user));
+            }
+
+            document.getElementById('userNameDisplay').textContent = user.name || 'Security Lead';
+            document.getElementById('userAvatar').textContent = (user.name ? user.name[0] : 'S').toUpperCase();
             
             // Populate profile modal details
-            document.getElementById('popupUserName').textContent = user.name || 'Developer';
-            document.getElementById('popupUserEmail').textContent = user.email || 'developer@company.com';
-            document.getElementById('popupUserAvatar').textContent = (user.name ? user.name[0] : 'D').toUpperCase();
+            document.getElementById('popupUserName').textContent = user.name || 'Security Lead';
+            document.getElementById('popupUserEmail').textContent = user.email || 'lead@codeshield.internal';
+            document.getElementById('popupUserAvatar').textContent = (user.name ? user.name[0] : 'S').toUpperCase();
+        }
+
+        // Functional Handlers for the 4 Analytics Cards
+        function openHealthDetails() {
+            const modal = document.getElementById('healthModal');
+            if (modal) modal.classList.remove('hidden');
+        }
+
+        function closeHealthDetails() {
+            const modal = document.getElementById('healthModal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        function jumpToScanFromHealth() {
+            closeHealthDetails();
+            document.getElementById('workspaceContent').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function openAuditHistory() {
+            showHistoryView();
+            document.getElementById('historyCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function openRuleCatalog() {
+            const modal = document.getElementById('ruleCatalogModal');
+            if (modal) modal.classList.remove('hidden');
+        }
+
+        function closeRuleCatalog() {
+            const modal = document.getElementById('ruleCatalogModal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        function jumpToUploadFromRules() {
+            closeRuleCatalog();
+            document.getElementById('dropzone').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(() => {
+                document.getElementById('projectZip').click();
+            }, 300);
+        }
+
+        function openAICopilot() {
+            const chatCard = document.getElementById('chatCard');
+            const chatInput = document.getElementById('chatInput');
+            chatCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(() => {
+                chatInput.focus();
+                chatCard.classList.add('ring-2', 'ring-white');
+                setTimeout(() => chatCard.classList.remove('ring-2', 'ring-white'), 1200);
+            }, 450);
         }
 
         function logout() {
@@ -1302,11 +1554,11 @@
                             <span class="text-xs text-white font-semibold">${escapeHtml(f.type)}</span>
                         </td>
                         <td class="py-3 px-4 text-xs whitespace-nowrap">
-                            <span class="text-purple-200 font-mono">${escapeHtml(f.file)}</span>
+                            <span class="text-slate-300 font-mono">${escapeHtml(f.file)}</span>
                             <span class="text-white font-mono font-bold">:L${f.line}</span>
                         </td>
                         <td class="py-3 px-4">
-                            <div class="bg-black/60 border border-white/20 rounded-lg p-2 max-w-xs sm:max-w-md font-mono text-[11px] text-purple-200 overflow-x-auto">
+                            <div class="bg-black/70 border border-white/20 rounded-lg p-2 max-w-[180px] xs:max-w-xs sm:max-w-md font-mono text-[11px] text-slate-200 overflow-x-auto">
                                 <code>${escapeHtml(f.content)}</code>
                             </div>
                         </td>

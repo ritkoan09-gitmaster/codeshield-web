@@ -8,7 +8,13 @@
   },
   {
     "id": 1794137811507,
-    "name": "raj shamani",
+    "name": "Security Lead",
+    "email": "lead@codeshield.internal",
+    "password": "lead"
+  },
+  {
+    "id": 1794137811508,
+    "name": "Security Lead",
     "email": "raj@gmail.com",
     "password": "raj"
   },
