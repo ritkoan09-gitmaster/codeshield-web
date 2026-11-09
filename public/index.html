@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CodeShield Enterprise | Multi-Vector SAST & AI Security Platform</title>
+    <title>CodeShield Enterprise | Intelligent Security Auditing</title>
     
-    <!-- Modern High-Tech Typography -->
+    <!-- Modern Enterprise Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -20,23 +20,16 @@
             theme: {
                 extend: {
                     colors: {
-                        cyber: {
-                            base: '#060D1A',
-                            abyss: '#0A1931',
-                            panel: '#0F2544',
-                            surface: '#1A3D63',
-                            steel: '#4A7FA7',
-                            mist: '#B3CFE5',
-                            frost: '#F6FAFD',
-                            accent: '#38BDF8',
-                            critical: '#FF4D6D',
-                            warning: '#FBBF24',
-                            success: '#10B981',
+                        evergreen: {
+                            base: '#012618',
+                            dark: '#013220',
+                            pine: '#0B6E4F',
+                            emerald: '#50C878',
+                            mint: '#D1F2EB',
                         }
                     },
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Space Grotesk', 'sans-serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
                         mono: ['JetBrains Mono', 'monospace'],
                     }
                 }
@@ -46,248 +39,193 @@
 
     <style>
         :root {
-            --abyss: #0A1931;
-            --surface: #1A3D63;
-            --steel: #4A7FA7;
-            --mist: #B3CFE5;
-            --frost: #F6FAFD;
+            --dark-evergreen: #013220;
+            --royal-pine: #0B6E4F;
+            --emerald-green: #50C878;
+            --mint-whisper: #D1F2EB;
         }
 
         body {
-            background-color: #060D1A;
-            font-family: 'Inter', sans-serif;
-            color: #F6FAFD;
+            background-color: #012618;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #D1F2EB;
             overflow-x: hidden;
         }
 
-        /* Subtle Technical Oceanic Grid Background */
-        .cyber-bg {
-            background-color: #060D1A;
-            background-image:
-                radial-gradient(ellipse 90% 60% at 50% -10%, rgba(74, 127, 167, 0.28), transparent 75%),
-                radial-gradient(circle at 10% 40%, rgba(26, 61, 99, 0.35), transparent 45%),
-                radial-gradient(circle at 90% 70%, rgba(10, 25, 49, 0.6), transparent 50%),
-                linear-gradient(rgba(179, 207, 229, 0.035) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(179, 207, 229, 0.035) 1px, transparent 1px);
-            background-size: 100% 100%, 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+        /* Ambient Glassmorphic Background */
+        .ambient-bg {
+            background-color: #012618;
+            background-image: 
+                radial-gradient(ellipse 85% 60% at 50% -10%, rgba(11, 110, 79, 0.4), transparent 70%),
+                radial-gradient(circle at 12% 40%, rgba(80, 200, 120, 0.08), transparent 45%),
+                radial-gradient(circle at 88% 70%, rgba(11, 110, 79, 0.22), transparent 50%);
         }
 
-        /* Technical Ambient Glow */
-        .ambient-glow {
-            position: fixed;
-            pointer-events: none;
-            border-radius: 50%;
-            filter: blur(80px);
-            z-index: 0;
+        /* Frosted Glassmorphism Card Panels */
+        .glass-card {
+            background: linear-gradient(145deg, rgba(11, 110, 79, 0.20) 0%, rgba(1, 50, 32, 0.65) 100%);
+            backdrop-filter: blur(24px) saturate(160%);
+            -webkit-backdrop-filter: blur(24px) saturate(160%);
+            border: 1px solid rgba(209, 242, 235, 0.15);
+            box-shadow: 
+                0 20px 50px -15px rgba(0, 18, 10, 0.75),
+                0 0 30px -5px rgba(80, 200, 120, 0.08),
+                inset 0 1px 1px 0 rgba(209, 242, 235, 0.22);
+            border-radius: 1.25rem;
+            transition: border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+        .glass-card:hover {
+            border-color: rgba(80, 200, 120, 0.35);
+            box-shadow: 
+                0 25px 55px -15px rgba(0, 18, 10, 0.85),
+                0 0 35px -5px rgba(80, 200, 120, 0.18),
+                inset 0 1px 1px 0 rgba(209, 242, 235, 0.3);
         }
 
-        /* Bespoke Glassmorphic Card Surface */
-        .cyber-card {
-            background: linear-gradient(165deg, rgba(15, 37, 68, 0.75) 0%, rgba(10, 25, 49, 0.9) 100%);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(179, 207, 229, 0.14);
-            box-shadow:
-                0 25px 60px -15px rgba(2, 6, 12, 0.85),
-                0 0 35px -10px rgba(74, 127, 167, 0.15),
-                inset 0 1px 1px 0 rgba(246, 250, 253, 0.14);
-            position: relative;
+        /* Inner Glass Surface */
+        .glass-surface-inner {
+            background: rgba(1, 38, 24, 0.6);
+            border: 1px solid rgba(209, 242, 235, 0.12);
+            border-radius: 0.875rem;
         }
 
-        /* Precision Corner Technical Accents */
-        .corner-notch::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 14px;
-            height: 14px;
-            border-top: 2px solid #B3CFE5;
-            border-left: 2px solid #B3CFE5;
-            border-top-left-radius: 0.85rem;
-            opacity: 0.7;
-            pointer-events: none;
-        }
-        .corner-notch::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 14px;
-            height: 14px;
-            border-bottom: 2px solid #4A7FA7;
-            border-right: 2px solid #4A7FA7;
-            border-bottom-right-radius: 0.85rem;
-            opacity: 0.7;
-            pointer-events: none;
-        }
-
-        /* Primary Action Cyber Button */
-        .cyber-btn-primary {
-            background: linear-gradient(135deg, #1A3D63 0%, #2A5A8C 50%, #4A7FA7 100%);
-            border: 1px solid rgba(179, 207, 229, 0.35);
-            box-shadow: 0 4px 20px -2px rgba(74, 127, 167, 0.4), inset 0 1px 0 rgba(246, 250, 253, 0.3);
-            color: #F6FAFD;
+        /* Primary Emerald CTA Button */
+        .btn-emerald {
+            background: linear-gradient(135deg, #0B6E4F 0%, #50C878 100%);
+            color: #012618;
+            font-weight: 700;
+            border: 1px solid rgba(209, 242, 235, 0.35);
+            box-shadow: 0 6px 20px -3px rgba(80, 200, 120, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.4);
             transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-            overflow: hidden;
+            border-radius: 0.75rem;
         }
-        .cyber-btn-primary::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 60%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(246, 250, 253, 0.25), transparent);
-            transform: skewX(-20deg);
-            transition: 0.6s ease;
+        .btn-emerald:hover {
+            background: linear-gradient(135deg, #0F835F 0%, #5CE087 100%);
+            box-shadow: 0 10px 25px -3px rgba(80, 200, 120, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            transform: translateY(-1.5px);
         }
-        .cyber-btn-primary:hover {
-            background: linear-gradient(135deg, #244F7E 0%, #356EAA 50%, #5B95C3 100%);
-            box-shadow: 0 0 30px rgba(74, 127, 167, 0.65), inset 0 1px 0 rgba(246, 250, 253, 0.5);
-            transform: translateY(-1px);
-        }
-        .cyber-btn-primary:hover::after {
-            left: 140%;
-        }
-        .cyber-btn-primary:active {
-            transform: translateY(1px);
+        .btn-emerald:active {
+            transform: translateY(0.5px);
         }
 
         /* Ghost Button */
-        .cyber-btn-ghost {
-            background: rgba(15, 37, 68, 0.5);
-            border: 1px solid rgba(179, 207, 229, 0.16);
-            color: #B3CFE5;
+        .btn-ghost {
+            background: rgba(11, 110, 79, 0.22);
+            border: 1px solid rgba(209, 242, 235, 0.18);
+            color: #D1F2EB;
+            border-radius: 0.625rem;
             transition: all 0.2s ease;
         }
-        .cyber-btn-ghost:hover {
-            background: rgba(74, 127, 167, 0.25);
-            border-color: #4A7FA7;
-            color: #F6FAFD;
-            box-shadow: 0 0 16px rgba(74, 127, 167, 0.3);
+        .btn-ghost:hover {
+            background: rgba(80, 200, 120, 0.22);
+            border-color: #50C878;
+            color: #FFFFFF;
+            box-shadow: 0 0 14px rgba(80, 200, 120, 0.25);
         }
-        .cyber-btn-ghost.danger:hover {
-            background: rgba(255, 77, 109, 0.15);
-            border-color: #FF4D6D;
-            color: #FF4D6D;
-            box-shadow: 0 0 16px rgba(255, 77, 109, 0.3);
+        .btn-ghost.danger:hover {
+            background: rgba(244, 63, 94, 0.2);
+            border-color: #FB7185;
+            color: #FECDD3;
+            box-shadow: 0 0 14px rgba(244, 63, 94, 0.3);
         }
 
-        /* Interactive File Dropzone */
-        .cyber-dropzone {
-            border: 2px dashed rgba(179, 207, 229, 0.25);
-            background: rgba(6, 13, 26, 0.5);
+        /* Glassmorphic Upload Dropzone */
+        .glass-dropzone {
+            border: 2px dashed rgba(209, 242, 235, 0.22);
+            background: rgba(1, 38, 24, 0.45);
+            border-radius: 1rem;
             transition: all 0.25s ease;
         }
-        .cyber-dropzone:hover, .cyber-dropzone.drag-active {
-            border-color: #4A7FA7;
-            background: rgba(26, 61, 99, 0.25);
-            box-shadow: 0 0 30px -5px rgba(74, 127, 167, 0.35), inset 0 0 20px rgba(74, 127, 167, 0.15);
+        .glass-dropzone:hover, .glass-dropzone.drag-active {
+            border-color: #50C878;
+            background: rgba(11, 110, 79, 0.22);
+            box-shadow: 0 0 30px -5px rgba(80, 200, 120, 0.3), inset 0 0 20px rgba(80, 200, 120, 0.1);
         }
 
-        /* Threat Severity Badges */
+        /* Rounded Severity Badges */
         .badge-critical {
-            background: rgba(255, 77, 109, 0.12);
-            color: #FF4D6D;
-            border: 1px solid rgba(255, 77, 109, 0.35);
-            box-shadow: 0 0 12px rgba(255, 77, 109, 0.2);
+            background: rgba(244, 63, 94, 0.15);
+            color: #FB7185;
+            border: 1px solid rgba(244, 63, 94, 0.35);
         }
         .badge-high {
-            background: rgba(249, 115, 22, 0.12);
-            color: #FB923C;
+            background: rgba(249, 115, 22, 0.15);
+            color: #FDBA74;
             border: 1px solid rgba(249, 115, 22, 0.35);
-            box-shadow: 0 0 12px rgba(249, 115, 22, 0.2);
         }
         .badge-warning {
-            background: rgba(251, 191, 36, 0.12);
+            background: rgba(245, 158, 11, 0.15);
             color: #FCD34D;
-            border: 1px solid rgba(251, 191, 36, 0.35);
-            box-shadow: 0 0 12px rgba(251, 191, 36, 0.2);
+            border: 1px solid rgba(245, 158, 11, 0.35);
         }
         .badge-info {
-            background: rgba(56, 189, 248, 0.12);
-            color: #38BDF8;
-            border: 1px solid rgba(56, 189, 248, 0.35);
-            box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
+            background: rgba(80, 200, 120, 0.15);
+            color: #50C878;
+            border: 1px solid rgba(80, 200, 120, 0.35);
         }
-        .badge-success {
-            background: rgba(16, 185, 129, 0.12);
-            color: #34D399;
-            border: 1px solid rgba(16, 185, 129, 0.35);
-            box-shadow: 0 0 12px rgba(16, 185, 129, 0.2);
+        .badge-mint {
+            background: rgba(209, 242, 235, 0.12);
+            color: #D1F2EB;
+            border: 1px solid rgba(209, 242, 235, 0.25);
         }
 
         /* History List Item */
         .history-item {
-            background: rgba(10, 25, 49, 0.65);
-            border: 1px solid rgba(179, 207, 229, 0.1);
+            background: rgba(1, 38, 24, 0.55);
+            border: 1px solid rgba(209, 242, 235, 0.12);
+            border-radius: 0.875rem;
             transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-        }
-        .history-item::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: linear-gradient(180deg, #4A7FA7, #B3CFE5);
-            transform: scaleY(0);
-            transition: transform 0.25s ease;
         }
         .history-item:hover {
-            transform: translateX(4px);
-            border-color: rgba(74, 127, 167, 0.4);
-            background: rgba(26, 61, 99, 0.4);
-            box-shadow: 0 10px 25px -8px rgba(10, 25, 49, 0.7);
-        }
-        .history-item:hover::before {
-            transform: scaleY(1);
+            transform: translateY(-1.5px);
+            border-color: rgba(80, 200, 120, 0.45);
+            background: rgba(11, 110, 79, 0.3);
+            box-shadow: 0 10px 24px -6px rgba(0, 18, 10, 0.6);
         }
 
-        /* Table Findings Row */
-        .finding-card {
-            background: rgba(10, 25, 49, 0.55);
-            border: 1px solid rgba(179, 207, 229, 0.08);
+        /* Finding Card */
+        .finding-row {
+            background: rgba(1, 38, 24, 0.5);
+            border: 1px solid rgba(209, 242, 235, 0.08);
+            border-radius: 0.75rem;
             transition: all 0.2s ease;
         }
-        .finding-card:hover {
-            background: rgba(26, 61, 99, 0.35);
-            border-color: rgba(74, 127, 167, 0.3);
-            box-shadow: inset 3px 0 0 #4A7FA7;
+        .finding-row:hover {
+            background: rgba(11, 110, 79, 0.25);
+            border-color: rgba(80, 200, 120, 0.35);
         }
 
-        /* Chat Message Bubbles */
+        /* Chat Bubbles */
         .chat-user-bubble {
-            background: linear-gradient(135deg, rgba(26, 61, 99, 0.8) 0%, rgba(15, 37, 68, 0.9) 100%);
-            border: 1px solid rgba(179, 207, 229, 0.25);
-            box-shadow: 0 4px 20px -5px rgba(10, 25, 49, 0.6);
+            background: linear-gradient(135deg, rgba(11, 110, 79, 0.5) 0%, rgba(1, 50, 32, 0.75) 100%);
+            border: 1px solid rgba(209, 242, 235, 0.2);
+            border-radius: 1rem 1rem 0.2rem 1rem;
+            box-shadow: 0 4px 16px rgba(0, 18, 10, 0.4);
         }
         .chat-ai-bubble {
-            background: linear-gradient(135deg, rgba(15, 37, 68, 0.7) 0%, rgba(10, 25, 49, 0.85) 100%);
-            border: 1px solid rgba(74, 127, 167, 0.25);
-            box-shadow: 0 4px 20px -5px rgba(74, 127, 167, 0.15);
+            background: linear-gradient(135deg, rgba(1, 38, 24, 0.8) 0%, rgba(11, 110, 79, 0.3) 100%);
+            border: 1px solid rgba(80, 200, 120, 0.25);
+            border-radius: 1rem 1rem 1rem 0.2rem;
+            box-shadow: 0 4px 16px rgba(0, 18, 10, 0.4);
         }
 
-        /* Code snippets in chat */
+        /* Markdown code styling in chat */
         .chat-markdown pre {
-            background: #040912 !important;
-            border: 1px solid rgba(179, 207, 229, 0.15) !important;
-            border-left: 3px solid #4A7FA7 !important;
+            background: #011E13 !important;
+            border: 1px solid rgba(209, 242, 235, 0.15) !important;
+            border-left: 3px solid #50C878 !important;
             padding: 10px 14px;
-            border-radius: 8px;
+            border-radius: 0.625rem;
             overflow-x: auto;
             margin: 8px 0;
             font-family: 'JetBrains Mono', monospace;
             font-size: 11px;
-            color: #B3CFE5;
+            color: #D1F2EB;
         }
         .chat-markdown code {
             font-family: 'JetBrains Mono', monospace;
-            background: rgba(74, 127, 167, 0.15);
-            color: #F6FAFD;
+            background: rgba(80, 200, 120, 0.15);
+            color: #FFFFFF;
             padding: 2px 5px;
             border-radius: 4px;
             font-size: 11px;
@@ -296,109 +234,109 @@
         .chat-markdown p:last-child { margin-bottom: 0; }
         .chat-markdown ul, .chat-markdown ol { margin: 6px 0 6px 16px; }
         .chat-markdown li { list-style: disc; margin-bottom: 3px; }
-        .chat-markdown strong { color: #F6FAFD; font-weight: 600; }
+        .chat-markdown strong { color: #FFFFFF; font-weight: 600; }
 
-        /* Scrollbar Customization */
+        /* Custom Scrollbars */
         ::-webkit-scrollbar {
             width: 5px;
             height: 5px;
         }
         ::-webkit-scrollbar-track {
-            background: rgba(6, 13, 26, 0.5);
+            background: rgba(1, 38, 24, 0.4);
         }
         ::-webkit-scrollbar-thumb {
-            background: #1A3D63;
+            background: #0B6E4F;
             border-radius: 4px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #4A7FA7;
+            background: #50C878;
         }
 
-        /* Glowing Pulse Dot */
-        .live-dot {
+        /* Live Indicator */
+        .pulse-beacon {
             position: relative;
             display: inline-flex;
             height: 8px;
             width: 8px;
         }
-        .live-dot-ping {
+        .pulse-beacon-ping {
             position: absolute;
             display: inline-flex;
             height: 100%;
             width: 100%;
             border-radius: 9999px;
-            background-color: #10B981;
+            background-color: #50C878;
             opacity: 0.75;
             animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
         }
-        .live-dot-core {
+        .pulse-beacon-core {
             position: relative;
             display: inline-flex;
             border-radius: 9999px;
             height: 8px;
             width: 8px;
-            background-color: #10B981;
-            box-shadow: 0 0 8px #10B981;
+            background-color: #50C878;
+            box-shadow: 0 0 8px #50C878;
         }
     </style>
 </head>
-<body class="cyber-bg min-h-screen text-cyber-frost flex flex-col relative selection:bg-cyber-steel selection:text-white">
+<body class="ambient-bg min-h-screen text-evergreen-mint flex flex-col relative selection:bg-evergreen-emerald selection:text-evergreen-dark">
 
-    <!-- Ambient Visual Glow Orbs -->
-    <div class="ambient-glow -top-40 left-1/4 w-[600px] h-[350px] bg-cyber-steel/15"></div>
-    <div class="ambient-glow top-1/2 -right-40 w-[500px] h-[500px] bg-cyber-surface/30"></div>
+    <!-- Ambient Lighting Blurs -->
+    <div class="fixed top-0 left-1/3 w-[500px] h-[300px] rounded-full bg-evergreen-pine/20 blur-3xl pointer-events-none -z-10"></div>
+    <div class="fixed bottom-1/3 right-10 w-[450px] h-[450px] rounded-full bg-evergreen-emerald/10 blur-3xl pointer-events-none -z-10"></div>
 
     <!-- Navigation Header -->
-    <header class="sticky top-0 z-50 border-b border-cyber-mist/10 bg-[#060D1A]/85 backdrop-blur-xl">
+    <header class="sticky top-0 z-50 border-b border-evergreen-mint/10 bg-[#012618]/85 backdrop-blur-xl">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between">
             
-            <!-- Logo & Brand Badge -->
-            <div class="flex items-center gap-3.5">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyber-surface to-cyber-abyss border border-cyber-mist/20 flex items-center justify-center shadow-[0_0_20px_rgba(74,127,167,0.3)]">
-                    <svg class="w-5 h-5 text-cyber-mist" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <!-- Brand Identity -->
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-evergreen-pine to-evergreen-dark border border-evergreen-mint/25 flex items-center justify-center shadow-[0_0_20px_rgba(80,200,120,0.2)]">
+                    <svg class="w-5 h-5 text-evergreen-emerald" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                         <path d="m9 12 2 2 4-4"/>
                     </svg>
                 </div>
                 <div>
                     <div class="flex items-center gap-2">
-                        <span class="font-display font-bold text-base sm:text-lg tracking-tight text-cyber-frost">CodeShield</span>
-                        <span class="font-mono text-[9px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded bg-cyber-steel/20 border border-cyber-mist/25 text-cyber-mist">
-                            v2.5 PRO
+                        <span class="text-base sm:text-lg font-bold text-white tracking-tight">CodeShield</span>
+                        <span class="text-[10px] font-semibold uppercase px-2 py-0.5 rounded-full bg-evergreen-pine/40 border border-evergreen-mint/25 text-evergreen-emerald">
+                            Enterprise
                         </span>
                     </div>
-                    <p class="text-[11px] font-mono text-cyber-mist/60 hidden sm:block">
-                        Proprietary Multi-Vector SAST Engine & AI Copilot
+                    <p class="text-[11px] text-evergreen-mint/60 hidden sm:block">
+                        Intelligent Static Application Security Platform
                     </p>
                 </div>
             </div>
 
-            <!-- Telemetry & Identity Area -->
+            <!-- Identity & Actions -->
             <div class="flex items-center gap-3 sm:gap-4">
                 
-                <!-- System Status HUD -->
-                <div class="hidden md:flex items-center gap-2.5 px-3.5 py-1.5 rounded-lg bg-cyber-abyss/80 border border-cyber-mist/15 text-xs font-mono">
-                    <span class="live-dot">
-                        <span class="live-dot-ping"></span>
-                        <span class="live-dot-core"></span>
+                <!-- Status Pill -->
+                <div class="hidden md:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-evergreen-dark/70 border border-evergreen-mint/15 text-xs">
+                    <span class="pulse-beacon">
+                        <span class="pulse-beacon-ping"></span>
+                        <span class="pulse-beacon-core"></span>
                     </span>
-                    <span class="text-cyber-mist/80">SAST: <span class="text-cyber-frost font-semibold">ARMED</span></span>
-                    <span class="text-cyber-mist/30">|</span>
-                    <span class="text-cyber-mist/80">GEMINI: <span class="text-emerald-400 font-semibold">ONLINE</span></span>
+                    <span class="text-evergreen-mint/80 font-medium">SAST Active</span>
+                    <span class="text-evergreen-mint/30">•</span>
+                    <span class="text-evergreen-emerald font-semibold">Gemini 2.5 Connected</span>
                 </div>
 
-                <!-- User Profile Display -->
-                <div class="flex items-center gap-2.5 px-3 py-1.5 rounded-lg bg-cyber-surface/30 border border-cyber-mist/15 text-xs">
-                    <div class="w-6 h-6 rounded-md bg-cyber-surface border border-cyber-mist/30 flex items-center justify-center font-mono font-bold text-[11px] text-cyber-mist">
+                <!-- User Profile -->
+                <div class="flex items-center gap-2.5 px-3 py-1.5 rounded-xl bg-evergreen-pine/20 border border-evergreen-mint/15 text-xs">
+                    <div class="w-6 h-6 rounded-lg bg-evergreen-pine border border-evergreen-mint/30 flex items-center justify-center font-bold text-[11px] text-white">
                         <span id="userAvatar">D</span>
                     </div>
-                    <span id="userNameDisplay" class="font-medium text-cyber-frost max-w-[120px] truncate">
+                    <span id="userNameDisplay" class="font-medium text-white max-w-[120px] truncate">
                         Developer
                     </span>
                 </div>
 
                 <!-- Sign Out -->
-                <button onclick="logout()" title="Terminate Session" class="cyber-btn-ghost danger px-3 py-1.5 rounded-lg text-xs font-mono font-medium flex items-center gap-1.5">
+                <button onclick="logout()" title="Sign Out" class="btn-ghost danger px-3 py-1.5 text-xs font-medium flex items-center gap-1.5">
                     <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
                         <polyline points="16 17 21 12 16 7"></polyline>
@@ -414,23 +352,23 @@
     <!-- Main Workspace -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 flex-1 w-full space-y-6 sm:space-y-8 relative z-10">
 
-        <!-- Executive Metrics HUD (Interactive Security Health Score) -->
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+        <!-- Executive Metrics Bar -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4">
             
-            <!-- Security Health Grade -->
-            <div class="cyber-card rounded-xl p-4 sm:p-5 flex items-center justify-between">
+            <!-- Health Score -->
+            <div class="glass-card p-4 sm:p-5 flex items-center justify-between">
                 <div>
-                    <span class="text-[10px] sm:text-xs font-mono uppercase tracking-wider text-cyber-mist/60 block mb-1">
+                    <span class="text-[11px] font-medium uppercase tracking-wider text-evergreen-mint/60 block mb-1">
                         Security Health Index
                     </span>
                     <div class="flex items-baseline gap-2">
-                        <span id="hudGrade" class="font-display text-2xl sm:text-3xl font-bold text-emerald-400">
+                        <span id="hudGrade" class="text-2xl sm:text-3xl font-extrabold text-evergreen-emerald">
                             A+
                         </span>
-                        <span id="hudStatusText" class="text-[11px] font-mono text-emerald-300/80">OPTIMAL</span>
+                        <span id="hudStatusText" class="text-xs text-evergreen-mint/80 font-medium">Optimal</span>
                     </div>
                 </div>
-                <div class="w-11 h-11 rounded-xl bg-cyber-abyss border border-cyber-mist/20 flex items-center justify-center text-cyber-mist">
+                <div class="w-11 h-11 rounded-xl bg-evergreen-pine/30 border border-evergreen-mint/20 flex items-center justify-center text-evergreen-emerald">
                     <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                     </svg>
@@ -438,39 +376,39 @@
             </div>
 
             <!-- Total Recorded Audits -->
-            <div class="cyber-card rounded-xl p-4 sm:p-5 flex items-center justify-between">
+            <div class="glass-card p-4 sm:p-5 flex items-center justify-between">
                 <div>
-                    <span class="text-[10px] sm:text-xs font-mono uppercase tracking-wider text-cyber-mist/60 block mb-1">
-                        Encrypted Audits
+                    <span class="text-[11px] font-medium uppercase tracking-wider text-evergreen-mint/60 block mb-1">
+                        Scanned Audits
                     </span>
                     <div class="flex items-baseline gap-2">
-                        <span id="hudTotalScans" class="font-display text-2xl sm:text-3xl font-bold text-cyber-frost">
+                        <span id="hudTotalScans" class="text-2xl sm:text-3xl font-extrabold text-white">
                             0
                         </span>
-                        <span class="text-[11px] font-mono text-cyber-mist/60">SESSIONS</span>
+                        <span class="text-xs text-evergreen-mint/60">Sessions</span>
                     </div>
                 </div>
-                <div class="w-11 h-11 rounded-xl bg-cyber-abyss border border-cyber-mist/20 flex items-center justify-center text-cyber-mist">
+                <div class="w-11 h-11 rounded-xl bg-evergreen-pine/30 border border-evergreen-mint/20 flex items-center justify-center text-evergreen-mint">
                     <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
                     </svg>
                 </div>
             </div>
 
-            <!-- Active Detection Vector Count -->
-            <div class="cyber-card rounded-xl p-4 sm:p-5 flex items-center justify-between">
+            <!-- Detection Rules -->
+            <div class="glass-card p-4 sm:p-5 flex items-center justify-between">
                 <div>
-                    <span class="text-[10px] sm:text-xs font-mono uppercase tracking-wider text-cyber-mist/60 block mb-1">
-                        Detection Vectors
+                    <span class="text-[11px] font-medium uppercase tracking-wider text-evergreen-mint/60 block mb-1">
+                        Detection Rules
                     </span>
                     <div class="flex items-baseline gap-2">
-                        <span class="font-display text-2xl sm:text-3xl font-bold text-cyber-frost">
+                        <span class="text-2xl sm:text-3xl font-extrabold text-white">
                             7
                         </span>
-                        <span class="text-[11px] font-mono text-cyber-mist/60">PATTERNS</span>
+                        <span class="text-xs text-evergreen-mint/60">Vectors</span>
                     </div>
                 </div>
-                <div class="w-11 h-11 rounded-xl bg-cyber-abyss border border-cyber-mist/20 flex items-center justify-center text-cyber-mist">
+                <div class="w-11 h-11 rounded-xl bg-evergreen-pine/30 border border-evergreen-mint/20 flex items-center justify-center text-evergreen-mint">
                     <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="12" cy="12" r="10"></circle>
                         <line x1="22" y1="12" x2="18" y2="12"></line>
@@ -481,19 +419,19 @@
                 </div>
             </div>
 
-            <!-- AI Engine Intelligence -->
-            <div class="cyber-card rounded-xl p-4 sm:p-5 flex items-center justify-between">
+            <!-- Copilot Intelligence -->
+            <div class="glass-card p-4 sm:p-5 flex items-center justify-between">
                 <div>
-                    <span class="text-[10px] sm:text-xs font-mono uppercase tracking-wider text-cyber-mist/60 block mb-1">
-                        Copilot Intelligence
+                    <span class="text-[11px] font-medium uppercase tracking-wider text-evergreen-mint/60 block mb-1">
+                        AI Remediation
                     </span>
                     <div class="flex items-baseline gap-2">
-                        <span class="font-display text-xl sm:text-2xl font-bold text-cyber-mist">
+                        <span class="text-xl sm:text-2xl font-bold text-evergreen-emerald">
                             Gemini 2.5
                         </span>
                     </div>
                 </div>
-                <div class="w-11 h-11 rounded-xl bg-cyber-surface/40 border border-cyber-steel/40 flex items-center justify-center text-cyber-mist shadow-[0_0_15px_rgba(74,127,167,0.3)]">
+                <div class="w-11 h-11 rounded-xl bg-evergreen-pine/40 border border-evergreen-emerald/30 flex items-center justify-center text-evergreen-emerald shadow-[0_0_15px_rgba(80,200,120,0.25)]">
                     <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
                     </svg>
@@ -502,107 +440,105 @@
 
         </div>
 
-        <!-- Repository Upload & Audit Engine Section -->
-        <div class="cyber-card corner-notch rounded-2xl p-5 sm:p-7">
-            <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-5 border-b border-cyber-mist/10 pb-4">
+        <!-- Repository Upload & Audit Section -->
+        <div class="glass-card p-5 sm:p-7">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-5 border-b border-evergreen-mint/10 pb-4">
                 <div>
                     <div class="flex items-center gap-2 mb-1">
-                        <h2 class="font-display text-lg sm:text-xl font-bold text-cyber-frost tracking-tight">
-                            Target Repository Audit
+                        <h2 class="text-lg sm:text-xl font-bold text-white tracking-tight">
+                            Repository Security Audit
                         </h2>
-                        <span class="font-mono text-[10px] px-2 py-0.5 rounded bg-cyber-steel/20 border border-cyber-mist/30 text-cyber-mist font-semibold uppercase">
-                            STREAM PARSER
+                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-evergreen-pine/40 border border-evergreen-mint/20 text-evergreen-emerald font-semibold uppercase">
+                            Fast Static Scan
                         </span>
                     </div>
-                    <p class="text-xs text-cyber-mist/70 font-sans">
-                        Deploy local static code analysis across archive contents. Secrets, injection sinks, and insecure protocols are detected in O(1) streaming time.
+                    <p class="text-xs text-evergreen-mint/70 font-normal">
+                        Upload your codebase archive to automatically uncover leaked API credentials, SQL injection patterns, and protocol risks.
                     </p>
                 </div>
-                <div class="flex items-center gap-2 self-start md:self-auto">
-                    <span class="text-[11px] font-mono text-cyber-mist/60 flex items-center gap-1.5">
-                        <svg class="w-3.5 h-3.5 text-cyber-steel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
-                            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-                        </svg>
-                        Encrypted File Extraction
-                    </span>
+                <div class="flex items-center gap-2 self-start md:self-auto text-xs text-evergreen-mint/60 font-medium">
+                    <svg class="w-4 h-4 text-evergreen-emerald" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                    </svg>
+                    <span>Secure Local Processing</span>
                 </div>
             </div>
 
             <form id="uploadForm" class="space-y-4">
                 
-                <!-- Interactive Drag and Drop Zone -->
-                <div id="dropzone" class="cyber-dropzone rounded-xl p-6 sm:p-8 text-center cursor-pointer relative group">
+                <!-- Interactive Dropzone -->
+                <div id="dropzone" class="glass-dropzone p-6 sm:p-8 text-center cursor-pointer relative group">
                     <input type="file" id="projectZip" name="projectZip" accept=".zip" required class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10">
                     
                     <div id="dropzoneEmpty" class="space-y-3">
-                        <div class="w-12 h-12 mx-auto rounded-xl bg-cyber-surface/60 border border-cyber-mist/20 flex items-center justify-center text-cyber-mist group-hover:scale-105 group-hover:border-cyber-steel transition-all duration-300 shadow-[0_0_20px_rgba(74,127,167,0.2)]">
-                            <svg class="w-6 h-6 text-cyber-mist" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <div class="w-12 h-12 mx-auto rounded-2xl bg-evergreen-pine/40 border border-evergreen-mint/20 flex items-center justify-center text-evergreen-emerald group-hover:scale-105 group-hover:border-evergreen-emerald transition-all duration-300 shadow-[0_0_20px_rgba(80,200,120,0.15)]">
+                            <svg class="w-6 h-6 text-evergreen-emerald" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                                 <polyline points="17 8 12 3 7 8"/>
                                 <line x1="12" y1="3" x2="12" y2="15"/>
                             </svg>
                         </div>
                         <div>
-                            <p class="text-xs sm:text-sm font-display font-medium text-cyber-frost">
-                                <span class="text-cyber-mist font-semibold underline decoration-cyber-steel underline-offset-4">Click to browse</span> or drag & drop ZIP archive
+                            <p class="text-xs sm:text-sm font-semibold text-white">
+                                <span class="text-evergreen-emerald underline decoration-evergreen-emerald/50 underline-offset-4">Click to browse</span> or drag and drop your ZIP archive
                             </p>
-                            <p class="text-[11px] font-mono text-cyber-mist/50 mt-1">
-                                Supported: .ZIP archives containing source code (Node.js, Python, Configs, etc.)
+                            <p class="text-xs text-evergreen-mint/50 mt-1">
+                                Supports repository zip archives (.zip) with source files
                             </p>
                         </div>
                     </div>
 
                     <!-- Selected File State -->
-                    <div id="dropzoneFilled" class="hidden items-center justify-between p-3.5 rounded-lg bg-cyber-abyss/90 border border-cyber-steel/40 text-left">
+                    <div id="dropzoneFilled" class="hidden items-center justify-between p-3.5 rounded-xl bg-evergreen-dark/80 border border-evergreen-emerald/40 text-left">
                         <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-lg bg-cyber-surface border border-cyber-mist/20 flex items-center justify-center text-cyber-mist">
+                            <div class="w-10 h-10 rounded-xl bg-evergreen-pine/40 border border-evergreen-mint/20 flex items-center justify-center text-evergreen-emerald">
                                 <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                                     <polyline points="14 2 14 8 20 8"></polyline>
                                 </svg>
                             </div>
                             <div>
-                                <p id="selectedFileName" class="text-xs font-mono font-semibold text-cyber-frost">archive.zip</p>
-                                <p id="selectedFileSize" class="text-[10px] font-mono text-cyber-mist/60">0 KB</p>
+                                <p id="selectedFileName" class="text-xs font-semibold text-white">archive.zip</p>
+                                <p id="selectedFileSize" class="text-[11px] text-evergreen-mint/60">0 KB</p>
                             </div>
                         </div>
-                        <span class="text-[11px] font-mono text-cyber-steel hover:text-cyber-frost transition-colors px-3 py-1 rounded bg-cyber-surface/60">
+                        <span class="text-xs font-medium text-evergreen-emerald hover:text-white transition-colors px-3 py-1.5 rounded-lg bg-evergreen-pine/40">
                             Change File
                         </span>
                     </div>
 
                 </div>
 
-                <!-- Submit Bar -->
+                <!-- Submit Action -->
                 <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-1">
-                    <div class="text-[11px] font-mono text-cyber-mist/60 flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-cyber-steel"></span>
-                        <span>Multi-user data isolation strictly active</span>
+                    <div class="text-xs text-evergreen-mint/60 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-evergreen-emerald"></span>
+                        <span>User session records isolated securely</span>
                     </div>
 
-                    <button type="submit" id="scanBtn" class="cyber-btn-primary w-full sm:w-auto px-8 py-3 rounded-xl font-display font-semibold text-xs tracking-wide uppercase flex items-center justify-center gap-2 shrink-0">
-                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <button type="submit" id="scanBtn" class="btn-emerald w-full sm:w-auto px-7 py-3 text-xs tracking-wide uppercase flex items-center justify-center gap-2 shrink-0">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
                             <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
                         </svg>
-                        <span>Execute Security Scan</span>
+                        <span>Start Security Scan</span>
                     </button>
                 </div>
 
             </form>
 
-            <!-- Loading Telemetry State -->
-            <div id="loading" class="hidden mt-6 pt-6 border-t border-cyber-mist/10">
-                <div class="p-6 rounded-xl bg-cyber-abyss/80 border border-cyber-mist/20 text-center space-y-3">
+            <!-- Loading Indicator -->
+            <div id="loading" class="hidden mt-6 pt-6 border-t border-evergreen-mint/10">
+                <div class="p-6 rounded-xl bg-evergreen-dark/70 border border-evergreen-mint/15 text-center space-y-3">
                     <div class="inline-block relative">
-                        <div class="w-10 h-10 border-2 border-cyber-steel border-t-transparent rounded-full animate-spin"></div>
+                        <div class="w-10 h-10 border-2 border-evergreen-emerald border-t-transparent rounded-full animate-spin"></div>
                     </div>
                     <div>
-                        <p class="font-mono text-xs font-semibold text-cyber-frost tracking-wide">
-                            PARSING WORKSPACE & RUNNING VECTOR MATCHERS...
+                        <p class="text-xs font-semibold text-white tracking-wide">
+                            Analyzing workspace files and matching threat vectors...
                         </p>
-                        <p class="font-mono text-[11px] text-cyber-mist/60 mt-1">
-                            Filtering noise (.git, node_modules) and evaluating AST tokens
+                        <p class="text-[11px] text-evergreen-mint/60 mt-1">
+                            Filtering noise (.git, dependencies) and inspecting tokens
                         </p>
                     </div>
                 </div>
@@ -610,84 +546,84 @@
 
         </div>
 
-        <!-- Main Workspace Grid: Audit Explorer (Left) & Gemini Copilot (Right) -->
+        <!-- Main Content: History / Findings & Gemini Copilot -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
             
             <!-- Left 2 Cols: History View / Scan Results Explorer -->
             <div class="lg:col-span-2 space-y-6">
 
                 <!-- 1. Audit History View -->
-                <div id="historyCard" class="cyber-card corner-notch rounded-2xl p-5 sm:p-6 space-y-4 min-h-[480px] flex flex-col justify-between">
+                <div id="historyCard" class="glass-card p-5 sm:p-6 space-y-4 min-h-[480px] flex flex-col justify-between">
                     <div class="space-y-4">
-                        <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-cyber-mist/10 pb-4 gap-3">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-evergreen-mint/10 pb-4 gap-3">
                             <div class="flex items-center gap-3">
-                                <div class="w-9 h-9 rounded-xl bg-cyber-surface border border-cyber-mist/20 flex items-center justify-center text-cyber-mist">
+                                <div class="w-9 h-9 rounded-xl bg-evergreen-pine/30 border border-evergreen-mint/20 flex items-center justify-center text-evergreen-emerald">
                                     <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
                                     </svg>
                                 </div>
                                 <div>
-                                    <h3 class="font-display font-bold text-sm sm:text-base text-cyber-frost tracking-tight">
-                                        Audit Records & History
+                                    <h3 class="text-sm sm:text-base font-bold text-white tracking-tight">
+                                        Audit History & Scans
                                     </h3>
-                                    <p class="text-xs text-cyber-mist/60 font-sans">
-                                        Confidential session records tied to your authenticated identity
+                                    <p class="text-xs text-evergreen-mint/60 font-normal">
+                                        Confidential scan records tied to your account
                                     </p>
                                 </div>
                             </div>
-                            <span id="scanCountBadge" class="self-start sm:self-auto font-mono text-[11px] font-semibold text-cyber-mist border border-cyber-steel/40 bg-cyber-steel/15 px-3 py-1 rounded-lg">
-                                0 Audits Saved
+                            <span id="scanCountBadge" class="self-start sm:self-auto text-xs font-semibold text-evergreen-mint border border-evergreen-emerald/30 bg-evergreen-pine/30 px-3 py-1 rounded-full">
+                                0 Saved Audits
                             </span>
                         </div>
 
                         <!-- Past Scan List -->
                         <div id="scanHistoryList" class="space-y-2.5 max-h-[380px] overflow-y-auto pr-1">
-                            <div class="rounded-xl p-10 text-center border border-dashed border-cyber-mist/15 bg-cyber-abyss/40">
-                                <svg class="w-8 h-8 mx-auto text-cyber-mist/40 mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <div class="rounded-xl p-10 text-center border border-dashed border-evergreen-mint/15 bg-evergreen-dark/40">
+                                <svg class="w-8 h-8 mx-auto text-evergreen-mint/30 mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                     <rect width="20" height="16" x="2" y="4" rx="2"></rect>
                                     <path d="M6 8h.01M10 8h.01"></path>
                                 </svg>
-                                <p class="text-xs text-cyber-mist/60 font-medium">No previous scan records discovered. Submit an archive above to begin.</p>
+                                <p class="text-xs text-evergreen-mint/60 font-medium">No previous scan records found. Upload an archive above to begin.</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="border-t border-cyber-mist/10 pt-3 text-[10px] font-mono text-cyber-mist/50 flex flex-col sm:flex-row justify-between items-center gap-2">
+                    <div class="border-t border-evergreen-mint/10 pt-3 text-xs text-evergreen-mint/50 flex flex-col sm:flex-row justify-between items-center gap-2">
                         <span class="flex items-center gap-2">
-                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                            ISOLATED USER STORAGE
+                            <span class="w-1.5 h-1.5 rounded-full bg-evergreen-emerald"></span>
+                            Encrypted User Session
                         </span>
-                        <span>RETENTION POLICY: ACTIVE SESSION</span>
+                        <span>Strict Tenant Isolation</span>
                     </div>
                 </div>
 
                 <!-- 2. Detailed Findings View -->
-                <div id="resultsContainer" class="hidden cyber-card corner-notch rounded-2xl overflow-hidden min-h-[480px] flex flex-col justify-between">
+                <div id="resultsContainer" class="hidden glass-card overflow-hidden min-h-[480px] flex flex-col justify-between">
                     <div>
                         <!-- Header & Navigation -->
-                        <div class="px-5 sm:px-6 py-4 border-b border-cyber-mist/10 bg-cyber-panel/50 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div class="px-5 sm:px-6 py-4 border-b border-evergreen-mint/10 bg-evergreen-dark/40 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                             <div>
                                 <div class="flex items-center gap-2">
-                                    <h3 id="resultTitle" class="font-display font-bold text-sm sm:text-base text-cyber-frost tracking-tight">
+                                    <h3 id="resultTitle" class="font-bold text-sm sm:text-base text-white tracking-tight">
                                         Audit Report
                                     </h3>
-                                    <span id="resultTotalBadge" class="badge-critical font-mono text-[10px] font-bold px-2 py-0.5 rounded">
-                                        0 ISSUES
+                                    <span id="resultTotalBadge" class="badge-critical text-[10px] font-bold px-2.5 py-0.5 rounded-full">
+                                        0 Issues
                                     </span>
                                 </div>
-                                <p id="resultSub" class="text-[11px] text-cyber-mist/60 font-mono mt-0.5">
+                                <p id="resultSub" class="text-xs text-evergreen-mint/60 mt-0.5">
                                     Scanned on --
                                 </p>
                             </div>
                             <div class="flex items-center gap-2">
-                                <button onclick="showHistoryView()" class="cyber-btn-ghost px-3 py-1.5 rounded-lg text-xs font-mono font-medium flex items-center gap-1.5">
+                                <button onclick="showHistoryView()" class="btn-ghost px-3 py-1.5 text-xs font-medium flex items-center gap-1.5">
                                     <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <line x1="19" y1="12" x2="5" y2="12"></line>
                                         <polyline points="12 19 5 12 12 5"></polyline>
                                     </svg>
                                     <span>Back</span>
                                 </button>
-                                <button onclick="downloadJSON()" class="cyber-btn-ghost !border-cyber-steel/50 !text-cyber-mist px-3 py-1.5 rounded-lg text-xs font-mono font-medium flex items-center gap-1.5">
+                                <button onclick="downloadJSON()" class="btn-ghost !border-evergreen-emerald/40 !text-evergreen-mint px-3 py-1.5 text-xs font-medium flex items-center gap-1.5">
                                     <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                                         <polyline points="7 10 12 15 17 10"></polyline>
@@ -698,61 +634,61 @@
                             </div>
                         </div>
 
-                        <!-- Live Category & Search Filter Bar -->
-                        <div class="p-3 sm:p-4 border-b border-cyber-mist/10 bg-cyber-abyss/60 flex flex-col sm:flex-row items-center justify-between gap-3">
+                        <!-- Category Filter & Live Search Bar -->
+                        <div class="p-3 sm:p-4 border-b border-evergreen-mint/10 bg-evergreen-base/50 flex flex-col sm:flex-row items-center justify-between gap-3">
                             <!-- Category Filter Tabs -->
-                            <div class="flex items-center gap-1.5 overflow-x-auto w-full sm:w-auto text-[11px] font-mono pb-1 sm:pb-0">
-                                <button onclick="setFindingFilter('all')" id="filterAll" class="filter-tab px-2.5 py-1 rounded bg-cyber-surface text-cyber-frost border border-cyber-mist/20 font-semibold">
+                            <div class="flex items-center gap-1.5 overflow-x-auto w-full sm:w-auto text-xs pb-1 sm:pb-0">
+                                <button onclick="setFindingFilter('all')" id="filterAll" class="filter-tab px-3 py-1 rounded-full bg-evergreen-pine text-white border border-evergreen-mint/25 font-semibold">
                                     All (<span id="countAll">0</span>)
                                 </button>
-                                <button onclick="setFindingFilter('critical')" id="filterCritical" class="filter-tab px-2.5 py-1 rounded text-cyber-mist/70 hover:text-cyber-mist">
+                                <button onclick="setFindingFilter('critical')" id="filterCritical" class="filter-tab px-3 py-1 rounded-full text-evergreen-mint/70 hover:text-white">
                                     Secrets (<span id="countCritical">0</span>)
                                 </button>
-                                <button onclick="setFindingFilter('injection')" id="filterInjection" class="filter-tab px-2.5 py-1 rounded text-cyber-mist/70 hover:text-cyber-mist">
+                                <button onclick="setFindingFilter('injection')" id="filterInjection" class="filter-tab px-3 py-1 rounded-full text-evergreen-mint/70 hover:text-white">
                                     Injection (<span id="countInjection">0</span>)
                                 </button>
-                                <button onclick="setFindingFilter('network')" id="filterNetwork" class="filter-tab px-2.5 py-1 rounded text-cyber-mist/70 hover:text-cyber-mist">
+                                <button onclick="setFindingFilter('network')" id="filterNetwork" class="filter-tab px-3 py-1 rounded-full text-evergreen-mint/70 hover:text-white">
                                     Network (<span id="countNetwork">0</span>)
                                 </button>
-                                <button onclick="setFindingFilter('todo')" id="filterTodo" class="filter-tab px-2.5 py-1 rounded text-cyber-mist/70 hover:text-cyber-mist">
+                                <button onclick="setFindingFilter('todo')" id="filterTodo" class="filter-tab px-3 py-1 rounded-full text-evergreen-mint/70 hover:text-white">
                                     Debt (<span id="countTodo">0</span>)
                                 </button>
                             </div>
 
-                            <!-- Live Search Filter -->
+                            <!-- Search Input -->
                             <div class="relative w-full sm:w-56">
-                                <span class="absolute inset-y-0 left-0 flex items-center pl-2.5 pointer-events-none text-cyber-mist/40">
+                                <span class="absolute inset-y-0 left-0 flex items-center pl-2.5 pointer-events-none text-evergreen-mint/40">
                                     <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <circle cx="11" cy="11" r="8"></circle>
                                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                                     </svg>
                                 </span>
                                 <input type="text" id="findingSearch" oninput="filterFindingsLive()" placeholder="Filter findings..."
-                                    class="w-full bg-cyber-base/80 border border-cyber-mist/15 rounded-lg pl-8 pr-3 py-1.5 text-[11px] font-mono text-cyber-frost placeholder-cyber-mist/30 focus:outline-none focus:border-cyber-steel">
+                                    class="w-full bg-evergreen-dark/80 border border-evergreen-mint/15 rounded-xl pl-8 pr-3 py-1.5 text-xs text-white placeholder-evergreen-mint/30 focus:outline-none focus:border-evergreen-emerald">
                             </div>
                         </div>
 
                         <!-- Findings Table -->
-                        <div class="overflow-x-auto max-h-[380px]">
+                        <div class="overflow-x-auto max-h-[380px] p-2 sm:p-3">
                             <table class="w-full text-left border-collapse min-w-[550px]">
-                                <thead class="sticky top-0 bg-[#060D1A]/95 backdrop-blur-md text-cyber-mist text-[10px] uppercase font-mono tracking-wider border-b border-cyber-mist/15">
-                                    <tr>
-                                        <th class="py-3 px-4 sm:px-5">Severity & Type</th>
-                                        <th class="py-3 px-4 sm:px-5">Target File : Line</th>
-                                        <th class="py-3 px-4 sm:px-5">Detected Snippet</th>
-                                        <th class="py-3 px-4 sm:px-5 text-right">Copilot Action</th>
+                                <thead>
+                                    <tr class="text-evergreen-mint/70 text-[11px] uppercase tracking-wider border-b border-evergreen-mint/10">
+                                        <th class="py-3 px-4">Severity & Vulnerability</th>
+                                        <th class="py-3 px-4">File Location</th>
+                                        <th class="py-3 px-4">Flagged Code</th>
+                                        <th class="py-3 px-4 text-right">Remediation</th>
                                     </tr>
                                 </thead>
-                                <tbody id="findingsTableBody" class="divide-y divide-cyber-mist/5 text-xs text-cyber-frost">
-                                    <!-- Rendered dynamically -->
+                                <tbody id="findingsTableBody" class="divide-y divide-evergreen-mint/5 text-xs text-white">
+                                    <!-- Populated dynamically -->
                                 </tbody>
                             </table>
                         </div>
                     </div>
 
                     <!-- Bottom Status -->
-                    <div class="p-3 border-t border-cyber-mist/10 bg-cyber-panel/40 text-[10px] font-mono text-cyber-mist/50 flex justify-between items-center">
-                        <span>One-click AI remediation available for each detected threat</span>
+                    <div class="p-3.5 border-t border-evergreen-mint/10 bg-evergreen-dark/40 text-xs text-evergreen-mint/60 flex justify-between items-center">
+                        <span>Click "Fix with AI" to formulate an immediate patch</span>
                         <span id="findingsShowingText">Showing all findings</span>
                     </div>
                 </div>
@@ -760,65 +696,65 @@
             </div>
 
             <!-- Right Col: Gemini Security AI Copilot -->
-            <div id="chatCard" class="cyber-card corner-notch rounded-2xl flex flex-col h-[520px] overflow-hidden">
+            <div id="chatCard" class="glass-card flex flex-col h-[520px] overflow-hidden">
                 
-                <!-- Terminal Header -->
-                <div class="px-4 py-3.5 border-b border-cyber-mist/10 bg-cyber-panel/50 flex items-center justify-between">
+                <!-- Chat Header -->
+                <div class="px-4 py-3.5 border-b border-evergreen-mint/10 bg-evergreen-dark/50 flex items-center justify-between">
                     <div class="flex items-center gap-2.5">
-                        <div class="w-7 h-7 rounded-lg bg-cyber-surface border border-cyber-mist/20 flex items-center justify-center text-cyber-mist">
-                            <svg class="w-4 h-4 text-cyber-mist" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <div class="w-8 h-8 rounded-xl bg-evergreen-pine/40 border border-evergreen-mint/20 flex items-center justify-center text-evergreen-emerald">
+                            <svg class="w-4 h-4 text-evergreen-emerald" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M12 2a8 8 0 0 0-8 8c0 5 8 12 8 12s8-7 8-12a8 8 0 0 0-8-8z"/>
                                 <circle cx="12" cy="10" r="3"/>
                             </svg>
                         </div>
                         <div>
                             <div class="flex items-center gap-1.5">
-                                <h3 class="font-display font-bold text-xs text-cyber-frost tracking-tight">Gemini AI Copilot</h3>
-                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                                <h3 class="font-bold text-xs text-white tracking-tight">Gemini AI Assistant</h3>
+                                <span class="w-1.5 h-1.5 rounded-full bg-evergreen-emerald"></span>
                             </div>
-                            <p class="text-[10px] font-mono text-cyber-mist/60">gemini-2.5-flash // SAST Advisor</p>
+                            <p class="text-[10px] text-evergreen-mint/60">gemini-2.5-flash • Security Copilot</p>
                         </div>
                     </div>
                     
-                    <button onclick="clearChat()" class="cyber-btn-ghost danger text-[10px] px-2.5 py-1 rounded font-mono font-medium">
-                        Clear Log
+                    <button onclick="clearChat()" class="btn-ghost danger text-[10px] px-2.5 py-1 font-medium">
+                        Clear
                     </button>
                 </div>
 
-                <!-- Quick Prompt Chips -->
-                <div class="p-2.5 border-b border-cyber-mist/10 bg-cyber-abyss/40 flex items-center gap-1.5 overflow-x-auto text-[10px] font-mono">
-                    <button onclick="askPresetPrompt('Explain SQL Injection risk and show parameterized query fix')" class="shrink-0 px-2.5 py-1 rounded-full bg-cyber-surface/50 hover:bg-cyber-surface border border-cyber-mist/15 text-cyber-mist transition-colors">
+                <!-- Suggested Prompts -->
+                <div class="p-2.5 border-b border-evergreen-mint/10 bg-evergreen-base/40 flex items-center gap-1.5 overflow-x-auto text-[11px]">
+                    <button onclick="askPresetPrompt('Explain SQL Injection risk and show a parameterized query fix')" class="shrink-0 px-2.5 py-1 rounded-full bg-evergreen-pine/30 hover:bg-evergreen-pine/60 border border-evergreen-mint/15 text-evergreen-mint transition-colors">
                         🛡️ Fix SQL Injection
                     </button>
-                    <button onclick="askPresetPrompt('How to safely store and rotate AWS credentials in production?')" class="shrink-0 px-2.5 py-1 rounded-full bg-cyber-surface/50 hover:bg-cyber-surface border border-cyber-mist/15 text-cyber-mist transition-colors">
+                    <button onclick="askPresetPrompt('How to safely store and rotate AWS credentials in production?')" class="shrink-0 px-2.5 py-1 rounded-full bg-evergreen-pine/30 hover:bg-evergreen-pine/60 border border-evergreen-mint/15 text-evergreen-mint transition-colors">
                         🔑 AWS Key Best Practices
                     </button>
-                    <button onclick="askPresetPrompt('Why is plain HTTP insecure and how do I enforce HTTPS?')" class="shrink-0 px-2.5 py-1 rounded-full bg-cyber-surface/50 hover:bg-cyber-surface border border-cyber-mist/15 text-cyber-mist transition-colors">
+                    <button onclick="askPresetPrompt('Why is plain HTTP insecure and how do I enforce HTTPS in Express?')" class="shrink-0 px-2.5 py-1 rounded-full bg-evergreen-pine/30 hover:bg-evergreen-pine/60 border border-evergreen-mint/15 text-evergreen-mint transition-colors">
                         🌐 Enforce HTTPS
                     </button>
                 </div>
 
-                <!-- Chat Stream Area -->
-                <div id="chatMessages" class="flex-1 p-3.5 sm:p-4 overflow-y-auto flex flex-col gap-3 text-xs bg-cyber-base/40">
-                    <div class="chat-ai-bubble p-3.5 rounded-xl rounded-tl-sm text-cyber-frost leading-relaxed max-w-[94%]">
-                        <div class="flex items-center gap-1.5 mb-1 text-[10px] font-mono text-cyber-mist/70">
-                            <span class="w-1.5 h-1.5 rounded-full bg-cyber-steel"></span>
-                            <span>COPILOT INTELLIGENCE</span>
+                <!-- Chat Stream -->
+                <div id="chatMessages" class="flex-1 p-3.5 sm:p-4 overflow-y-auto flex flex-col gap-3 text-xs bg-evergreen-base/35">
+                    <div class="chat-ai-bubble p-3.5 text-evergreen-mint leading-relaxed max-w-[94%]">
+                        <div class="flex items-center gap-1.5 mb-1 text-[11px] text-evergreen-emerald font-semibold">
+                            <span class="w-1.5 h-1.5 rounded-full bg-evergreen-emerald"></span>
+                            <span>Security Copilot</span>
                         </div>
                         <p class="text-xs">
-                            👋 Greetings, Engineer. I am your <strong>CodeShield AI Copilot</strong>. I analyze SAST telemetry, explain vulnerabilities (CWE/OWASP), and formulate remediations. Ask any question below or click <strong>Fix with Copilot</strong> on any scan finding.
+                            Hello! I am your <strong>CodeShield AI Assistant</strong>. I help analyze code vulnerabilities, recommend security best practices, and draft remediations. Ask any question below or click <strong>Fix with AI</strong> on any finding.
                         </p>
                     </div>
                 </div>
 
-                <!-- Chat Input Console -->
-                <form id="chatForm" onsubmit="sendChatMessage(event)" class="p-3 border-t border-cyber-mist/10 bg-cyber-abyss/80 flex gap-2">
-                    <input type="text" id="chatInput" placeholder="Ask security question or paste code..." required autocomplete="off"
-                        class="flex-1 bg-cyber-base/90 border border-cyber-mist/15 rounded-xl px-3.5 py-2.5 text-xs text-cyber-frost placeholder-cyber-mist/40 focus:outline-none focus:border-cyber-steel font-mono">
+                <!-- Chat Input Form -->
+                <form id="chatForm" onsubmit="sendChatMessage(event)" class="p-3 border-t border-evergreen-mint/10 bg-evergreen-dark/70 flex gap-2">
+                    <input type="text" id="chatInput" placeholder="Ask a question or request remediation..." required autocomplete="off"
+                        class="flex-1 bg-evergreen-base/90 border border-evergreen-mint/15 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-evergreen-mint/40 focus:outline-none focus:border-evergreen-emerald">
                     
-                    <button type="submit" id="chatSubmitBtn" class="cyber-btn-primary px-4 py-2.5 rounded-xl text-xs font-mono font-semibold shrink-0 flex items-center justify-center gap-1.5">
+                    <button type="submit" id="chatSubmitBtn" class="btn-emerald px-4 py-2.5 text-xs font-semibold shrink-0 flex items-center justify-center gap-1.5">
                         <span>Send</span>
-                        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
                             <line x1="22" y1="2" x2="11" y2="13"></line>
                             <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
                         </svg>
@@ -831,21 +767,21 @@
 
     </main>
 
-    <!-- Custom Floating Cyber Toast Notification -->
+    <!-- Custom In-App Toast -->
     <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
-        <div class="cyber-card rounded-xl px-4 py-3 flex items-center gap-2.5 shadow-2xl border border-cyber-mist/30">
-            <span id="toastIcon" class="text-cyber-mist">
+        <div class="glass-card px-4 py-3 flex items-center gap-2.5 shadow-2xl border border-evergreen-emerald/40 bg-evergreen-dark/95">
+            <span id="toastIcon" class="text-evergreen-emerald">
                 <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <polyline points="20 6 9 17 4 12"></polyline>
                 </svg>
             </span>
-            <span id="toastText" class="text-xs font-mono text-cyber-frost font-medium">Notification message</span>
+            <span id="toastText" class="text-xs text-white font-medium">Notification message</span>
         </div>
     </div>
 
     <!-- Script Application Logic -->
     <script>
-        // Authentication guard
+        // Authentication check
         const user = JSON.parse(localStorage.getItem('codeshield_user'));
         if (!user) {
             window.location.href = '/login.html';
@@ -876,7 +812,7 @@
         let currentScanFilename = '';
         let currentFilter = 'all';
 
-        // Drag and Drop File handling
+        // Drag and Drop Handling
         const dropzone = document.getElementById('dropzone');
         const projectZip = document.getElementById('projectZip');
         const dropzoneEmpty = document.getElementById('dropzoneEmpty');
@@ -937,87 +873,85 @@
             
             if (scans.length === 0) {
                 document.getElementById('hudGrade').textContent = 'A+';
-                document.getElementById('hudGrade').className = 'font-display text-2xl sm:text-3xl font-bold text-emerald-400';
-                document.getElementById('hudStatusText').textContent = 'OPTIMAL';
-                document.getElementById('hudStatusText').className = 'text-[11px] font-mono text-emerald-300/80';
+                document.getElementById('hudGrade').className = 'text-2xl sm:text-3xl font-extrabold text-evergreen-emerald';
+                document.getElementById('hudStatusText').textContent = 'Optimal';
                 return;
             }
 
-            // Calculate aggregate health grade based on the latest scan
             const latestScan = scans[0];
             const criticals = (latestScan.findings || []).filter(f => 
                 f.type.includes('Access Key') || f.type.includes('Token') || f.type.includes('Password') || f.type.includes('SQL')
             ).length;
 
             let grade = 'A';
-            let gradeClass = 'text-emerald-400';
-            let statusText = 'SAFE';
+            let gradeClass = 'text-evergreen-emerald';
+            let statusText = 'Safe';
 
             if (criticals > 5) {
                 grade = 'F';
-                gradeClass = 'text-rose-500';
-                statusText = 'CRITICAL DEFICIT';
+                gradeClass = 'text-rose-400';
+                statusText = 'Critical Risk';
             } else if (criticals > 2) {
                 grade = 'D';
                 gradeClass = 'text-orange-400';
-                statusText = 'ELEVATED RISK';
+                statusText = 'Elevated Risk';
             } else if (criticals > 0) {
                 grade = 'B';
                 gradeClass = 'text-amber-400';
-                statusText = 'MODERATE';
+                statusText = 'Moderate';
             } else if (latestScan.total > 0) {
                 grade = 'A';
-                gradeClass = 'text-cyber-mist';
-                statusText = 'MINOR DEBT';
+                gradeClass = 'text-evergreen-mint';
+                statusText = 'Minor Issues';
             } else {
                 grade = 'A+';
-                gradeClass = 'text-emerald-400';
-                statusText = 'OPTIMAL';
+                gradeClass = 'text-evergreen-emerald';
+                statusText = 'Optimal';
             }
 
             const gradeElem = document.getElementById('hudGrade');
             gradeElem.textContent = grade;
-            gradeElem.className = `font-display text-2xl sm:text-3xl font-bold ${gradeClass}`;
+            gradeElem.className = `text-2xl sm:text-3xl font-extrabold ${gradeClass}`;
             document.getElementById('hudStatusText').textContent = statusText;
         }
 
         function renderScanHistory(scans) {
             const list = document.getElementById('scanHistoryList');
-            document.getElementById('scanCountBadge').textContent = `${scans.length} Audits Saved`;
+            document.getElementById('scanCountBadge').textContent = `${scans.length} Saved Audits`;
 
             if (scans.length === 0) {
                 list.innerHTML = `
-                    <div class="rounded-xl p-10 text-center border border-dashed border-cyber-mist/15 bg-cyber-abyss/40">
-                        <svg class="w-8 h-8 mx-auto text-cyber-mist/40 mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <div class="rounded-xl p-10 text-center border border-dashed border-evergreen-mint/15 bg-evergreen-dark/40">
+                        <svg class="w-8 h-8 mx-auto text-evergreen-mint/30 mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <rect width="20" height="16" x="2" y="4" rx="2"></rect>
                             <path d="M6 8h.01M10 8h.01"></path>
                         </svg>
-                        <p class="text-xs text-cyber-mist/60 font-medium">No previous scan records discovered. Submit an archive above to begin.</p>
+                        <p class="text-xs text-evergreen-mint/60 font-medium">No previous scan records found. Upload an archive above to begin.</p>
                     </div>`;
                 return;
             }
 
             list.innerHTML = '';
             scans.forEach((scan) => {
-                const badgeClass = scan.total > 0 ? 'badge-critical' : 'badge-success';
-                const badgeText = scan.total > 0 ? `${scan.total} Threats Detected` : `Zero Vulnerabilities`;
+                const badgeClass = scan.total > 0 ? 'badge-critical' : 'badge-info';
+                const badgeText = scan.total > 0 ? `${scan.total} Issues` : `Zero Vulnerabilities`;
                 
                 const item = `
-                    <div onclick="loadScanResult(${scan.id})" class="history-item rounded-xl p-3.5 pl-4 flex items-center justify-between cursor-pointer">
+                    <div onclick="loadScanResult(${scan.id})" class="history-item p-3.5 pl-4 flex items-center justify-between cursor-pointer">
                         <div class="space-y-1">
-                            <p class="text-xs font-mono font-semibold text-cyber-frost flex items-center gap-2">
-                                <svg class="w-3.5 h-3.5 text-cyber-steel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <p class="text-xs font-semibold text-white flex items-center gap-2">
+                                <svg class="w-3.5 h-3.5 text-evergreen-emerald" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
                                 </svg>
                                 <span>${escapeHtml(scan.filename)}</span>
                             </p>
-                            <p class="text-[10px] text-cyber-mist/50 font-mono">Timestamp: ${scan.timestamp}</p>
+                            <p class="text-[11px] text-evergreen-mint/50">Recorded: ${scan.timestamp}</p>
                         </div>
                         <div class="flex items-center gap-3">
-                            <span class="font-mono text-[10px] font-semibold px-2.5 py-0.5 rounded ${badgeClass}">
+                            <span class="text-[10px] font-semibold px-2.5 py-0.5 rounded-full ${badgeClass}">
                                 ${badgeText}
                             </span>
-                            <span class="text-cyber-mist/40 hover:text-cyber-mist text-xs">➔</span>
+                            <span class="text-evergreen-mint/40 text-xs">➔</span>
                         </div>
                     </div>
                 `;
@@ -1040,23 +974,22 @@
                 return { badgeClass: 'badge-critical', label: 'CRITICAL SECRET' };
             }
             if (type.includes('SQL')) {
-                return { badgeClass: 'badge-critical', label: 'CRITICAL INJECTION' };
+                return { badgeClass: 'badge-critical', label: 'SQL INJECTION' };
             }
             if (type.includes('HTTP')) {
                 return { badgeClass: 'badge-warning', label: 'INSECURE PROTOCOL' };
             }
-            return { badgeClass: 'badge-info', label: 'TECHNICAL DEBT' };
+            return { badgeClass: 'badge-mint', label: 'CODE DEBT' };
         }
 
         function displayFindings(findings, filename, timestamp) {
             document.getElementById('resultTitle').textContent = `Audit Report: ${filename}`;
-            document.getElementById('resultSub').textContent = `Scanned: ${timestamp} // Total Threats Detected: ${findings.length}`;
+            document.getElementById('resultSub').textContent = `Scanned on ${timestamp} • ${findings.length} findings`;
             
             const badge = document.getElementById('resultTotalBadge');
-            badge.textContent = `${findings.length} ISSUES`;
-            badge.className = findings.length > 0 ? 'badge-critical font-mono text-[10px] font-bold px-2 py-0.5 rounded' : 'badge-success font-mono text-[10px] font-bold px-2 py-0.5 rounded';
+            badge.textContent = `${findings.length} Issues`;
+            badge.className = findings.length > 0 ? 'badge-critical text-[10px] font-bold px-2.5 py-0.5 rounded-full' : 'badge-info text-[10px] font-bold px-2.5 py-0.5 rounded-full';
 
-            // Update category counts
             const secrets = findings.filter(f => f.type.includes('Key') || f.type.includes('Token') || f.type.includes('Password')).length;
             const injections = findings.filter(f => f.type.includes('SQL')).length;
             const networks = findings.filter(f => f.type.includes('HTTP')).length;
@@ -1077,7 +1010,7 @@
         function setFindingFilter(filter) {
             currentFilter = filter;
             document.querySelectorAll('.filter-tab').forEach(b => {
-                b.className = 'filter-tab px-2.5 py-1 rounded text-cyber-mist/70 hover:text-cyber-mist';
+                b.className = 'filter-tab px-3 py-1 rounded-full text-evergreen-mint/70 hover:text-white';
             });
             const activeBtn = {
                 'all': 'filterAll',
@@ -1087,7 +1020,7 @@
                 'todo': 'filterTodo'
             }[filter];
             if (activeBtn) {
-                document.getElementById(activeBtn).className = 'filter-tab px-2.5 py-1 rounded bg-cyber-surface text-cyber-frost border border-cyber-mist/20 font-semibold';
+                document.getElementById(activeBtn).className = 'filter-tab px-3 py-1 rounded-full bg-evergreen-pine text-white border border-evergreen-mint/25 font-semibold';
             }
             filterFindingsLive();
         }
@@ -1130,43 +1063,43 @@
                 tbody.innerHTML = `
                     <tr>
                         <td colspan="4" class="py-12 px-5 text-center">
-                            <div class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-emerald-500/10 text-emerald-400 mb-2 border border-emerald-500/20">
+                            <div class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-evergreen-emerald/10 text-evergreen-emerald mb-2 border border-evergreen-emerald/30">
                                 <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <polyline points="20 6 9 17 4 12"></polyline>
                                 </svg>
                             </div>
-                            <p class="text-xs font-mono font-medium text-emerald-400">SAFE AUDIT // ZERO MATCHING THREATS</p>
-                            <p class="text-[11px] text-cyber-mist/50 font-mono mt-0.5">No vulnerability signatures identified in this filter</p>
+                            <p class="text-xs font-semibold text-evergreen-emerald">Zero Vulnerabilities Found</p>
+                            <p class="text-[11px] text-evergreen-mint/60 mt-0.5">No risk patterns identified in this filter</p>
                         </td>
                     </tr>
                 `;
                 return;
             }
 
-            findings.forEach((f, idx) => {
+            findings.forEach((f) => {
                 const { badgeClass, label } = getSeverityBadge(f.type);
                 const findingJson = encodeURIComponent(JSON.stringify(f));
                 
                 const row = `
-                    <tr class="finding-card">
-                        <td class="py-3 px-4 sm:px-5">
-                            <span class="font-mono text-[9px] font-bold px-2 py-0.5 rounded ${badgeClass} uppercase block w-fit mb-1">
+                    <tr class="finding-row">
+                        <td class="py-3 px-4">
+                            <span class="text-[9px] font-bold px-2 py-0.5 rounded-full ${badgeClass} uppercase block w-fit mb-1">
                                 ${label}
                             </span>
-                            <span class="font-mono text-xs text-cyber-frost font-medium">${escapeHtml(f.type)}</span>
+                            <span class="text-xs text-white font-medium">${escapeHtml(f.type)}</span>
                         </td>
-                        <td class="py-3 px-4 sm:px-5 font-mono text-xs whitespace-nowrap">
-                            <span class="text-cyber-mist">${escapeHtml(f.file)}</span>
-                            <span class="text-cyber-steel font-bold">:L${f.line}</span>
+                        <td class="py-3 px-4 text-xs whitespace-nowrap">
+                            <span class="text-evergreen-mint/90 font-mono">${escapeHtml(f.file)}</span>
+                            <span class="text-evergreen-emerald font-mono font-bold">:L${f.line}</span>
                         </td>
-                        <td class="py-3 px-4 sm:px-5">
-                            <div class="bg-[#040810] border border-cyber-mist/10 rounded-lg p-2 max-w-xs sm:max-w-md font-mono text-[11px] text-rose-300 overflow-x-auto">
+                        <td class="py-3 px-4">
+                            <div class="bg-[#011C12] border border-evergreen-mint/15 rounded-lg p-2 max-w-xs sm:max-w-md font-mono text-[11px] text-rose-300 overflow-x-auto">
                                 <code>${escapeHtml(f.content)}</code>
                             </div>
                         </td>
-                        <td class="py-3 px-4 sm:px-5 text-right whitespace-nowrap">
-                            <button onclick="remediateWithAI('${findingJson}')" class="cyber-btn-ghost !text-cyber-mist hover:!text-cyber-frost px-2.5 py-1 rounded text-[11px] font-mono flex items-center gap-1.5 ml-auto">
-                                <svg class="w-3.5 h-3.5 text-cyber-steel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <td class="py-3 px-4 text-right whitespace-nowrap">
+                            <button onclick="remediateWithAI('${findingJson}')" class="btn-ghost !text-evergreen-emerald hover:!text-white px-3 py-1 text-xs font-medium flex items-center gap-1.5 ml-auto">
+                                <svg class="w-3.5 h-3.5 text-evergreen-emerald" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M12 2a8 8 0 0 0-8 8c0 5 8 12 8 12s8-7 8-12a8 8 0 0 0-8-8z"/>
                                     <circle cx="12" cy="10" r="3"/>
                                 </svg>
@@ -1185,7 +1118,7 @@
             fetchScanHistory();
         }
 
-        // Execute Security Scan Submission
+        // Handle Scan Upload
         const uploadForm = document.getElementById('uploadForm');
         const loading = document.getElementById('loading');
         const scanBtn = document.getElementById('scanBtn');
@@ -1215,7 +1148,7 @@
                     await fetchScanHistory();
                     loadScanResult(data.scanId);
                 } else {
-                    showToast(data.error || 'Scan execution failed.', true);
+                    showToast(data.error || 'Scan failed.', true);
                 }
             } catch (err) {
                 console.error(err);
@@ -1234,11 +1167,11 @@
         function appendMessage(role, text) {
             const msgDiv = document.createElement('div');
             if (role === 'user') {
-                msgDiv.className = 'chat-user-bubble self-end max-w-[88%] p-3.5 rounded-xl rounded-tr-sm text-cyber-frost text-xs leading-relaxed';
-                msgDiv.innerHTML = `<p class="font-mono text-[10px] text-cyber-mist/70 mb-1">ENGINEER</p><div>${escapeHtml(text)}</div>`;
+                msgDiv.className = 'chat-user-bubble self-end max-w-[88%] p-3.5 text-white text-xs leading-relaxed';
+                msgDiv.innerHTML = `<p class="text-[10px] text-evergreen-mint/70 mb-1 font-semibold uppercase">You</p><div>${escapeHtml(text)}</div>`;
             } else {
-                msgDiv.className = 'chat-ai-bubble self-start max-w-[95%] p-3.5 rounded-xl rounded-tl-sm text-cyber-frost text-xs leading-relaxed chat-markdown';
-                msgDiv.innerHTML = `<p class="font-mono text-[10px] text-cyber-steel font-semibold mb-1">COPILOT REMEDIATION</p><div>${marked.parse(text)}</div>`;
+                msgDiv.className = 'chat-ai-bubble self-start max-w-[95%] p-3.5 text-evergreen-mint text-xs leading-relaxed chat-markdown';
+                msgDiv.innerHTML = `<p class="text-[10px] text-evergreen-emerald font-semibold mb-1 uppercase">Gemini AI Assistant</p><div>${marked.parse(text)}</div>`;
             }
             chatMessages.appendChild(msgDiv);
             chatMessages.scrollTop = chatMessages.scrollHeight;
@@ -1256,10 +1189,10 @@
 
             const typingDiv = document.createElement('div');
             typingDiv.id = 'typingIndicator';
-            typingDiv.className = 'chat-ai-bubble self-start p-3 rounded-xl text-cyber-mist/70 font-mono text-[11px] flex items-center gap-2 animate-pulse';
+            typingDiv.className = 'chat-ai-bubble self-start p-3 text-evergreen-mint/70 text-xs flex items-center gap-2 animate-pulse';
             typingDiv.innerHTML = `
-                <div class="w-3 h-3 border-2 border-cyber-steel border-t-transparent rounded-full animate-spin"></div>
-                <span>Gemini 2.5 analyzing vulnerability context...</span>
+                <div class="w-3 h-3 border-2 border-evergreen-emerald border-t-transparent rounded-full animate-spin"></div>
+                <span>Gemini analyzing vulnerability context...</span>
             `;
             chatMessages.appendChild(typingDiv);
             chatMessages.scrollTop = chatMessages.scrollHeight;
@@ -1278,7 +1211,7 @@
                     appendMessage('model', data.reply);
                     chatHistory.push({ role: 'model', text: data.reply });
                 } else {
-                    showToast(data.error || 'Gemini Copilot unavailable.', true);
+                    showToast(data.error || 'Gemini Assistant unavailable.', true);
                 }
             } catch (err) {
                 console.error(err);
@@ -1300,9 +1233,8 @@
                                `• Flagged Code Snippet:\n\`\`\`\n${f.content}\n\`\`\`\n` +
                                `Explain why this pattern is dangerous and provide the secure refactored code.`;
                 sendChatMessage(null, prompt);
-                showToast(`Sent ${f.type} to Gemini Copilot`);
+                showToast(`Sent ${f.type} to Gemini Assistant`);
                 
-                // On mobile or narrow screens, scroll to chatCard
                 if (window.innerWidth < 1024) {
                     document.getElementById('chatCard').scrollIntoView({ behavior: 'smooth' });
                 }
@@ -1314,9 +1246,9 @@
         function clearChat() {
             chatHistory = [];
             chatMessages.innerHTML = `
-                <div class="chat-ai-bubble p-3.5 rounded-xl rounded-tl-sm text-cyber-frost leading-relaxed max-w-[94%]">
+                <div class="chat-ai-bubble p-3.5 text-evergreen-mint leading-relaxed max-w-[94%]">
                     <p class="text-xs">
-                        Session log cleared. Ready to formulate security advisories and code fixes.
+                        Session cleared. Ready to formulate security advisories and code fixes.
                     </p>
                 </div>
             `;
@@ -1329,7 +1261,7 @@
                 return;
             }
             const exportData = {
-                platform: "CodeShield Enterprise v2.5",
+                platform: "CodeShield Enterprise",
                 target: currentScanFilename,
                 auditTimestamp: new Date().toISOString(),
                 totalThreats: currentFindings.length,
@@ -1342,7 +1274,7 @@
             document.body.appendChild(downloadAnchor);
             downloadAnchor.click();
             downloadAnchor.remove();
-            showToast('Audit JSON report exported');
+            showToast('Audit report exported as JSON');
         }
 
         function escapeHtml(text) {
@@ -1350,7 +1282,7 @@
             return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
         }
 
-        // Initialize scan history on page load
+        // Initialize history
         fetchScanHistory();
     </script>
 </body>
