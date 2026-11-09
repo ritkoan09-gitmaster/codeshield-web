@@ -39,7 +39,7 @@
             min-height: 100vh;
         }
 
-        /* Vivid Moving Radiant Gradient Disks (Clearly visible, active drifting motion) */
+        /* Vivid Moving Radiant Gradient Disks (Clearly visible, active drifting motion, medium-slow speed) */
         .vivid-glow-blue {
             position: fixed;
             top: -8%;
@@ -50,7 +50,7 @@
             border-radius: 50%;
             pointer-events: none;
             z-index: 0;
-            animation: floatWaveBlue 14s ease-in-out infinite alternate;
+            animation: floatWaveBlue 8.5s ease-in-out infinite alternate;
         }
 
         .vivid-glow-green {
@@ -63,42 +63,49 @@
             border-radius: 50%;
             pointer-events: none;
             z-index: 0;
-            animation: floatWaveGreen 16s ease-in-out infinite alternate;
+            animation: floatWaveGreen 10s ease-in-out infinite alternate;
         }
 
         @keyframes floatWaveBlue {
             0% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(-110px, 90px) scale(1.15); }
-            100% { transform: translate(-40px, 150px) scale(0.95); }
+            50% { transform: translate(-100px, 80px) scale(1.15); }
+            100% { transform: translate(-40px, 140px) scale(0.95); }
         }
 
         @keyframes floatWaveGreen {
             0% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(100px, -100px) scale(1.18); }
-            100% { transform: translate(150px, -40px) scale(0.92); }
+            50% { transform: translate(90px, -90px) scale(1.18); }
+            100% { transform: translate(140px, -40px) scale(0.92); }
         }
 
-        /* 2. Redesigned Bento Containers in Purple Shade (#44174E) with White Hover Effect */
+        /* Solid Black Hero Badge matching Reference Image 1 */
+        .hero-badge-black {
+            background-color: #000000 !important;
+            border: 1.5px solid rgba(255, 255, 255, 0.35);
+            color: #FFFFFF !important;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.9), 0 0 15px rgba(0, 0, 0, 0.6);
+            transition: all 0.25s ease;
+        }
+        .hero-badge-black:hover {
+            border-color: #FFFFFF !important;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.95), 0 0 20px rgba(255, 255, 255, 0.25);
+        }
+
+        /* 2. Redesigned Bento Containers matching Reference Image 3 (Deep Obsidian Plum with White Hover) */
         .purple-card {
-            background: linear-gradient(150deg, rgba(68, 23, 78, 0.92) 0%, rgba(42, 12, 48, 0.96) 100%);
-            backdrop-filter: blur(28px) saturate(160%);
-            -webkit-backdrop-filter: blur(28px) saturate(160%);
-            border: 1.5px solid rgba(255, 255, 255, 0.18);
-            box-shadow: 
-                0 25px 60px -15px rgba(0, 0, 0, 0.95),
-                0 0 35px -5px rgba(68, 23, 78, 0.5),
-                inset 0 1px 1px 0 rgba(255, 255, 255, 0.28);
+            background: linear-gradient(165deg, #181126 0%, #100B1A 100%);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1.5px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.95);
             border-radius: 1.5rem;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .purple-card:hover {
             border-color: #FFFFFF !important;
-            box-shadow: 
-                0 30px 75px -10px rgba(0, 0, 0, 0.98),
-                0 0 45px rgba(255, 255, 255, 0.35),
-                inset 0 1px 2px #FFFFFF;
-            transform: translateY(-3px);
+            box-shadow: 0 30px 75px -10px rgba(0, 0, 0, 0.98), 0 0 35px rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
         }
 
         /* Clean High-Contrast White Navbar */
@@ -164,48 +171,48 @@
         /* Action Buttons */
         .btn-action-primary {
             background: #FFFFFF;
-            color: #44174E;
+            color: #0A0713;
             font-weight: 700;
             border: 1.5px solid #FFFFFF;
             border-radius: 0.85rem;
-            box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.4), inset 0 1px 0 #FFFFFF;
+            box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.4);
             transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .btn-action-primary:hover {
-            background: #F3E8FF;
-            color: #320F3A;
+            background: #F1F5F9;
+            color: #000000;
             box-shadow: 0 12px 30px -4px rgba(255, 255, 255, 0.45), 0 0 20px rgba(255, 255, 255, 0.3);
             transform: translateY(-1.5px);
         }
 
         /* Secondary Ghost Button */
         .btn-action-ghost {
-            background: rgba(0, 0, 0, 0.35);
-            border: 1px solid rgba(255, 255, 255, 0.25);
+            background: rgba(0, 0, 0, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.22);
             color: #FFFFFF;
             border-radius: 0.625rem;
             transition: all 0.2s ease;
         }
 
         .btn-action-ghost:hover {
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.22);
             border-color: #FFFFFF;
             color: #FFFFFF;
         }
 
         /* Upload Dropzone */
         .upload-dropzone {
-            border: 2px dashed rgba(255, 255, 255, 0.3);
-            background: rgba(22, 5, 26, 0.65);
+            border: 2px dashed rgba(255, 255, 255, 0.25);
+            background: #0B0813;
             border-radius: 1.25rem;
             transition: all 0.25s ease;
         }
 
         .upload-dropzone:hover, .upload-dropzone.drag-active {
             border-color: #FFFFFF;
-            background: rgba(35, 8, 42, 0.85);
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.25);
+            background: #140E22;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
         }
 
         /* Severity Badges */
@@ -232,40 +239,40 @@
 
         /* History Items */
         .history-row {
-            background: rgba(22, 5, 26, 0.65);
-            border: 1px solid rgba(255, 255, 255, 0.16);
+            background: #0B0813;
+            border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 0.875rem;
             transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .history-row:hover {
             transform: translateY(-1.5px);
             border-color: #FFFFFF;
-            background: rgba(35, 8, 42, 0.9);
+            background: #140E22;
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
         }
 
         /* Finding Item Row */
         .finding-row {
-            background: rgba(22, 5, 26, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: #0B0813;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 0.75rem;
             transition: all 0.2s ease;
         }
         .finding-row:hover {
-            background: rgba(35, 8, 42, 0.85);
+            background: #140E22;
             border-color: rgba(255, 255, 255, 0.4);
         }
 
         /* Chat Bubbles */
         .chat-user-bubble {
-            background: linear-gradient(135deg, rgba(88, 28, 102, 0.95) 0%, rgba(42, 12, 48, 0.95) 100%);
+            background: linear-gradient(135deg, #2D1A45 0%, #1A0F2B 100%);
             border: 1px solid rgba(255, 255, 255, 0.25);
             border-radius: 1rem 1rem 0.2rem 1rem;
             color: #FFFFFF;
         }
         .chat-ai-bubble {
-            background: linear-gradient(135deg, rgba(22, 5, 26, 0.9) 0%, rgba(55, 16, 64, 0.8) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: #0D0917;
+            border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 1rem 1rem 1rem 0.2rem;
             color: #FFFFFF;
         }
@@ -437,35 +444,35 @@
         <!-- Command Viewport Section: Prominent Hero + Analytics Strip on Initial Open -->
         <section class="min-h-[calc(100vh-80px)] flex flex-col justify-between pt-8 pb-10 sm:pt-14 sm:pb-12 lg:pt-16 lg:pb-14">
             
-            <!-- Hero Sizing (Larger, Commanding & Perfectly Centered) -->
+            <!-- Hero Sizing (Larger, Commanding & Centered, Solid Black Badge + Bright White Content) -->
             <div class="text-center space-y-5 sm:space-y-6 max-w-4xl mx-auto my-auto">
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs font-mono text-white shadow-sm backdrop-blur-md">
-                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span>ENTERPRISE STATIC ANALYSIS • POWERED BY CODESHIELD AI</span>
+                <div class="hero-badge-black inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs sm:text-sm font-mono text-white shadow-xl">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span class="font-bold tracking-wide text-white">ENTERPRISE STATIC ANALYSIS • POWERED BY CODESHIELD AI</span>
                 </div>
                 
                 <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.12]">
                     Build & Audit Code
-                    <span class="block bg-gradient-to-r from-white via-purple-100 to-purple-300 bg-clip-text text-transparent mt-1">
+                    <span class="block text-white mt-1">
                         Directly In Your Workspace
                     </span>
                 </h1>
 
-                <p class="text-sm sm:text-base sm:leading-relaxed text-purple-100/90 max-w-2xl mx-auto font-normal px-2">
+                <p class="text-sm sm:text-base sm:leading-relaxed text-white max-w-2xl mx-auto font-medium px-2">
                     Automated multi-vector vulnerability scanning combined with composable CodeShield AI security intelligence. Stream-scan your repositories locally to detect exposed cryptographic credentials, SQL injection risks, and technical debt with zero code leaks.
                 </p>
 
                 <!-- Capability chips -->
-                <div class="flex flex-wrap items-center justify-center gap-2.5 pt-1 text-xs font-medium text-white">
-                    <span class="px-3.5 py-1.5 rounded-xl bg-black/40 border border-white/15 backdrop-blur-md shadow-sm">⚡ O(1) Stream Parser</span>
-                    <span class="px-3.5 py-1.5 rounded-xl bg-black/40 border border-white/15 backdrop-blur-md shadow-sm">🔒 100% Local Archive Extraction</span>
-                    <span class="px-3.5 py-1.5 rounded-xl bg-black/40 border border-white/15 backdrop-blur-md shadow-sm">🛡️ Multi-Vector Threat Engine</span>
-                    <span class="px-3.5 py-1.5 rounded-xl bg-black/40 border border-white/15 backdrop-blur-md shadow-sm">🤖 1-Click AI Patch Remediation</span>
+                <div class="flex flex-wrap items-center justify-center gap-2.5 pt-1 text-xs font-semibold text-white">
+                    <span class="px-3.5 py-1.5 rounded-xl bg-black border border-white/20 shadow-sm text-white">⚡ O(1) Stream Parser</span>
+                    <span class="px-3.5 py-1.5 rounded-xl bg-black border border-white/20 shadow-sm text-white">🔒 100% Local Archive Extraction</span>
+                    <span class="px-3.5 py-1.5 rounded-xl bg-black border border-white/20 shadow-sm text-white">🛡️ Multi-Vector Threat Engine</span>
+                    <span class="px-3.5 py-1.5 rounded-xl bg-black border border-white/20 shadow-sm text-white">🤖 1-Click AI Patch Remediation</span>
                 </div>
 
                 <!-- Subtle Scroll Down Indicator -->
                 <div class="pt-4 flex justify-center">
-                    <a href="#workspaceContent" class="inline-flex items-center gap-2 text-xs font-mono text-purple-200/70 hover:text-white transition-colors bg-white/5 px-4 py-1.5 rounded-full border border-white/10">
+                    <a href="#workspaceContent" class="inline-flex items-center gap-2 text-xs font-mono text-white/80 hover:text-white transition-colors bg-black/60 px-4 py-1.5 rounded-full border border-white/20">
                         <span>Scroll Down to Scan Code</span>
                         <svg class="w-3.5 h-3.5 animate-bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                             <polyline points="6 9 12 15 18 9"></polyline>
@@ -474,89 +481,113 @@
                 </div>
             </div>
 
-            <!-- Analytics Strip (The Only Component Visible Below Hero on First Load) -->
+            <!-- Analytics Strip (The Only Component Visible Below Hero on First Load, styled in Bento style) -->
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4 pt-6">
                 
                 <!-- Health Score -->
-                <div class="purple-card p-4 sm:p-5 flex items-center justify-between">
-                    <div>
-                        <span class="text-[11px] font-semibold uppercase tracking-wider text-purple-200 block mb-1">
-                            Security Health Index
-                        </span>
-                        <div class="flex items-baseline gap-2">
-                            <span id="hudGrade" class="text-2xl sm:text-3xl font-extrabold text-white">
-                                A+
+                <div class="purple-card p-5 sm:p-6 flex flex-col justify-between group cursor-pointer">
+                    <div class="flex items-start justify-between gap-3 mb-3">
+                        <div>
+                            <span class="text-xs font-semibold uppercase tracking-wider text-slate-300 block mb-1">
+                                Security Health Index
                             </span>
-                            <span id="hudStatusText" class="text-xs text-purple-100 font-semibold">Optimal</span>
+                            <div class="flex items-baseline gap-2">
+                                <span id="hudGrade" class="text-2xl sm:text-3xl font-extrabold text-white">
+                                    A+
+                                </span>
+                                <span id="hudStatusText" class="text-xs text-emerald-400 font-bold">Optimal</span>
+                            </div>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-black/50 border border-white/15 flex items-center justify-center text-white shrink-0 group-hover:border-white transition-colors">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
                         </div>
                     </div>
-                    <div class="w-11 h-11 rounded-2xl bg-black/40 border border-white/20 flex items-center justify-center text-white shrink-0">
-                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                        </svg>
+                    <div class="flex items-center gap-1.5 text-xs font-semibold text-white group-hover:text-purple-200 transition-colors pt-2 border-t border-white/10">
+                        <span>View Details</span>
+                        <svg class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </div>
                 </div>
 
                 <!-- Total Recorded Audits -->
-                <div class="purple-card p-4 sm:p-5 flex items-center justify-between">
-                    <div>
-                        <span class="text-[11px] font-semibold uppercase tracking-wider text-purple-200 block mb-1">
-                            Recorded Audits
-                        </span>
-                        <div class="flex items-baseline gap-2">
-                            <span id="hudTotalScans" class="text-2xl sm:text-3xl font-extrabold text-white">
-                                0
+                <div class="purple-card p-5 sm:p-6 flex flex-col justify-between group cursor-pointer" onclick="showHistoryView()">
+                    <div class="flex items-start justify-between gap-3 mb-3">
+                        <div>
+                            <span class="text-xs font-semibold uppercase tracking-wider text-slate-300 block mb-1">
+                                Recorded Audits
                             </span>
-                            <span class="text-xs text-purple-200">Sessions</span>
+                            <div class="flex items-baseline gap-2">
+                                <span id="hudTotalScans" class="text-2xl sm:text-3xl font-extrabold text-white">
+                                    0
+                                </span>
+                                <span class="text-xs text-slate-300">Sessions</span>
+                            </div>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-black/50 border border-white/15 flex items-center justify-center text-white shrink-0 group-hover:border-white transition-colors">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+                            </svg>
                         </div>
                     </div>
-                    <div class="w-11 h-11 rounded-2xl bg-black/40 border border-white/20 flex items-center justify-center text-white shrink-0">
-                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
-                        </svg>
+                    <div class="flex items-center gap-1.5 text-xs font-semibold text-white group-hover:text-purple-200 transition-colors pt-2 border-t border-white/10">
+                        <span>Audit History</span>
+                        <svg class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </div>
                 </div>
 
                 <!-- Detection Vectors -->
-                <div class="purple-card p-4 sm:p-5 flex items-center justify-between">
-                    <div>
-                        <span class="text-[11px] font-semibold uppercase tracking-wider text-purple-200 block mb-1">
-                            Detection Rules
-                        </span>
-                        <div class="flex items-baseline gap-2">
-                            <span class="text-2xl sm:text-3xl font-extrabold text-white">
-                                7
+                <div class="purple-card p-5 sm:p-6 flex flex-col justify-between group cursor-pointer">
+                    <div class="flex items-start justify-between gap-3 mb-3">
+                        <div>
+                            <span class="text-xs font-semibold uppercase tracking-wider text-slate-300 block mb-1">
+                                Detection Rules
                             </span>
-                            <span class="text-xs text-purple-200">Vectors</span>
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-2xl sm:text-3xl font-extrabold text-white">
+                                    7
+                                </span>
+                                <span class="text-xs text-slate-300">Vectors</span>
+                            </div>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-black/50 border border-white/15 flex items-center justify-center text-white shrink-0 group-hover:border-white transition-colors">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="22" y1="12" x2="18" y2="12"></line>
+                                <line x1="6" y1="12" x2="2" y2="12"></line>
+                                <line x1="12" y1="6" x2="12" y2="2"></line>
+                                <line x1="12" y1="22" x2="12" y2="18"></line>
+                            </svg>
                         </div>
                     </div>
-                    <div class="w-11 h-11 rounded-2xl bg-black/40 border border-white/20 flex items-center justify-center text-white shrink-0">
-                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <line x1="22" y1="12" x2="18" y2="12"></line>
-                            <line x1="6" y1="12" x2="2" y2="12"></line>
-                            <line x1="12" y1="6" x2="12" y2="2"></line>
-                            <line x1="12" y1="22" x2="12" y2="18"></line>
-                        </svg>
+                    <div class="flex items-center gap-1.5 text-xs font-semibold text-white group-hover:text-purple-200 transition-colors pt-2 border-t border-white/10">
+                        <span>Rule Catalog</span>
+                        <svg class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </div>
                 </div>
 
                 <!-- CodeShield AI Copilot -->
-                <div class="purple-card p-4 sm:p-5 flex items-center justify-between">
-                    <div>
-                        <span class="text-[11px] font-semibold uppercase tracking-wider text-purple-200 block mb-1">
-                            AI Copilot
-                        </span>
-                        <div class="flex items-baseline gap-2">
-                            <span class="text-xl sm:text-2xl font-bold text-white">
-                                CodeShield AI
+                <div class="purple-card p-5 sm:p-6 flex flex-col justify-between group cursor-pointer" onclick="document.getElementById('chatInput').focus()">
+                    <div class="flex items-start justify-between gap-3 mb-3">
+                        <div>
+                            <span class="text-xs font-semibold uppercase tracking-wider text-slate-300 block mb-1">
+                                AI Copilot
                             </span>
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-xl sm:text-2xl font-bold text-white">
+                                    CodeShield AI
+                                </span>
+                            </div>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-black/50 border border-white/15 flex items-center justify-center text-white shrink-0 group-hover:border-white transition-colors">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                            </svg>
                         </div>
                     </div>
-                    <div class="w-11 h-11 rounded-2xl bg-black/40 border border-white/20 flex items-center justify-center text-white shrink-0">
-                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                        </svg>
+                    <div class="flex items-center gap-1.5 text-xs font-semibold text-white group-hover:text-purple-200 transition-colors pt-2 border-t border-white/10">
+                        <span>Open Copilot</span>
+                        <svg class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </div>
                 </div>
 
@@ -575,20 +606,20 @@
                             <h2 class="text-lg sm:text-xl font-bold text-white tracking-tight">
                                 Repository Vulnerability Audit
                             </h2>
-                            <span class="text-[10px] px-2.5 py-0.5 rounded-full bg-black/40 border border-white/30 text-white font-bold uppercase">
+                            <span class="text-[10px] px-2.5 py-0.5 rounded-full bg-black/60 border border-white/25 text-white font-bold uppercase">
                                 Fast SAST Scan
                             </span>
                         </div>
-                        <p class="text-xs text-purple-100 font-normal">
+                        <p class="text-xs text-slate-300 font-normal">
                             Submit your codebase archive to automatically uncover leaked API credentials, SQL injection vulnerabilities, and protocol risks.
                         </p>
                     </div>
-                    <div class="flex items-center gap-2 self-start md:self-auto text-xs text-purple-200 font-semibold">
-                        <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <div class="flex items-center gap-2 self-start md:self-auto text-xs text-slate-300 font-semibold">
+                        <svg class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
                             <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
                         </svg>
-                        <span>Strict User Isolation</span>
+                        <span>Strict Tenant Isolation</span>
                     </div>
                 </div>
 
@@ -599,7 +630,7 @@
                         <input type="file" id="projectZip" name="projectZip" accept=".zip" required class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10">
                         
                         <div id="dropzoneEmpty" class="space-y-3">
-                            <div class="w-14 h-14 mx-auto rounded-2xl bg-white text-[#44174E] flex items-center justify-center group-hover:scale-105 transition-all duration-300 shadow-md">
+                            <div class="w-14 h-14 mx-auto rounded-2xl bg-black/70 border border-white/20 text-white flex items-center justify-center group-hover:scale-105 group-hover:border-white transition-all duration-300 shadow-md">
                                 <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                                     <polyline points="17 8 12 3 7 8"/>
@@ -608,18 +639,18 @@
                             </div>
                             <div>
                                 <p class="text-xs sm:text-sm font-semibold text-white">
-                                    <span class="underline decoration-purple-300 underline-offset-4">Click to browse</span> or drag and drop your ZIP archive
+                                    <span class="underline decoration-slate-300 underline-offset-4">Click to browse</span> or drag and drop your ZIP archive
                                 </p>
-                                <p class="text-xs text-purple-200 mt-1">
+                                <p class="text-xs text-slate-400 mt-1">
                                     Supports repository zip archives (.zip) with source files
                                 </p>
                             </div>
                         </div>
 
                         <!-- Selected File State -->
-                        <div id="dropzoneFilled" class="hidden items-center justify-between p-4 rounded-2xl bg-black/60 border border-white/30 text-left">
+                        <div id="dropzoneFilled" class="hidden items-center justify-between p-4 rounded-2xl bg-black/80 border border-white/30 text-left">
                             <div class="flex items-center gap-3">
-                                <div class="w-11 h-11 rounded-xl bg-white text-[#44174E] flex items-center justify-center">
+                                <div class="w-11 h-11 rounded-xl bg-white text-black flex items-center justify-center">
                                     <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                                         <polyline points="14 2 14 8 20 8"></polyline>
@@ -627,10 +658,10 @@
                                 </div>
                                 <div>
                                     <p id="selectedFileName" class="text-xs sm:text-sm font-semibold text-white">archive.zip</p>
-                                    <p id="selectedFileSize" class="text-[11px] text-purple-200">0 KB</p>
+                                    <p id="selectedFileSize" class="text-[11px] text-slate-400">0 KB</p>
                                 </div>
                             </div>
-                            <span class="text-xs font-semibold text-[#44174E] px-3.5 py-1.5 rounded-lg bg-white hover:bg-purple-100 transition-colors">
+                            <span class="text-xs font-semibold text-black px-3.5 py-1.5 rounded-lg bg-white hover:bg-slate-200 transition-colors">
                                 Change File
                             </span>
                         </div>
@@ -639,7 +670,7 @@
 
                     <!-- Action Bar -->
                     <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-1">
-                        <div class="text-xs text-purple-200 flex items-center gap-2">
+                        <div class="text-xs text-slate-300 flex items-center gap-2">
                             <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
                             <span>User session records isolated securely</span>
                         </div>
@@ -693,29 +724,29 @@
                                         <h3 class="text-sm sm:text-base font-bold text-white tracking-tight">
                                             Audit History & Scans
                                         </h3>
-                                        <p class="text-xs text-purple-200 font-normal">
+                                        <p class="text-xs text-slate-300 font-normal">
                                             Confidential scan records tied to your account
                                         </p>
                                     </div>
                                 </div>
-                                <span id="scanCountBadge" class="self-start sm:self-auto text-xs font-bold text-[#44174E] bg-white px-3 py-1 rounded-full">
+                                <span id="scanCountBadge" class="self-start sm:self-auto text-xs font-bold text-black bg-white px-3 py-1 rounded-full shadow-sm">
                                     0 Saved Audits
                                 </span>
                             </div>
 
                             <!-- Past Scan List -->
                             <div id="scanHistoryList" class="space-y-2.5 max-h-[380px] overflow-y-auto pr-1">
-                                <div class="rounded-2xl p-10 text-center border border-dashed border-white/20 bg-black/40">
-                                    <svg class="w-8 h-8 mx-auto text-purple-300 mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <div class="rounded-2xl p-10 text-center border border-dashed border-white/20 bg-black/50">
+                                    <svg class="w-8 h-8 mx-auto text-slate-400 mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                         <rect width="20" height="16" x="2" y="4" rx="2"></rect>
                                         <path d="M6 8h.01M10 8h.01"></path>
                                     </svg>
-                                    <p class="text-xs text-purple-100 font-medium">No previous scan records found. Upload an archive above to begin.</p>
+                                    <p class="text-xs text-slate-300 font-medium">No previous scan records found. Upload an archive above to begin.</p>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="border-t border-white/20 pt-3 text-xs text-purple-200 flex flex-col sm:flex-row justify-between items-center gap-2">
+                        <div class="border-t border-white/15 pt-3 text-xs text-slate-400 flex flex-col sm:flex-row justify-between items-center gap-2">
                             <span class="flex items-center gap-2">
                                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
                                 Encrypted User Session
@@ -728,7 +759,7 @@
                     <div id="resultsContainer" class="hidden purple-card overflow-hidden min-h-[480px] flex flex-col justify-between">
                         <div>
                             <!-- Header & Navigation -->
-                            <div class="px-5 sm:px-6 py-4 border-b border-white/20 bg-black/40 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                            <div class="px-5 sm:px-6 py-4 border-b border-white/15 bg-black/60 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                                 <div>
                                     <div class="flex items-center gap-2">
                                         <h3 id="resultTitle" class="font-bold text-sm sm:text-base text-white tracking-tight">
@@ -738,7 +769,7 @@
                                             0 Issues
                                         </span>
                                     </div>
-                                    <p id="resultSub" class="text-xs text-purple-200 mt-0.5">
+                                    <p id="resultSub" class="text-xs text-slate-300 mt-0.5">
                                         Scanned on --
                                     </p>
                                 </div>
@@ -762,36 +793,36 @@
                             </div>
 
                             <!-- Category Filter & Live Search Bar -->
-                            <div class="p-3 sm:p-4 border-b border-white/20 bg-black/30 flex flex-col sm:flex-row items-center justify-between gap-3">
+                            <div class="p-3 sm:p-4 border-b border-white/15 bg-black/40 flex flex-col sm:flex-row items-center justify-between gap-3">
                                 <!-- Category Filter Tabs -->
                                 <div class="flex items-center gap-1.5 overflow-x-auto w-full sm:w-auto text-xs pb-1 sm:pb-0">
-                                    <button onclick="setFindingFilter('all')" id="filterAll" class="filter-tab px-3 py-1 rounded-full bg-white text-[#44174E] font-bold">
+                                    <button onclick="setFindingFilter('all')" id="filterAll" class="filter-tab px-3 py-1 rounded-full bg-white text-black font-bold">
                                         All (<span id="countAll">0</span>)
                                     </button>
-                                    <button onclick="setFindingFilter('critical')" id="filterCritical" class="filter-tab px-3 py-1 rounded-full text-purple-200 hover:text-white font-semibold">
+                                    <button onclick="setFindingFilter('critical')" id="filterCritical" class="filter-tab px-3 py-1 rounded-full text-slate-300 hover:text-white font-semibold">
                                         Secrets (<span id="countCritical">0</span>)
                                     </button>
-                                    <button onclick="setFindingFilter('injection')" id="filterInjection" class="filter-tab px-3 py-1 rounded-full text-purple-200 hover:text-white font-semibold">
+                                    <button onclick="setFindingFilter('injection')" id="filterInjection" class="filter-tab px-3 py-1 rounded-full text-slate-300 hover:text-white font-semibold">
                                         Injection (<span id="countInjection">0</span>)
                                     </button>
-                                    <button onclick="setFindingFilter('network')" id="filterNetwork" class="filter-tab px-3 py-1 rounded-full text-purple-200 hover:text-white font-semibold">
+                                    <button onclick="setFindingFilter('network')" id="filterNetwork" class="filter-tab px-3 py-1 rounded-full text-slate-300 hover:text-white font-semibold">
                                         Network (<span id="countNetwork">0</span>)
                                     </button>
-                                    <button onclick="setFindingFilter('todo')" id="filterTodo" class="filter-tab px-3 py-1 rounded-full text-purple-200 hover:text-white font-semibold">
+                                    <button onclick="setFindingFilter('todo')" id="filterTodo" class="filter-tab px-3 py-1 rounded-full text-slate-300 hover:text-white font-semibold">
                                         Debt (<span id="countTodo">0</span>)
                                     </button>
                                 </div>
 
                                 <!-- Search Input -->
                                 <div class="relative w-full sm:w-56">
-                                    <span class="absolute inset-y-0 left-0 flex items-center pl-2.5 pointer-events-none text-purple-300">
+                                    <span class="absolute inset-y-0 left-0 flex items-center pl-2.5 pointer-events-none text-slate-400">
                                         <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                             <circle cx="11" cy="11" r="8"></circle>
                                             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                                         </svg>
                                     </span>
                                     <input type="text" id="findingSearch" oninput="filterFindingsLive()" placeholder="Filter findings..."
-                                        class="w-full bg-black/60 border border-white/20 rounded-xl pl-8 pr-3 py-1.5 text-xs text-white placeholder-purple-200/50 focus:outline-none focus:border-white">
+                                        class="w-full bg-black/70 border border-white/20 rounded-xl pl-8 pr-3 py-1.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-white">
                                 </div>
                             </div>
 
@@ -799,7 +830,7 @@
                             <div class="overflow-x-auto max-h-[380px] p-2 sm:p-3">
                                 <table class="w-full text-left border-collapse min-w-[550px]">
                                     <thead>
-                                        <tr class="text-purple-200 text-[11px] uppercase tracking-wider border-b border-white/15">
+                                        <tr class="text-slate-300 text-[11px] uppercase tracking-wider border-b border-white/15">
                                             <th class="py-3 px-4">Severity & Vulnerability</th>
                                             <th class="py-3 px-4">File Location</th>
                                             <th class="py-3 px-4">Flagged Snippet</th>
@@ -814,7 +845,7 @@
                         </div>
 
                         <!-- Bottom Status -->
-                        <div class="p-3.5 border-t border-white/20 bg-black/40 text-xs text-purple-200 flex justify-between items-center">
+                        <div class="p-3.5 border-t border-white/15 bg-black/50 text-xs text-slate-300 flex justify-between items-center">
                             <span>Click "Fix with AI" to formulate an immediate patch</span>
                             <span id="findingsShowingText">Showing all findings</span>
                         </div>
@@ -826,9 +857,9 @@
                 <div id="chatCard" class="purple-card flex flex-col h-[520px] overflow-hidden">
                     
                     <!-- Chat Header -->
-                    <div class="px-4 py-3.5 border-b border-white/20 bg-black/40 flex items-center justify-between">
+                    <div class="px-4 py-3.5 border-b border-white/15 bg-black/60 flex items-center justify-between">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-xl bg-white text-[#44174E] flex items-center justify-center shadow-sm">
+                            <div class="w-8 h-8 rounded-xl bg-black/80 border border-white/20 text-white flex items-center justify-center shadow-sm">
                                 <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M12 2a8 8 0 0 0-8 8c0 5 8 12 8 12s8-7 8-12a8 8 0 0 0-8-8z"/>
                                     <circle cx="12" cy="10" r="3"/>
@@ -839,7 +870,7 @@
                                     <h3 class="font-bold text-xs text-white tracking-tight">CodeShield AI Assistant</h3>
                                     <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
                                 </div>
-                                <p class="text-[10px] text-purple-200">Neural Engine • Security Copilot</p>
+                                <p class="text-[10px] text-slate-400">Neural Security Engine • Real-time Copilot</p>
                             </div>
                         </div>
                         
@@ -849,22 +880,22 @@
                     </div>
 
                     <!-- Suggested Prompts -->
-                    <div class="p-2.5 border-b border-white/20 bg-black/30 flex items-center gap-1.5 overflow-x-auto text-[11px]">
-                        <button onclick="askPresetPrompt('Explain SQL Injection risk and show a parameterized query fix')" class="shrink-0 px-2.5 py-1 rounded-full bg-black/40 hover:bg-black/60 border border-white/20 text-white transition-colors">
+                    <div class="p-2.5 border-b border-white/15 bg-black/40 flex items-center gap-1.5 overflow-x-auto text-[11px]">
+                        <button onclick="askPresetPrompt('Explain SQL Injection risk and show a parameterized query fix')" class="shrink-0 px-2.5 py-1 rounded-full bg-black/60 hover:bg-black/80 border border-white/20 text-white transition-colors">
                             🛡️ Fix SQL Injection
                         </button>
-                        <button onclick="askPresetPrompt('How to safely store and rotate AWS credentials in production?')" class="shrink-0 px-2.5 py-1 rounded-full bg-black/40 hover:bg-black/60 border border-white/20 text-white transition-colors">
+                        <button onclick="askPresetPrompt('How to safely store and rotate AWS credentials in production?')" class="shrink-0 px-2.5 py-1 rounded-full bg-black/60 hover:bg-black/80 border border-white/20 text-white transition-colors">
                             🔑 AWS Key Best Practices
                         </button>
-                        <button onclick="askPresetPrompt('Why is plain HTTP insecure and how do I enforce HTTPS in Express?')" class="shrink-0 px-2.5 py-1 rounded-full bg-black/40 hover:bg-black/60 border border-white/20 text-white transition-colors">
+                        <button onclick="askPresetPrompt('Why is plain HTTP insecure and how do I enforce HTTPS in Express?')" class="shrink-0 px-2.5 py-1 rounded-full bg-black/60 hover:bg-black/80 border border-white/20 text-white transition-colors">
                             🌐 Enforce HTTPS
                         </button>
                     </div>
 
                     <!-- Chat Stream -->
-                    <div id="chatMessages" class="flex-1 p-3.5 sm:p-4 overflow-y-auto flex flex-col gap-3 text-xs bg-black/40">
+                    <div id="chatMessages" class="flex-1 p-3.5 sm:p-4 overflow-y-auto flex flex-col gap-3 text-xs bg-black/50">
                         <div class="chat-ai-bubble p-3.5 text-white leading-relaxed max-w-[94%]">
-                            <div class="flex items-center gap-1.5 mb-1 text-[11px] text-purple-300 font-bold">
+                            <div class="flex items-center gap-1.5 mb-1 text-[11px] text-emerald-400 font-bold">
                                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
                                 <span>CodeShield AI</span>
                             </div>
@@ -875,9 +906,9 @@
                     </div>
 
                     <!-- Chat Input Form -->
-                    <form id="chatForm" onsubmit="sendChatMessage(event)" class="p-3 border-t border-white/20 bg-black/60 flex gap-2">
+                    <form id="chatForm" onsubmit="sendChatMessage(event)" class="p-3 border-t border-white/15 bg-black/70 flex gap-2">
                         <input type="text" id="chatInput" placeholder="Ask CodeShield AI a question or request remediation..." required autocomplete="off"
-                            class="flex-1 bg-black/70 border border-white/20 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-purple-200/50 focus:outline-none focus:border-white">
+                            class="flex-1 bg-black/80 border border-white/20 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-white">
                         
                         <button type="submit" id="chatSubmitBtn" class="btn-action-primary px-4 py-2.5 text-xs font-bold shrink-0 flex items-center justify-center gap-1.5">
                             <span>Send</span>
