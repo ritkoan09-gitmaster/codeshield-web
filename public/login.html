@@ -13,51 +13,59 @@
     <style>
         body { font-family: 'Inter', sans-serif; }
 
+        /* DataCore Background Spotlight Grid */
         .bg-datacore-grid {
             background-color: #030712;
             background-image: 
-                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(29, 78, 216, 0.3), transparent 70%),
-                radial-gradient(circle at 50% 00%, rgba(59, 130, 246, 0.2), transparent 50%),
-                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-            background-size: 100% 100%, 100% 100%, 32px 32px, 32px 32px;
+                radial-gradient(ellipse 90% 60% at 50% -10%, rgba(37, 99, 235, 0.35), transparent 70%),
+                radial-gradient(circle at 50% 20%, rgba(99, 102, 241, 0.15), transparent 60%),
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
         }
 
-        .glass-card {
-            background: rgba(11, 19, 36, 0.7);
+        /* Glassmorphism Container */
+        .glass-container {
+            background: linear-gradient(145deg, rgba(15, 23, 42, 0.8) 0%, rgba(7, 13, 27, 0.9) 100%);
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 
+                0 25px 50px -12px rgba(0, 0, 0, 0.9),
+                0 0 35px 0 rgba(37, 99, 235, 0.15),
+                inset 0 1px 1px 0 rgba(255, 255, 255, 0.2);
         }
 
+        /* Glowing Blue Button */
         .datacore-btn {
             background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
             box-shadow: 0 0 20px rgba(37, 99, 235, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            transition: all 0.2s ease;
         }
 
         .datacore-btn:hover {
             background: linear-gradient(135deg, #60a5fa 0%, #2563eb 100%);
-            box-shadow: 0 0 30px rgba(37, 99, 235, 0.6);
+            box-shadow: 0 0 30px rgba(37, 99, 235, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            transform: translateY(-1px);
         }
     </style>
 </head>
 <body class="bg-datacore-grid text-slate-100 min-h-screen flex items-center justify-center font-sans antialiased relative overflow-x-hidden selection:bg-blue-500 selection:text-white p-4 sm:p-6">
     
-    <div class="max-w-md w-full glass-card rounded-2xl p-6 sm:p-8 relative z-10 mx-auto">
+    <div class="max-w-md w-full glass-container rounded-2xl p-6 sm:p-8 relative z-10 mx-auto">
         
         <!-- Logo & Header -->
         <div class="text-center mb-8">
-            <div class="inline-flex items-center justify-center bg-gradient-to-br from-blue-500 to-indigo-700 p-3 rounded-2xl text-white font-extrabold text-2xl mb-3 shadow-lg shadow-blue-500/30 border border-white/20">🛡️</div>
+            <div class="inline-flex items-center justify-center bg-gradient-to-br from-blue-500 via-indigo-600 to-blue-700 p-3 rounded-2xl text-white font-extrabold text-2xl mb-3 shadow-lg shadow-blue-500/30 border border-white/20">🛡️</div>
             <h1 class="text-lg sm:text-xl font-bold tracking-tight text-white flex items-center justify-center gap-2">
                 CodeShield Enterprise
-                <span class="text-[10px] bg-blue-500/10 text-blue-400 border border-blue-500/30 px-2 py-0.5 rounded-full font-semibold uppercase tracking-wider">Secure Access</span>
+                <span class="text-[10px] bg-blue-500/10 text-blue-400 border border-blue-500/30 px-2 py-0.5 rounded-full font-semibold uppercase tracking-wider shadow-sm">Secure Access</span>
             </h1>
             <p class="text-xs text-slate-400 mt-1 font-normal">Multi-Vector Security Auditing & AI Workspace</p>
         </div>
 
         <!-- Navigation Tabs -->
-        <div class="flex bg-black/40 p-1 rounded-xl border border-white/10 mb-6 text-xs font-medium shadow-inner">
+        <div class="flex bg-slate-950/60 p-1 rounded-xl border border-white/10 mb-6 text-xs font-medium shadow-inner">
             <button onclick="switchTab('login')" id="loginTab" class="w-1/2 py-2.5 rounded-lg datacore-btn text-white font-semibold transition shadow-sm">Sign In</button>
             <button onclick="switchTab('signup')" id="signupTab" class="w-1/2 py-2.5 rounded-lg text-slate-400 hover:text-slate-200 transition font-medium">Create Account</button>
         </div>
@@ -66,17 +74,17 @@
         <form id="authForm" onsubmit="handleAuth(event)" class="space-y-4">
             <div id="nameField" class="hidden transition-all duration-300">
                 <label class="block text-xs font-medium text-slate-400 mb-1.5">Full Name</label>
-                <input type="text" id="name" placeholder="Rituraj Kotian" class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-xs text-slate-200 focus:outline-none focus:border-blue-500 transition shadow-inner font-normal">
+                <input type="text" id="name" placeholder="Rituraj Kotian" class="w-full bg-slate-950/80 border border-white/10 rounded-xl px-4 py-3 text-xs text-slate-200 focus:outline-none focus:border-blue-500/60 transition shadow-inner font-normal">
             </div>
             <div>
                 <label class="block text-xs font-medium text-slate-400 mb-1.5">Email Address</label>
-                <input type="email" id="email" required placeholder="name@company.com" class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-xs text-slate-200 focus:outline-none focus:border-blue-500 transition shadow-inner font-normal">
+                <input type="email" id="email" required placeholder="name@company.com" class="w-full bg-slate-950/80 border border-white/10 rounded-xl px-4 py-3 text-xs text-slate-200 focus:outline-none focus:border-blue-500/60 transition shadow-inner font-normal">
             </div>
             <div>
                 <label class="block text-xs font-medium text-slate-400 mb-1.5">Password</label>
-                <input type="password" id="password" required placeholder="••••••••" class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-xs text-slate-200 focus:outline-none focus:border-blue-500 transition shadow-inner font-normal">
+                <input type="password" id="password" required placeholder="••••••••" class="w-full bg-slate-950/80 border border-white/10 rounded-xl px-4 py-3 text-xs text-slate-200 focus:outline-none focus:border-blue-500/60 transition shadow-inner font-normal">
             </div>
-            <button type="submit" id="submitBtn" class="w-full datacore-btn text-white font-semibold py-3.5 rounded-xl transition duration-200 text-xs mt-2 flex items-center justify-center space-x-2">
+            <button type="submit" id="submitBtn" class="w-full datacore-btn text-white font-bold py-3.5 rounded-xl transition duration-200 text-xs mt-2 flex items-center justify-center space-x-2">
                 <span id="btnText">Sign In to Dashboard</span>
             </button>
         </form>
