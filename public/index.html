@@ -53,41 +53,44 @@
             overflow-x: hidden;
         }
 
-        /* Vivid Moving Radiant Gradient Disks (Clearly visible, pure blue/navy, zero green) */
+        /* Vivid Moving Radiant Gradient Disks (Signature Radiant Blue & Emerald Green Motion Palette) */
         .vivid-glow-blue {
             position: fixed;
             top: -8%;
             right: -8%;
             width: 750px;
             height: 750px;
-            background: radial-gradient(circle, rgba(37, 99, 235, 0.72) 0%, rgba(30, 58, 138, 0.5) 45%, transparent 72%);
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.78) 0%, rgba(30, 58, 138, 0.5) 45%, transparent 72%);
             border-radius: 50%;
             pointer-events: none;
             z-index: 0;
-            animation: floatWaveBlue 8.5s ease-in-out infinite alternate;
+            animation: floatWaveBlue 10s ease-in-out infinite alternate;
         }
 
-        .vivid-glow-navy {
+        .vivid-glow-green {
             position: fixed;
             bottom: -8%;
             left: -8%;
             width: 820px;
             height: 820px;
-            background: radial-gradient(circle, rgba(26, 61, 99, 0.78) 0%, rgba(10, 25, 49, 0.5) 48%, transparent 72%);
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.78) 0%, rgba(5, 150, 105, 0.5) 48%, transparent 72%);
             border-radius: 50%;
             pointer-events: none;
             z-index: 0;
-            animation: floatWaveNavy 10s ease-in-out infinite alternate;
+            animation: floatWaveGreen 11s ease-in-out infinite alternate;
         }
 
         @keyframes floatWaveBlue {
             0% { transform: translate(0, 0) scale(1); }
             50% { transform: translate(-100px, 80px) scale(1.15); }
-            100% { transform: translate(-40px, 140px) scale(0.95); }
+            100% { transform: translate(-160px, 140px) scale(0.95); }
         }
 
-        @keyframes floatWaveNavy {
+        @keyframes floatWaveGreen {
             0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(110px, -90px) scale(1.18); }
+            100% { transform: translate(180px, -150px) scale(0.95); }
+        }
             50% { transform: translate(90px, -90px) scale(1.18); }
             100% { transform: translate(140px, -40px) scale(0.92); }
         }
@@ -329,26 +332,26 @@
 </head>
 <body class="live-motion-canvas flex flex-col relative selection:bg-[#44174E] selection:text-white">
 
-    <!-- 1. Vivid Live Motion Background Auras (Pure Blue & Ocean Navy, Zero Green) -->
+    <!-- 1. Vivid Live Motion Background Auras (Blue & Green Gradient in Continuous Motion) -->
     <div class="vivid-glow-blue"></div>
-    <div class="vivid-glow-navy"></div>
+    <div class="vivid-glow-green"></div>
 
-    <!-- Enhanced High-Contrast White Navigation Bar -->
+    <!-- Enhanced High-Contrast White Navigation Bar (Fully Responsive on All Screens) -->
     <header class="clean-navbar sticky top-0 z-50">
-        <div class="w-full max-w-7xl mx-auto px-3 sm:px-6 py-2.5 sm:py-3.5 flex items-center justify-between gap-2 sm:gap-3">
+        <div class="w-full max-w-7xl mx-auto px-2.5 sm:px-6 py-2 sm:py-3 flex items-center justify-between gap-1.5 sm:gap-3">
             
             <!-- Logo & Brand Header -->
-            <div class="flex items-center gap-2 sm:gap-3 shrink-0 min-w-0">
-                <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-[#44174E] text-white flex items-center justify-center shadow-md shrink-0">
-                    <svg class="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <div class="flex items-center gap-1.5 sm:gap-3 shrink-0 min-w-0">
+                <div class="w-7 h-7 sm:w-10 sm:h-10 rounded-xl bg-[#44174E] text-white flex items-center justify-center shadow-md shrink-0">
+                    <svg class="w-3.5 h-3.5 sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                         <path d="m9 12 2 2 4-4"/>
                     </svg>
                 </div>
                 <div class="min-w-0">
-                    <div class="flex items-center gap-1.5 sm:gap-2">
-                        <span class="text-sm sm:text-lg font-extrabold text-[#0F172A] tracking-tight truncate">CodeShield</span>
-                        <span class="text-[9px] sm:text-[10px] font-bold uppercase px-1.5 sm:px-2 py-0.5 rounded bg-[#44174E] text-white shrink-0">
+                    <div class="flex items-center gap-1 sm:gap-2">
+                        <span class="text-xs sm:text-lg font-extrabold text-[#0F172A] tracking-tight truncate">CodeShield</span>
+                        <span class="text-[8px] sm:text-[10px] font-bold uppercase px-1 sm:px-2 py-0.5 rounded bg-[#44174E] text-white shrink-0">
                             Enterprise
                         </span>
                     </div>
@@ -360,25 +363,25 @@
 
             <!-- Navbar Center Status Badge (Visible on Desktop & Tablet) -->
             <div class="hidden lg:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-xs text-[#0F172A]">
-                <span class="w-2 h-2 rounded-full bg-blue-500 animate-ping"></span>
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
                 <span class="font-bold">SAST Engine Active</span>
                 <span class="text-slate-400">•</span>
                 <span class="text-[#44174E] font-bold">CodeShield AI Online</span>
             </div>
 
-            <!-- Right: Enhanced Profile Button & Sign Out Button -->
-            <div class="flex items-center gap-1.5 sm:gap-3 shrink-0">
+            <!-- Right: Enhanced Profile Button & Sign Out Button (Symmetrically aligned, never cuts off) -->
+            <div class="flex items-center gap-1 sm:gap-2.5 shrink-0">
                 
                 <!-- Enhanced Profile Container (Toggles Account Popup) -->
                 <div class="relative">
-                    <button id="profileBtn" onclick="toggleProfilePopup(event)" class="btn-profile-box px-2 sm:px-3.5 py-1 sm:py-1.5 flex items-center gap-1.5 sm:gap-2 text-xs font-semibold focus:outline-none">
+                    <button id="profileBtn" onclick="toggleProfilePopup(event)" class="btn-profile-box px-1.5 sm:px-3 py-1 sm:py-1.5 flex items-center gap-1 sm:gap-2 text-xs font-semibold focus:outline-none shrink-0" title="Account Details">
                         <div class="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#44174E] text-white flex items-center justify-center font-bold text-xs shadow-sm shrink-0">
                             <span id="userAvatar">S</span>
                         </div>
-                        <span id="userNameDisplay" class="max-w-[75px] xs:max-w-[100px] sm:max-w-[130px] truncate text-[#0F172A]">
+                        <span id="userNameDisplay" class="hidden xs:inline max-w-[50px] sm:max-w-[120px] truncate text-[#0F172A]">
                             Security Lead
                         </span>
-                        <svg id="chevronIcon" class="w-3 h-3 sm:w-3.5 sm:h-3.5 text-slate-500 transition-transform duration-200 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <svg id="chevronIcon" class="w-3 h-3 text-slate-500 transition-transform duration-200 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
                     </button>
@@ -440,9 +443,9 @@
                     </div>
                 </div>
 
-                <!-- Enhanced Sign Out Pill Button -->
-                <button onclick="logout()" title="Sign Out of Session" class="btn-signout-box px-2.5 sm:px-4 py-1.5 sm:py-2 text-xs flex items-center gap-1.5 sm:gap-2 shrink-0">
-                    <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <!-- Enhanced Sign Out Pill Button (Guaranteed to fit and never cut off) -->
+                <button onclick="logout()" title="Sign Out of Session" class="btn-signout-box px-2 sm:px-3.5 py-1 sm:py-1.5 text-xs flex items-center justify-center gap-1 sm:gap-2 shrink-0">
+                    <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
                         <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
                         <polyline points="16 17 21 12 16 7"></polyline>
                         <line x1="21" y1="12" x2="9" y2="12"></line>
@@ -943,6 +946,152 @@
 
     </main>
 
+    <!-- Enterprise Grade Responsive Footer -->
+    <footer class="w-full border-t border-white/10 bg-[#0A0713]/95 backdrop-blur-2xl relative z-20 text-slate-300 mt-20 sm:mt-28">
+        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+            
+            <!-- Footer Main Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-10 pb-12 border-b border-white/10">
+                
+                <!-- Col 1: Brand & Operational Status (spans 2 cols on lg) -->
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-xl bg-[#44174E] text-white flex items-center justify-center shadow-lg border border-white/20">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                <path d="m9 12 2 2 4-4"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <span class="text-lg font-extrabold text-white tracking-tight">CodeShield</span>
+                            <span class="ml-1.5 text-[9px] font-bold uppercase px-2 py-0.5 rounded bg-[#44174E] text-white border border-white/20">Enterprise</span>
+                        </div>
+                    </div>
+                    
+                    <p class="text-xs text-slate-400 leading-relaxed max-w-md">
+                        Autonomous static application security testing (SAST) and real-time vulnerability remediation powered by CodeShield AI. Built with strict tenant isolation and zero code retention.
+                    </p>
+
+                    <div class="flex flex-col gap-2 pt-1 text-xs">
+                        <div class="flex items-center gap-2 text-emerald-400 font-mono text-[11px]">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                            <span>SAST Engine Active • v2.4.0 Multi-Vector</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-blue-400 font-mono text-[11px]">
+                            <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+                            <span>CodeShield AI Copilot Online</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-slate-400 text-[11px]">
+                            <svg class="w-3.5 h-3.5 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                            <span>100% In-Memory Buffer Extraction • Zero Code Leaks</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Col 2: SAST Audits & Actions -->
+                <div class="space-y-3">
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-white">SAST Workflows</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li>
+                            <button onclick="scrollToUpload()" class="text-slate-400 hover:text-white transition-colors text-left flex items-center gap-1.5">
+                                <span class="text-slate-600">›</span> New Repository Audit
+                            </button>
+                        </li>
+                        <li>
+                            <button onclick="openAuditHistory()" class="text-slate-400 hover:text-white transition-colors text-left flex items-center gap-1.5">
+                                <span class="text-slate-600">›</span> Audit Session History
+                            </button>
+                        </li>
+                        <li>
+                            <button onclick="openHealthDetails()" class="text-slate-400 hover:text-white transition-colors text-left flex items-center gap-1.5">
+                                <span class="text-slate-600">›</span> Security Health Index
+                            </button>
+                        </li>
+                        <li>
+                            <button onclick="openRuleCatalog()" class="text-slate-400 hover:text-white transition-colors text-left flex items-center gap-1.5">
+                                <span class="text-slate-600">›</span> Detection Rules Catalog
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Compliance & Standards -->
+                <div class="space-y-3">
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-white">Governance</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li>
+                            <button onclick="openComplianceModal('OWASP')" class="text-slate-400 hover:text-white transition-colors text-left flex items-center gap-1.5">
+                                <span class="text-slate-600">›</span> OWASP Top 10 Mapping
+                            </button>
+                        </li>
+                        <li>
+                            <button onclick="openComplianceModal('CWE')" class="text-slate-400 hover:text-white transition-colors text-left flex items-center gap-1.5">
+                                <span class="text-slate-600">›</span> CWE Vulnerability Matrix
+                            </button>
+                        </li>
+                        <li>
+                            <button onclick="openComplianceModal('Isolation')" class="text-slate-400 hover:text-white transition-colors text-left flex items-center gap-1.5">
+                                <span class="text-slate-600">›</span> Strict Tenant Isolation
+                            </button>
+                        </li>
+                        <li>
+                            <button onclick="openComplianceModal('AuditLog')" class="text-slate-400 hover:text-white transition-colors text-left flex items-center gap-1.5">
+                                <span class="text-slate-600">›</span> Audit Log Integrity
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: AI & Platform -->
+                <div class="space-y-3">
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-white">CodeShield AI</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li>
+                            <button onclick="openAICopilot()" class="text-slate-400 hover:text-white transition-colors text-left flex items-center gap-1.5">
+                                <span class="text-slate-600">›</span> Launch AI Copilot
+                            </button>
+                        </li>
+                        <li>
+                            <button onclick="openComplianceModal('Remediation')" class="text-slate-400 hover:text-white transition-colors text-left flex items-center gap-1.5">
+                                <span class="text-slate-600">›</span> 1-Click Patch Remediation
+                            </button>
+                        </li>
+                        <li>
+                            <button onclick="openComplianceModal('API')" class="text-slate-400 hover:text-white transition-colors text-left flex items-center gap-1.5">
+                                <span class="text-slate-600">›</span> CI/CD & Pipeline Docs
+                            </button>
+                        </li>
+                        <li>
+                            <button onclick="openComplianceModal('Uptime')" class="text-slate-400 hover:text-white transition-colors text-left flex items-center gap-1.5">
+                                <span class="text-slate-600">›</span> Platform Health & Uptime
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Footer Bottom Sub-Bar -->
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+                <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-center sm:text-left">
+                    <span>© 2026 CodeShield Enterprise Systems Inc. All rights reserved.</span>
+                    <button onclick="openComplianceModal('Privacy')" class="hover:text-slate-300 transition-colors">Privacy Policy</button>
+                    <button onclick="openComplianceModal('Terms')" class="hover:text-slate-300 transition-colors">Terms of Service</button>
+                    <button onclick="openComplianceModal('Security')" class="hover:text-slate-300 transition-colors">Security Architecture</button>
+                </div>
+                
+                <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" class="btn-action-ghost px-3.5 py-1.5 text-xs flex items-center gap-2 shrink-0">
+                    <span>Back to Top</span>
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                        <polyline points="18 15 12 9 6 15"></polyline>
+                    </svg>
+                </button>
+            </div>
+
+        </div>
+    </footer>
+
+
     <!-- 1. Security Health Index Details Modal -->
     <div id="healthModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-3 sm:p-4">
         <div class="purple-card w-full max-w-lg p-5 sm:p-7 border border-white/20 shadow-2xl relative">
@@ -1122,6 +1271,38 @@
         </div>
     </div>
 
+    
+    <!-- 3. Compliance & Enterprise Standards Dynamic Modal -->
+    <div id="complianceModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-3 sm:p-4">
+        <div class="purple-card w-full max-w-lg p-5 sm:p-7 border border-white/20 shadow-2xl relative">
+            <div class="flex items-center justify-between border-b border-white/15 pb-4 mb-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-black border border-white/20 flex items-center justify-center text-white" id="complianceModalIcon">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-base sm:text-lg font-bold text-white tracking-tight" id="complianceModalTitle">Security Standard</h3>
+                        <p class="text-xs text-slate-300" id="complianceModalSubtitle">Enterprise Governance Specification</p>
+                    </div>
+                </div>
+                <button onclick="closeComplianceModal()" class="text-slate-400 hover:text-white p-1 rounded-lg">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            
+            <div id="complianceModalBody" class="space-y-3 text-xs text-slate-200 max-h-[60vh] overflow-y-auto pr-1">
+                <!-- Content dynamically populated -->
+            </div>
+
+            <div class="mt-5 pt-4 border-t border-white/15 flex items-center justify-between">
+                <span class="text-[11px] text-slate-400 font-mono">CodeShield SAST • 2026 Engine</span>
+                <button onclick="closeComplianceModal()" class="btn-action-primary px-4 py-1.5 text-xs rounded-xl font-bold">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Custom In-App Toast -->
     <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
         <div class="purple-card px-4 py-3 flex items-center gap-2.5 shadow-2xl bg-[#44174E] border border-white">
@@ -1158,6 +1339,130 @@
         }
 
         // Functional Handlers for the 4 Analytics Cards
+        
+        // Footer & Compliance Modal Actions
+        function scrollToUpload() {
+            const dropzone = document.getElementById('dropzone');
+            if (dropzone) {
+                dropzone.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                setTimeout(() => {
+                    dropzone.classList.add('ring-2', 'ring-white');
+                    setTimeout(() => dropzone.classList.remove('ring-2', 'ring-white'), 1200);
+                }, 400);
+            }
+        }
+
+        const complianceData = {
+            OWASP: {
+                title: "OWASP Top 10 SAST Mapping",
+                subtitle: "Automated Vector Coverage Matrix",
+                items: [
+                    { label: "A01: Broken Access Control", desc: "Detection of exposed admin endpoints and unauthenticated routes." },
+                    { label: "A02: Cryptographic Failures", desc: "Regex and entropy heuristics for hardcoded API keys, JWT secrets, and private keys." },
+                    { label: "A03: Injection", desc: "SQL string concatenation and command execution vulnerability tracing." },
+                    { label: "A05: Security Misconfiguration", desc: "Cleartext HTTP endpoints, default credentials, and insecure CORS configs." }
+                ]
+            },
+            CWE: {
+                title: "CWE Vulnerability Taxonomy",
+                subtitle: "Common Weakness Enumeration Standards",
+                items: [
+                    { label: "CWE-89: SQL Injection", desc: "Unsanitized user inputs passed to SQL database drivers." },
+                    { label: "CWE-798: Hardcoded Credentials", desc: "AWS Access Keys (AKIA), GitHub Personal Access Tokens (ghp_)." },
+                    { label: "CWE-95: Eval Code Injection", desc: "Dynamic script evaluation and unsafe deserialize primitives." },
+                    { label: "CWE-319: Cleartext HTTP Transmission", desc: "Transport layer security violations and plain HTTP requests." }
+                ]
+            },
+            Isolation: {
+                title: "Strict Tenant Isolation",
+                subtitle: "Cryptographic & Memory Protection Model",
+                items: [
+                    { label: "100% In-Memory Streaming", desc: "Zip archives are extracted and parsed strictly in transient server memory buffers." },
+                    { label: "Zero Code Retention", desc: "No codebase files or proprietary IP are ever persisted to disk or cloud storage." },
+                    { label: "Per-User Session Scoping", desc: "Scan metrics and history are encrypted with per-user tenant keys." }
+                ]
+            },
+            AuditLog: {
+                title: "Audit Log Integrity",
+                subtitle: "Immutable Session History & Hash Verification",
+                items: [
+                    { label: "Cryptographic Fingerprinting", desc: "Each scan session records sha256 checksums of detected findings." },
+                    { label: "Deterministic Re-Verification", desc: "Audits can be re-run against historical commits to verify remediation status." }
+                ]
+            },
+            Remediation: {
+                title: "1-Click AI Patch Remediation",
+                subtitle: "Automated Vulnerability Fixing",
+                items: [
+                    { label: "Contextual Code Diffs", desc: "CodeShield AI analyzes surrounding AST context to generate drop-in patches." },
+                    { label: "Direct Git Patch Application", desc: "Export unified diffs directly into your Git branch or pull request." }
+                ]
+            },
+            API: {
+                title: "CI/CD & Pre-Commit Integration",
+                subtitle: "Developer Pipeline Automation",
+                items: [
+                    { label: "GitHub Actions / GitLab CI", desc: "Automate code scans on every pull request using the CodeShield CLI." },
+                    { label: "Pre-Commit Git Hooks", desc: "Block credential leaks and high-risk SQL vulnerabilities before 'git commit'." }
+                ]
+            },
+            Uptime: {
+                title: "Platform Telemetry & Health",
+                subtitle: "Real-Time System Operational Status",
+                items: [
+                    { label: "SAST Stream Analyzer", desc: "Status: Operational (99.99% uptime, <120ms scan latency)" },
+                    { label: "CodeShield AI Copilot", desc: "Status: Online (Active Model Inference)" },
+                    { label: "Local Extraction Engine", desc: "Status: Healthy (100% tenant buffer isolation active)" }
+                ]
+            },
+            Privacy: {
+                title: "Privacy & Data Protection Policy",
+                subtitle: "Zero-Persistence Enterprise Guarantee",
+                items: [
+                    { label: "Ephemeral Processing", desc: "Code is analyzed in volatile buffers and dropped immediately upon scan completion." },
+                    { label: "No Model Training", desc: "Your code is NEVER used to train or fine-tune foundational AI models." }
+                ]
+            },
+            Terms: {
+                title: "Enterprise Terms of Service",
+                subtitle: "Licensed Usage & Service Level Agreements",
+                items: [
+                    { label: "Authorized Audits", desc: "Usage is licensed for codebases owned or managed by your development team." },
+                    { label: "High-Availability SLA", desc: "Enterprise support with 99.9% uptime and 24/7 security patch alerts." }
+                ]
+            },
+            Security: {
+                title: "CodeShield Security Architecture",
+                subtitle: "Defense-in-Depth Engineering",
+                items: [
+                    { label: "Zero-Trust Perimeter", desc: "Every API call is token-authenticated with strict role-based access." },
+                    { label: "Local Extraction", desc: "Zip bomb protection, stream decompression limits, and sandbox boundaries." }
+                ]
+            }
+        };
+
+        function openComplianceModal(topic) {
+            const modal = document.getElementById('complianceModal');
+            const data = complianceData[topic] || complianceData.OWASP;
+            document.getElementById('complianceModalTitle').textContent = data.title;
+            document.getElementById('complianceModalSubtitle').textContent = data.subtitle;
+
+            const body = document.getElementById('complianceModalBody');
+            body.innerHTML = data.items.map(item => `
+                <div class="p-3 rounded-xl bg-black/60 border border-white/10">
+                    <p class="font-bold text-white text-xs mb-1">${item.label}</p>
+                    <p class="text-slate-400 text-[11px] leading-relaxed">${item.desc}</p>
+                </div>
+            `).join('');
+
+            modal.classList.remove('hidden');
+        }
+
+        function closeComplianceModal() {
+            const modal = document.getElementById('complianceModal');
+            if (modal) modal.classList.add('hidden');
+        }
+
         function openHealthDetails() {
             const modal = document.getElementById('healthModal');
             if (modal) modal.classList.remove('hidden');
