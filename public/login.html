@@ -4,56 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CodeShield Enterprise | Secure Authentication</title>
+    <!-- Modern Typography: Plus Jakarta Sans & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        code, pre, .font-mono { font-family: 'JetBrains Mono', monospace; }
+        ::-webkit-scrollbar { width: 5px; height: 5px; }
+        ::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.4); }
+        ::-webkit-scrollbar-thumb { background: rgba(51, 65, 85, 0.6); border-radius: 9999px; }
+    </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex items-center justify-center font-sans antialiased relative overflow-hidden selection:bg-sky-500 selection:text-slate-950">
+<body class="bg-slate-950 text-slate-100 min-h-screen flex items-center justify-center font-sans antialiased relative overflow-x-hidden selection:bg-sky-500 selection:text-slate-950 p-4 sm:p-6">
     
-    <!-- Ambient Glow Background Blobs -->
-    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
-    <div class="absolute bottom-1/4 left-1/3 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <!-- Glass Background Ambient Glows -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] bg-sky-600/15 rounded-full blur-[140px] pointer-events-none"></div>
+    <div class="absolute bottom-1/4 left-1/3 w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] bg-indigo-600/15 rounded-full blur-[140px] pointer-events-none"></div>
 
-    <div class="max-w-md w-full bg-slate-900/90 border border-slate-800/80 rounded-2xl p-8 shadow-2xl backdrop-blur-md relative z-10 mx-4">
+    <div class="max-w-md w-full bg-slate-900/60 border border-slate-800/80 rounded-2xl p-6 sm:p-8 shadow-2xl backdrop-blur-xl relative z-10 mx-auto">
         
         <!-- Logo & Header -->
         <div class="text-center mb-8">
-            <div class="inline-flex items-center justify-center bg-gradient-to-br from-sky-400 to-blue-600 p-3 rounded-2xl text-slate-950 font-bold text-2xl mb-3 shadow-lg shadow-sky-500/20">🛡️</div>
-            <h1 class="text-xl font-bold tracking-tight text-white flex items-center justify-center gap-2">
+            <div class="inline-flex items-center justify-center bg-gradient-to-tr from-sky-400 via-blue-500 to-indigo-600 p-3 rounded-2xl text-slate-950 font-extrabold text-2xl mb-3 shadow-lg shadow-sky-500/20">🛡️</div>
+            <h1 class="text-lg sm:text-xl font-bold tracking-tight text-white flex items-center justify-center gap-2">
                 CodeShield Enterprise
-                <span class="text-[10px] bg-sky-500/10 text-sky-400 border border-sky-500/20 px-2 py-0.5 rounded-full font-semibold uppercase">Secure Access</span>
             </h1>
-            <p class="text-xs text-slate-400 mt-1">Multi-Vector Security Auditing & AI Workspace</p>
+            <p class="text-xs text-slate-400 mt-1 font-medium">Multi-Vector Security Auditing & AI Workspace</p>
         </div>
 
         <!-- Navigation Tabs -->
-        <div class="flex bg-slate-950 p-1 rounded-xl border border-slate-800 mb-6 text-xs font-semibold">
-            <button onclick="switchTab('login')" id="loginTab" class="w-1/2 py-2 rounded-lg bg-sky-600 text-white transition shadow-sm">Sign In</button>
-            <button onclick="switchTab('signup')" id="signupTab" class="w-1/2 py-2 rounded-lg text-slate-400 hover:text-slate-200 transition">Create Account</button>
+        <div class="flex bg-slate-950/80 p-1 rounded-xl border border-slate-800/80 mb-6 text-xs font-semibold shadow-inner">
+            <button onclick="switchTab('login')" id="loginTab" class="w-1/2 py-2.5 rounded-lg bg-sky-500 text-slate-950 font-bold transition shadow-sm">Sign In</button>
+            <button onclick="switchTab('signup')" id="signupTab" class="w-1/2 py-2.5 rounded-lg text-slate-400 hover:text-slate-200 transition font-semibold">Create Account</button>
         </div>
 
         <!-- Form -->
         <form id="authForm" onsubmit="handleAuth(event)" class="space-y-4">
             <div id="nameField" class="hidden transition-all duration-300">
-                <label class="block text-xs font-medium text-slate-400 mb-1.5">Full Name</label>
-                <input type="text" id="name" placeholder="Rituraj Kotian" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-xs text-slate-200 focus:outline-none focus:border-sky-500 transition">
+                <label class="block text-xs font-semibold text-slate-400 mb-1.5">Full Name</label>
+                <input type="text" id="name" placeholder="Rituraj Kotian" class="w-full bg-slate-950/80 border border-slate-800/80 rounded-xl px-4 py-3 text-xs text-slate-200 focus:outline-none focus:border-sky-500 transition shadow-inner font-medium">
             </div>
             <div>
-                <label class="block text-xs font-medium text-slate-400 mb-1.5">Email Address</label>
-                <input type="email" id="email" required placeholder="name@company.com" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-xs text-slate-200 focus:outline-none focus:border-sky-500 transition">
+                <label class="block text-xs font-semibold text-slate-400 mb-1.5">Email Address</label>
+                <input type="email" id="email" required placeholder="name@company.com" class="w-full bg-slate-950/80 border border-slate-800/80 rounded-xl px-4 py-3 text-xs text-slate-200 focus:outline-none focus:border-sky-500 transition shadow-inner font-medium">
             </div>
             <div>
-                <label class="block text-xs font-medium text-slate-400 mb-1.5">Password</label>
-                <input type="password" id="password" required placeholder="••••••••" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-xs text-slate-200 focus:outline-none focus:border-sky-500 transition">
+                <label class="block text-xs font-semibold text-slate-400 mb-1.5">Password</label>
+                <input type="password" id="password" required placeholder="••••••••" class="w-full bg-slate-950/80 border border-slate-800/80 rounded-xl px-4 py-3 text-xs text-slate-200 focus:outline-none focus:border-sky-500 transition shadow-inner font-medium">
             </div>
-            <button type="submit" id="submitBtn" class="w-full bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-slate-950 font-bold py-3 rounded-xl transition duration-200 text-xs shadow-lg shadow-sky-500/25 mt-2 flex items-center justify-center space-x-2">
+            <button type="submit" id="submitBtn" class="w-full bg-gradient-to-r from-sky-400 to-blue-600 hover:from-sky-300 hover:to-blue-500 text-slate-950 font-bold py-3.5 rounded-xl transition duration-200 text-xs shadow-lg shadow-sky-500/20 mt-2 flex items-center justify-center space-x-2">
                 <span id="btnText">Sign In to Dashboard</span>
             </button>
         </form>
 
-        <p id="errorMsg" class="text-xs text-rose-400 text-center mt-4 hidden bg-rose-500/10 border border-rose-500/20 py-2 rounded-lg"></p>
+        <p id="errorMsg" class="text-xs text-rose-400 text-center mt-4 hidden bg-rose-500/10 border border-rose-500/20 py-2.5 rounded-lg font-medium"></p>
         
         <div class="mt-8 pt-4 border-t border-slate-800/80 text-center">
-            <p class="text-[11px] text-slate-500">Secured with Enterprise Session Tokenization & AI Integration</p>
+            <p class="text-[11px] text-slate-500 font-medium">Secured with Enterprise Session Tokenization & AI Integration</p>
         </div>
     </div>
 
@@ -70,13 +80,13 @@
             errorMsg.classList.add('hidden');
 
             if (isLogin) {
-                loginTab.className = "w-1/2 py-2 rounded-lg bg-sky-600 text-white transition shadow-sm text-xs font-semibold";
-                signupTab.className = "w-1/2 py-2 rounded-lg text-slate-400 hover:text-slate-200 transition text-xs font-semibold";
+                loginTab.className = "w-1/2 py-2.5 rounded-lg bg-sky-500 text-slate-950 font-bold transition shadow-sm text-xs";
+                signupTab.className = "w-1/2 py-2.5 rounded-lg text-slate-400 hover:text-slate-200 transition text-xs font-semibold";
                 nameField.classList.add('hidden');
                 btnText.textContent = "Sign In to Dashboard";
             } else {
-                signupTab.className = "w-1/2 py-2 rounded-lg bg-sky-600 text-white transition shadow-sm text-xs font-semibold";
-                loginTab.className = "w-1/2 py-2 rounded-lg text-slate-400 hover:text-slate-200 transition text-xs font-semibold";
+                signupTab.className = "w-1/2 py-2.5 rounded-lg bg-sky-500 text-slate-950 font-bold transition shadow-sm text-xs";
+                loginTab.className = "w-1/2 py-2.5 rounded-lg text-slate-400 hover:text-slate-200 transition text-xs font-semibold";
                 nameField.classList.remove('hidden');
                 btnText.textContent = "Register & Access Platform";
             }
