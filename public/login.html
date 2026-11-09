@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CodeShield Enterprise | Secure Gateway</title>
-    <!-- Modern Tech Fonts -->
+    <title>CodeShield Enterprise | Secure Access Portal</title>
+    <!-- Modern Enterprise Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -15,22 +15,16 @@
             theme: {
                 extend: {
                     colors: {
-                        cyber: {
-                            base: '#060D1A',
-                            abyss: '#0A1931',
-                            panel: '#0F2544',
-                            surface: '#1A3D63',
-                            steel: '#4A7FA7',
-                            mist: '#B3CFE5',
-                            frost: '#F6FAFD',
-                            danger: '#FF4D6D',
-                            warning: '#F59E0B',
-                            success: '#10B981',
+                        evergreen: {
+                            base: '#012618',
+                            dark: '#013220',
+                            pine: '#0B6E4F',
+                            emerald: '#50C878',
+                            mint: '#D1F2EB',
                         }
                     },
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Space Grotesk', 'sans-serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
                         mono: ['JetBrains Mono', 'monospace'],
                     }
                 }
@@ -39,200 +33,139 @@
     </script>
     <style>
         :root {
-            --abyss: #0A1931;
-            --surface: #1A3D63;
-            --steel: #4A7FA7;
-            --mist: #B3CFE5;
-            --frost: #F6FAFD;
+            --dark-evergreen: #013220;
+            --royal-pine: #0B6E4F;
+            --emerald-green: #50C878;
+            --mint-whisper: #D1F2EB;
         }
 
         body {
-            background-color: #060D1A;
-            font-family: 'Inter', sans-serif;
-            color: #F6FAFD;
+            background-color: #012618;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #D1F2EB;
+            overflow-x: hidden;
         }
 
-        /* Oceanic Cyber Grid Background */
-        .cyber-bg {
-            background-color: #060D1A;
-            background-image:
-                radial-gradient(ellipse 90% 65% at 50% -15%, rgba(74, 127, 167, 0.35), transparent 75%),
-                radial-gradient(circle at 15% 90%, rgba(26, 61, 99, 0.4), transparent 50%),
-                radial-gradient(circle at 85% 85%, rgba(10, 25, 49, 0.8), transparent 50%),
-                linear-gradient(rgba(179, 207, 229, 0.035) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(179, 207, 229, 0.035) 1px, transparent 1px);
-            background-size: 100% 100%, 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+        /* Ambient Glassmorphic Background */
+        .ambient-bg {
+            background-color: #012618;
+            background-image: 
+                radial-gradient(ellipse 80% 60% at 50% -10%, rgba(11, 110, 79, 0.45), transparent 70%),
+                radial-gradient(circle at 10% 85%, rgba(80, 200, 120, 0.12), transparent 45%),
+                radial-gradient(circle at 90% 75%, rgba(11, 110, 79, 0.2), transparent 50%);
         }
 
-        /* Ambient Glow Orb */
-        .ambient-glow {
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(74, 127, 167, 0.18) 0%, rgba(10, 25, 49, 0) 70%);
-            border-radius: 50%;
-            pointer-events: none;
-            filter: blur(40px);
+        /* Frosted Glassmorphism Card */
+        .glass-panel {
+            background: linear-gradient(145deg, rgba(11, 110, 79, 0.22) 0%, rgba(1, 50, 32, 0.65) 100%);
+            backdrop-filter: blur(28px) saturate(160%);
+            -webkit-backdrop-filter: blur(28px) saturate(160%);
+            border: 1px solid rgba(209, 242, 235, 0.16);
+            box-shadow: 
+                0 30px 60px -15px rgba(0, 18, 10, 0.75),
+                0 0 35px -5px rgba(80, 200, 120, 0.12),
+                inset 0 1px 1px 0 rgba(209, 242, 235, 0.25);
+            border-radius: 1.5rem;
         }
 
-        /* Bespoke Glassmorphic Card */
-        .cyber-card {
-            background: linear-gradient(165deg, rgba(15, 37, 68, 0.85) 0%, rgba(10, 25, 49, 0.95) 100%);
-            backdrop-filter: blur(28px);
-            -webkit-backdrop-filter: blur(28px);
-            border: 1px solid rgba(179, 207, 229, 0.16);
-            box-shadow:
-                0 30px 70px -15px rgba(2, 6, 12, 0.9),
-                0 0 45px -10px rgba(74, 127, 167, 0.2),
-                inset 0 1px 1px 0 rgba(246, 250, 253, 0.18);
-            position: relative;
+        /* Glassmorphism Inner Pill / Input */
+        .glass-input {
+            background: rgba(1, 38, 24, 0.65);
+            border: 1px solid rgba(209, 242, 235, 0.14);
+            color: #D1F2EB;
+            transition: all 0.25s ease;
         }
-
-        /* Subtle Corner Technical Markers */
-        .corner-notch::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 14px;
-            height: 14px;
-            border-top: 2px solid #B3CFE5;
-            border-left: 2px solid #B3CFE5;
-            border-top-left-radius: 1rem;
-            opacity: 0.6;
-        }
-        .corner-notch::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 14px;
-            height: 14px;
-            border-bottom: 2px solid #4A7FA7;
-            border-right: 2px solid #4A7FA7;
-            border-bottom-right-radius: 1rem;
-            opacity: 0.6;
-        }
-
-        /* Cyber Button */
-        .cyber-btn-primary {
-            background: linear-gradient(135deg, #1A3D63 0%, #2A5A8C 50%, #4A7FA7 100%);
-            border: 1px solid rgba(179, 207, 229, 0.35);
-            box-shadow: 0 4px 20px -2px rgba(74, 127, 167, 0.4), inset 0 1px 0 rgba(246, 250, 253, 0.3);
-            color: #F6FAFD;
-            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-            overflow: hidden;
-        }
-        .cyber-btn-primary::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 60%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(246, 250, 253, 0.25), transparent);
-            transform: skewX(-20deg);
-            transition: 0.6s ease;
-        }
-        .cyber-btn-primary:hover {
-            background: linear-gradient(135deg, #244F7E 0%, #356EAA 50%, #5B95C3 100%);
-            box-shadow: 0 0 30px rgba(74, 127, 167, 0.65), inset 0 1px 0 rgba(246, 250, 253, 0.5);
-            transform: translateY(-1px);
-        }
-        .cyber-btn-primary:hover::after {
-            left: 140%;
-        }
-        .cyber-btn-primary:active {
-            transform: translateY(1px);
-        }
-
-        /* Input field styling */
-        .cyber-input {
-            background-color: rgba(6, 13, 26, 0.7);
-            border: 1px solid rgba(179, 207, 229, 0.14);
-            color: #F6FAFD;
-            transition: all 0.2s ease;
-        }
-        .cyber-input:focus {
+        .glass-input:focus {
             outline: none;
-            border-color: #4A7FA7;
-            box-shadow: 0 0 0 3px rgba(74, 127, 167, 0.25), 0 0 16px rgba(74, 127, 167, 0.2);
-            background-color: rgba(6, 13, 26, 0.95);
+            border-color: #50C878;
+            background: rgba(1, 38, 24, 0.9);
+            box-shadow: 0 0 0 3px rgba(80, 200, 120, 0.22), 0 0 20px -3px rgba(80, 200, 120, 0.25);
         }
-        .cyber-input::placeholder {
-            color: #52708E;
+        .glass-input::placeholder {
+            color: rgba(209, 242, 235, 0.35);
         }
 
-        /* Animated Pulse Dot */
-        .cyber-dot {
+        /* Modern Gradient CTA Button */
+        .btn-emerald {
+            background: linear-gradient(135deg, #0B6E4F 0%, #50C878 100%);
+            color: #012618;
+            font-weight: 700;
+            border: 1px solid rgba(209, 242, 235, 0.35);
+            box-shadow: 0 8px 24px -4px rgba(80, 200, 120, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .btn-emerald:hover {
+            background: linear-gradient(135deg, #0F835F 0%, #5CE087 100%);
+            box-shadow: 0 12px 30px -4px rgba(80, 200, 120, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            transform: translateY(-1.5px);
+        }
+        .btn-emerald:active {
+            transform: translateY(0.5px);
+        }
+
+        /* Smooth Tab Switcher */
+        .tab-active {
+            background: rgba(11, 110, 79, 0.6);
+            color: #D1F2EB;
+            border: 1px solid rgba(209, 242, 235, 0.25);
+            box-shadow: 0 4px 12px rgba(0, 18, 10, 0.3), inset 0 1px 0 rgba(209, 242, 235, 0.2);
+        }
+        .tab-inactive {
+            color: rgba(209, 242, 235, 0.55);
+        }
+        .tab-inactive:hover {
+            color: #D1F2EB;
+        }
+
+        /* Organic Pulse Status Dot */
+        .status-dot {
             width: 7px;
             height: 7px;
-            background-color: #10B981;
+            background-color: #50C878;
             border-radius: 9999px;
-            box-shadow: 0 0 10px #10B981;
-            position: relative;
-        }
-        .cyber-dot::after {
-            content: '';
-            position: absolute;
-            inset: -3px;
-            border-radius: 9999px;
-            border: 1px solid #10B981;
-            animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
-        }
-        @keyframes ping {
-            75%, 100% {
-                transform: scale(2.2);
-                opacity: 0;
-            }
+            box-shadow: 0 0 10px #50C878;
         }
     </style>
 </head>
-<body class="cyber-bg min-h-screen flex items-center justify-center p-4 sm:p-6 relative overflow-hidden selection:bg-cyber-steel selection:text-white">
+<body class="ambient-bg min-h-screen flex items-center justify-center p-4 sm:p-6 relative selection:bg-evergreen-emerald selection:text-evergreen-dark">
 
-    <!-- Ambient Glow Spots -->
-    <div class="ambient-glow -top-32 -left-32"></div>
-    <div class="ambient-glow -bottom-32 -right-32" style="background: radial-gradient(circle, rgba(26, 61, 99, 0.25) 0%, transparent 70%);"></div>
+    <!-- Ambient Glow Drops -->
+    <div class="fixed top-1/4 left-1/4 w-96 h-96 rounded-full bg-evergreen-pine/20 blur-3xl pointer-events-none -z-10"></div>
+    <div class="fixed bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-evergreen-emerald/10 blur-3xl pointer-events-none -z-10"></div>
 
+    <!-- Main Container -->
     <div class="w-full max-w-md relative z-10">
         
-        <!-- Header Branding Card -->
-        <div class="cyber-card corner-notch rounded-2xl p-6 sm:p-8">
+        <div class="glass-panel p-6 sm:p-8">
             
-            <!-- Logo & Brand Identity -->
+            <!-- Logo & Brand Header -->
             <div class="text-center mb-7">
-                <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-[#1A3D63] to-[#0A1931] border border-cyber-mist/25 shadow-[0_0_25px_rgba(74,127,167,0.3)] mb-3.5 group">
-                    <svg class="w-7 h-7 text-cyber-mist group-hover:scale-105 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-evergreen-pine/80 to-evergreen-dark border border-evergreen-mint/30 shadow-[0_0_25px_rgba(80,200,120,0.25)] mb-3.5">
+                    <svg class="w-7 h-7 text-evergreen-emerald" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                         <path d="m9 12 2 2 4-4"/>
                     </svg>
                 </div>
-
-                <div class="flex items-center justify-center gap-2 mb-1">
-                    <h1 class="font-display text-xl sm:text-2xl font-bold tracking-tight text-cyber-frost">
-                        CodeShield
-                    </h1>
-                    <span class="font-mono text-[10px] tracking-widest font-semibold px-2 py-0.5 rounded bg-cyber-steel/20 border border-cyber-mist/30 text-cyber-mist uppercase">
-                        Enterprise
-                    </span>
-                </div>
-                <p class="text-xs text-cyber-mist/70 font-sans">
-                    Multi-Vector SAST Engine & AI Security Workspace
+                
+                <h1 class="text-xl sm:text-2xl font-bold tracking-tight text-white mb-1">
+                    CodeShield <span class="text-evergreen-emerald font-semibold">Enterprise</span>
+                </h1>
+                <p class="text-xs text-evergreen-mint/70 font-normal">
+                    Intelligent Static Application Security Platform
                 </p>
-                <div class="flex items-center justify-center gap-2 mt-2 text-[11px] font-mono text-cyber-mist/50">
-                    <span class="cyber-dot"></span>
-                    <span>SYSTEM ONLINE // GATEWAY SECURE</span>
+                <div class="inline-flex items-center gap-2 mt-2.5 px-2.5 py-1 rounded-full bg-evergreen-dark/60 border border-evergreen-mint/15 text-[11px] text-evergreen-mint/80 font-mono">
+                    <span class="status-dot"></span>
+                    <span>GATEWAY SECURE</span>
                 </div>
             </div>
 
-            <!-- Tab Navigation (Sign In vs Create Account) -->
-            <div class="grid grid-cols-2 p-1 bg-cyber-base/80 rounded-xl border border-cyber-mist/10 mb-6 text-xs font-mono">
-                <button onclick="switchTab('login')" id="loginTab" class="py-2.5 rounded-lg bg-cyber-surface text-cyber-frost border border-cyber-mist/20 font-semibold shadow-sm transition-all duration-200">
-                    ACCESS PORTAL
+            <!-- Tab Switcher -->
+            <div class="grid grid-cols-2 p-1 bg-evergreen-base/70 rounded-xl border border-evergreen-mint/10 mb-6 text-xs font-medium">
+                <button onclick="switchTab('login')" id="loginTab" class="py-2.5 rounded-lg tab-active transition-all duration-200 font-semibold">
+                    Sign In
                 </button>
-                <button onclick="switchTab('signup')" id="signupTab" class="py-2.5 rounded-lg text-cyber-mist/60 hover:text-cyber-mist transition-all duration-200 font-medium">
-                    REGISTER
+                <button onclick="switchTab('signup')" id="signupTab" class="py-2.5 rounded-lg tab-inactive transition-all duration-200">
+                    Create Account
                 </button>
             </div>
 
@@ -241,58 +174,52 @@
                 
                 <!-- Name field (Signup only) -->
                 <div id="nameField" class="hidden space-y-1.5 transition-all duration-300">
-                    <label class="block text-xs font-mono uppercase tracking-wider text-cyber-mist/70">
-                        Engineer Name
-                    </label>
+                    <label class="block text-xs font-medium text-evergreen-mint/80">Full Name</label>
                     <div class="relative">
-                        <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-cyber-mist/40">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-evergreen-mint/40">
                             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                                 <circle cx="12" cy="7" r="4"></circle>
                             </svg>
                         </span>
                         <input type="text" id="name" placeholder="Rituraj Kotian"
-                            class="cyber-input w-full pl-10 pr-4 py-3 rounded-xl text-xs font-sans placeholder-cyber-mist/30">
+                            class="glass-input w-full pl-10 pr-4 py-3 rounded-xl text-xs placeholder-evergreen-mint/30">
                     </div>
                 </div>
 
                 <!-- Email field -->
                 <div class="space-y-1.5">
-                    <label class="block text-xs font-mono uppercase tracking-wider text-cyber-mist/70">
-                        Work Identity / Email
-                    </label>
+                    <label class="block text-xs font-medium text-evergreen-mint/80">Work Email Address</label>
                     <div class="relative">
-                        <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-cyber-mist/40">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-evergreen-mint/40">
                             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <rect width="20" height="16" x="2" y="4" rx="2"></rect>
                                 <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                             </svg>
                         </span>
-                        <input type="email" id="email" required placeholder="engineer@codeshield.internal"
-                            class="cyber-input w-full pl-10 pr-4 py-3 rounded-xl text-xs font-sans placeholder-cyber-mist/30">
+                        <input type="email" id="email" required placeholder="developer@company.com"
+                            class="glass-input w-full pl-10 pr-4 py-3 rounded-xl text-xs placeholder-evergreen-mint/30">
                     </div>
                 </div>
 
                 <!-- Password field -->
                 <div class="space-y-1.5">
-                    <label class="block text-xs font-mono uppercase tracking-wider text-cyber-mist/70">
-                        Access Key / Password
-                    </label>
+                    <label class="block text-xs font-medium text-evergreen-mint/80">Account Password</label>
                     <div class="relative">
-                        <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-cyber-mist/40">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-evergreen-mint/40">
                             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
                                 <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
                             </svg>
                         </span>
                         <input type="password" id="password" required placeholder="••••••••••••"
-                            class="cyber-input w-full pl-10 pr-4 py-3 rounded-xl text-xs font-mono placeholder-cyber-mist/30">
+                            class="glass-input w-full pl-10 pr-4 py-3 rounded-xl text-xs placeholder-evergreen-mint/30">
                     </div>
                 </div>
 
-                <!-- Error Toast / Notice -->
-                <div id="errorMsg" class="hidden text-xs font-mono text-cyber-danger bg-cyber-danger/10 border border-cyber-danger/30 px-3.5 py-2.5 rounded-xl flex items-center gap-2">
-                    <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <!-- Error Notice -->
+                <div id="errorMsg" class="hidden text-xs text-rose-300 bg-rose-500/10 border border-rose-500/30 px-3.5 py-2.5 rounded-xl flex items-center gap-2">
+                    <svg class="w-4 h-4 shrink-0 text-rose-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="12" cy="12" r="10"></circle>
                         <line x1="12" y1="8" x2="12" y2="12"></line>
                         <line x1="12" y1="16" x2="12.01" y2="16"></line>
@@ -301,43 +228,42 @@
                 </div>
 
                 <!-- Submit Button -->
-                <button type="submit" id="submitBtn" class="cyber-btn-primary w-full py-3.5 rounded-xl font-display font-semibold text-xs tracking-wide uppercase flex items-center justify-center gap-2 mt-2">
-                    <span id="btnText">Authenticate Session</span>
-                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <button type="submit" id="submitBtn" class="btn-emerald w-full py-3.5 rounded-xl font-bold text-xs tracking-wide uppercase flex items-center justify-center gap-2 mt-2">
+                    <span id="btnText">Sign In to Dashboard</span>
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
                         <path d="M5 12h14"></path>
                         <path d="m12 5 7 7-7 7"></path>
                     </svg>
                 </button>
             </form>
 
-            <!-- Quick Demo Credentials Fill Pill (Super helpful for interview demonstration) -->
-            <div class="mt-5 pt-4 border-t border-cyber-mist/10">
+            <!-- Quick Demo Credentials for interview presentation -->
+            <div class="mt-5 pt-4 border-t border-evergreen-mint/10">
                 <button type="button" onclick="fillDemoCredentials()" 
-                    class="w-full text-center py-2 px-3 rounded-lg bg-cyber-surface/40 hover:bg-cyber-surface/80 border border-cyber-mist/15 text-cyber-mist text-[11px] font-mono flex items-center justify-center gap-2 transition-colors">
-                    <svg class="w-3.5 h-3.5 text-cyber-steel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    class="w-full text-center py-2.5 px-3 rounded-xl bg-evergreen-pine/25 hover:bg-evergreen-pine/45 border border-evergreen-mint/20 text-evergreen-mint text-xs font-medium flex items-center justify-center gap-2 transition-all">
+                    <svg class="w-4 h-4 text-evergreen-emerald" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="m13 2-2 2.5h3L11 8l3-1-3.5 5 1.5-3H9l2.5-4.5H9L13 2z"/>
                     </svg>
-                    <span>Quick Fill Demo Account (Raj Shamani)</span>
+                    <span>Auto-Fill Demo Credentials (Raj Shamani)</span>
                 </button>
             </div>
 
-            <!-- Footer Compliance Indicators -->
-            <div class="mt-6 pt-4 border-t border-cyber-mist/10 flex items-center justify-between text-[10px] font-mono text-cyber-mist/40">
+            <!-- Footer Badge -->
+            <div class="mt-6 pt-4 border-t border-evergreen-mint/10 flex items-center justify-between text-[11px] text-evergreen-mint/50">
                 <span class="flex items-center gap-1.5">
-                    <svg class="w-3 h-3 text-cyber-steel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <svg class="w-3.5 h-3.5 text-evergreen-emerald" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
                         <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
                     </svg>
-                    AES-256 SESSION
+                    AES-256 Encrypted
                 </span>
-                <span>ZERO-TRUST COMPLIANT</span>
+                <span>Session Isolation</span>
             </div>
 
         </div>
 
-        <!-- Subtle subtext -->
-        <p class="text-center text-[11px] text-cyber-mist/40 font-mono mt-4">
-            CodeShield Pro v2.5 • Proprietary Enterprise SAST Framework
+        <p class="text-center text-xs text-evergreen-mint/40 mt-4">
+            CodeShield Enterprise • Static Application Security Platform
         </p>
     </div>
 
@@ -354,17 +280,17 @@
             errorMsg.classList.add('hidden');
 
             if (isLogin) {
-                loginTab.className = "py-2.5 rounded-lg bg-cyber-surface text-cyber-frost border border-cyber-mist/20 font-semibold shadow-sm transition-all duration-200";
-                signupTab.className = "py-2.5 rounded-lg text-cyber-mist/60 hover:text-cyber-mist transition-all duration-200 font-medium";
+                loginTab.className = "py-2.5 rounded-lg tab-active transition-all duration-200 font-semibold";
+                signupTab.className = "py-2.5 rounded-lg tab-inactive transition-all duration-200";
                 nameField.classList.add('hidden');
                 document.getElementById('name').removeAttribute('required');
-                btnText.textContent = "Authenticate Session";
+                btnText.textContent = "Sign In to Dashboard";
             } else {
-                signupTab.className = "py-2.5 rounded-lg bg-cyber-surface text-cyber-frost border border-cyber-mist/20 font-semibold shadow-sm transition-all duration-200";
-                loginTab.className = "py-2.5 rounded-lg text-cyber-mist/60 hover:text-cyber-mist transition-all duration-200 font-medium";
+                signupTab.className = "py-2.5 rounded-lg tab-active transition-all duration-200 font-semibold";
+                loginTab.className = "py-2.5 rounded-lg tab-inactive transition-all duration-200";
                 nameField.classList.remove('hidden');
                 document.getElementById('name').setAttribute('required', 'true');
-                btnText.textContent = "Deploy Developer Account";
+                btnText.textContent = "Create Account";
             }
         }
 
@@ -401,11 +327,11 @@
                     localStorage.setItem('codeshield_user', JSON.stringify(data.user));
                     window.location.href = '/index.html';
                 } else {
-                    errorText.textContent = data.error || "Authentication rejected.";
+                    errorText.textContent = data.error || "Authentication failed.";
                     errorMsg.classList.remove('hidden');
                 }
             } catch (err) {
-                errorText.textContent = "Connection to security gateway failed. Ensure server is active.";
+                errorText.textContent = "Failed to connect to authentication server.";
                 errorMsg.classList.remove('hidden');
             } finally {
                 submitBtn.disabled = false;
