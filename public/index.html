@@ -204,7 +204,7 @@
 
         async function fetchScanHistory() {
             try {
-                const res = await fetch(`http://localhost:5000/api/scans?email=${encodeURIComponent(user.email)}`);
+                const res = await fetch(`/api/scans?email=${encodeURIComponent(user.email)}`);
                 const data = await res.json();
                 if (data.success) {
                     allScans = data.scans;
@@ -302,7 +302,7 @@
             loading.classList.remove('hidden');
 
             try {
-                const response = await fetch('http://localhost:5000/api/scan', {
+                const response = await fetch('/api/scan', {
                     method: 'POST',
                     body: formData
                 });
@@ -357,7 +357,7 @@
             chatMessages.scrollTop = chatMessages.scrollHeight;
 
             try {
-                const res = await fetch('http://localhost:5000/api/ai-chat', {
+                const res = await fetch('/api/ai-chat', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ messages: chatHistory })
