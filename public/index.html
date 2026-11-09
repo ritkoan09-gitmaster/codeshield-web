@@ -3,342 +3,855 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CodeShield Enterprise | Next-Gen AI Security Platform</title>
+    <title>CodeShield Enterprise | Multi-Vector SAST & AI Security Platform</title>
+    
+    <!-- Modern High-Tech Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Marked.js for AI Markdown parsing -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            base: '#060D1A',
+                            abyss: '#0A1931',
+                            panel: '#0F2544',
+                            surface: '#1A3D63',
+                            steel: '#4A7FA7',
+                            mist: '#B3CFE5',
+                            frost: '#F6FAFD',
+                            accent: '#38BDF8',
+                            critical: '#FF4D6D',
+                            warning: '#FBBF24',
+                            success: '#10B981',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
         :root {
-            --cyan: #22d3ee; --magenta: #f472b6; --violet: #8b5cf6; --amber: #fbbf24; --ok: #34d399; --bad: #fb7185;
-            --ink: #04050d;
+            --abyss: #0A1931;
+            --surface: #1A3D63;
+            --steel: #4A7FA7;
+            --mist: #B3CFE5;
+            --frost: #F6FAFD;
         }
-        body { font-family: 'Inter', sans-serif; background: var(--ink); }
-        h1, h2, h3, .font-display { font-family: 'Chakra Petch', sans-serif; }
-        code, pre, .font-mono { font-family: 'JetBrains Mono', monospace; }
 
-        /* ---------- Neon city backdrop ---------- */
-        .bg-cyber {
-            background:
-                radial-gradient(ellipse 70% 50% at 15% -5%, rgba(34,211,238,.22), transparent 65%),
-                radial-gradient(ellipse 60% 45% at 95% 5%, rgba(244,114,182,.20), transparent 65%),
-                radial-gradient(ellipse 80% 50% at 50% 115%, rgba(139,92,246,.25), transparent 70%),
-                var(--ink);
+        body {
+            background-color: #060D1A;
+            font-family: 'Inter', sans-serif;
+            color: #F6FAFD;
+            overflow-x: hidden;
         }
-        .grid-floor {
-            position: fixed; inset: 0; z-index: 0; pointer-events: none;
+
+        /* Subtle Technical Oceanic Grid Background */
+        .cyber-bg {
+            background-color: #060D1A;
             background-image:
-                linear-gradient(rgba(34,211,238,.07) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(34,211,238,.07) 1px, transparent 1px);
-            background-size: 48px 48px;
-            -webkit-mask-image: radial-gradient(ellipse at 50% 30%, #000 20%, transparent 75%);
-                    mask-image: radial-gradient(ellipse at 50% 30%, #000 20%, transparent 75%);
-            animation: gridDrift 14s linear infinite;
-        }
-        @keyframes gridDrift { to { background-position: 0 48px, 48px 0; } }
-        .scanlines {
-            position: fixed; inset: 0; z-index: 60; pointer-events: none; opacity: .35;
-            background: repeating-linear-gradient(to bottom, rgba(255,255,255,.025) 0 1px, transparent 1px 3px);
+                radial-gradient(ellipse 90% 60% at 50% -10%, rgba(74, 127, 167, 0.28), transparent 75%),
+                radial-gradient(circle at 10% 40%, rgba(26, 61, 99, 0.35), transparent 45%),
+                radial-gradient(circle at 90% 70%, rgba(10, 25, 49, 0.6), transparent 50%),
+                linear-gradient(rgba(179, 207, 229, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(179, 207, 229, 0.035) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 100% 100%, 48px 48px, 48px 48px;
         }
 
-        /* ---------- Glass card with neon edge + corner brackets ---------- */
-        .glass-container {
-            position: relative; isolation: isolate;
-            background: linear-gradient(160deg, rgba(20,27,52,.62), rgba(8,10,24,.78));
-            -webkit-backdrop-filter: blur(22px) saturate(140%); backdrop-filter: blur(22px) saturate(140%);
-            border: 1px solid rgba(255,255,255,.09);
-            box-shadow: 0 24px 60px -24px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.14);
-            transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s, border-color .35s;
-        }
-        .glass-container::before { /* gradient neon rim, revealed on hover */
-            content: ""; position: absolute; inset: -1px; border-radius: inherit; padding: 1px; z-index: -1;
-            background: linear-gradient(135deg, var(--cyan), transparent 35%, transparent 65%, var(--magenta));
-            -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-            -webkit-mask-composite: xor; mask-composite: exclude;
-            opacity: .35; transition: opacity .35s;
-        }
-        .glass-container::after { /* HUD corner brackets */
-            content: ""; position: absolute; inset: 6px; pointer-events: none; border-radius: inherit; opacity: .8;
-            background:
-                linear-gradient(var(--cyan), var(--cyan)) top left / 16px 1.5px no-repeat,
-                linear-gradient(var(--cyan), var(--cyan)) top left / 1.5px 16px no-repeat,
-                linear-gradient(var(--magenta), var(--magenta)) bottom right / 16px 1.5px no-repeat,
-                linear-gradient(var(--magenta), var(--magenta)) bottom right / 1.5px 16px no-repeat;
-        }
-        .glass-container:hover { transform: translateY(-3px); box-shadow: 0 30px 70px -22px rgba(0,0,0,.95), 0 0 42px -6px rgba(34,211,238,.35), 0 0 60px -20px rgba(244,114,182,.35), inset 0 1px 0 rgba(255,255,255,.2); }
-        .glass-container:hover::before { opacity: 1; }
-        #chatCard:hover, #historyCard:hover, #resultsContainer:hover { transform: none; }
-
-        .glass-inner-card {
-            background: linear-gradient(145deg, rgba(255,255,255,.045), rgba(255,255,255,.015));
-            border: 1px solid rgba(255,255,255,.08);
-            box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
-        }
-        .panel-head { background: linear-gradient(90deg, rgba(34,211,238,.08), rgba(244,114,182,.05) 70%, transparent); }
-        .icon-chip {
-            display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; font-size: 15px;
-            background: rgba(34,211,238,.08); border: 1px solid rgba(34,211,238,.35);
-            box-shadow: 0 0 16px rgba(34,211,238,.25), inset 0 0 10px rgba(34,211,238,.12);
+        /* Technical Ambient Glow */
+        .ambient-glow {
+            position: fixed;
+            pointer-events: none;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: 0;
         }
 
-        /* ---------- Neon button (angled corners) ---------- */
-        .datacore-btn {
-            position: relative; overflow: hidden; color: #04050d; font-weight: 700; letter-spacing: .02em;
-            background: linear-gradient(120deg, var(--cyan), #60a5fa 55%, var(--violet));
-            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
-            box-shadow: 0 0 24px rgba(34,211,238,.45);
-            transition: transform .2s, filter .2s;
-        }
-        .datacore-btn::before { /* light sweep */
-            content: ""; position: absolute; top: 0; left: -80%; width: 50%; height: 100%;
-            background: linear-gradient(100deg, transparent, rgba(255,255,255,.65), transparent);
-            transform: skewX(-20deg); transition: left .6s;
-        }
-        .datacore-btn:hover { filter: brightness(1.15) saturate(1.2); transform: translateY(-1px); }
-        .datacore-btn:hover::before { left: 130%; }
-        .datacore-btn:active { transform: translateY(1px) scale(.98); }
-        .ghost-btn {
-            background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.12); color: #cbd5e1;
-            transition: all .2s;
-        }
-        .ghost-btn:hover { border-color: var(--cyan); color: var(--cyan); box-shadow: 0 0 14px rgba(34,211,238,.35); background: rgba(34,211,238,.07); }
-        .ghost-btn.danger:hover { border-color: var(--bad); color: var(--bad); box-shadow: 0 0 14px rgba(251,113,133,.35); background: rgba(251,113,133,.07); }
-
-        /* ---------- Headline glitch ---------- */
-        .neon-title { background: linear-gradient(100deg, var(--cyan), #a5b4fc 45%, var(--magenta)); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 0 18px rgba(34,211,238,.35)); }
-        .glitch { position: relative; display: inline-block; }
-        .glitch:hover { animation: glitch .35s steps(2) 2; }
-        @keyframes glitch {
-            0% { text-shadow: 2px 0 var(--magenta), -2px 0 var(--cyan); transform: translate(0); }
-            50% { text-shadow: -2px 0 var(--magenta), 2px 0 var(--cyan); transform: translate(-1px, 1px); }
-            100% { text-shadow: none; transform: translate(0); }
+        /* Bespoke Glassmorphic Card Surface */
+        .cyber-card {
+            background: linear-gradient(165deg, rgba(15, 37, 68, 0.75) 0%, rgba(10, 25, 49, 0.9) 100%);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(179, 207, 229, 0.14);
+            box-shadow:
+                0 25px 60px -15px rgba(2, 6, 12, 0.85),
+                0 0 35px -10px rgba(74, 127, 167, 0.15),
+                inset 0 1px 1px 0 rgba(246, 250, 253, 0.14);
+            position: relative;
         }
 
-        /* ---------- File input ---------- */
-        #projectZip { transition: all .25s; border-style: dashed !important; }
-        #projectZip:hover { border-color: var(--cyan) !important; box-shadow: 0 0 22px rgba(34,211,238,.25), inset 0 0 20px rgba(34,211,238,.06); }
-        #projectZip::file-selector-button { margin-right: 14px; padding: 10px 18px; border: 0; border-radius: 10px; font-weight: 600; font-size: 12px; cursor: pointer; color: var(--cyan); background: rgba(34,211,238,.12); transition: background .2s; }
-        #projectZip::file-selector-button:hover { background: rgba(34,211,238,.25); }
+        /* Precision Corner Technical Accents */
+        .corner-notch::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 14px;
+            height: 14px;
+            border-top: 2px solid #B3CFE5;
+            border-left: 2px solid #B3CFE5;
+            border-top-left-radius: 0.85rem;
+            opacity: 0.7;
+            pointer-events: none;
+        }
+        .corner-notch::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 14px;
+            height: 14px;
+            border-bottom: 2px solid #4A7FA7;
+            border-right: 2px solid #4A7FA7;
+            border-bottom-right-radius: 0.85rem;
+            opacity: 0.7;
+            pointer-events: none;
+        }
 
-        /* ---------- Audit log rows ---------- */
-        .scan-item { position: relative; overflow: hidden; transition: transform .25s, border-color .25s, box-shadow .25s, background .25s; }
-        .scan-item::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: linear-gradient(var(--cyan), var(--magenta)); transform: scaleY(0); transform-origin: top; transition: transform .3s; }
-        .scan-item:hover { transform: translateX(6px); border-color: rgba(34,211,238,.5); background: linear-gradient(90deg, rgba(34,211,238,.1), rgba(255,255,255,.02)); box-shadow: 0 10px 30px -12px rgba(34,211,238,.45); }
-        .scan-item:hover::before { transform: scaleY(1); }
-        .scan-item .arrow { transition: transform .25s, color .25s; }
-        .scan-item:hover .arrow { transform: translateX(5px); color: var(--cyan); }
-        .chip { padding: 3px 10px; border-radius: 6px; font-size: 10px; font-weight: 600; border: 1px solid; font-family: 'JetBrains Mono', monospace; }
-        .chip-bad { color: var(--bad); background: rgba(251,113,133,.1); border-color: rgba(251,113,133,.4); box-shadow: 0 0 12px rgba(251,113,133,.2); }
-        .chip-ok { color: var(--ok); background: rgba(52,211,153,.1); border-color: rgba(52,211,153,.4); box-shadow: 0 0 12px rgba(52,211,153,.2); }
-        .chip-warn { color: var(--amber); background: rgba(251,191,36,.1); border-color: rgba(251,191,36,.4); box-shadow: 0 0 12px rgba(251,191,36,.2); }
+        /* Primary Action Cyber Button */
+        .cyber-btn-primary {
+            background: linear-gradient(135deg, #1A3D63 0%, #2A5A8C 50%, #4A7FA7 100%);
+            border: 1px solid rgba(179, 207, 229, 0.35);
+            box-shadow: 0 4px 20px -2px rgba(74, 127, 167, 0.4), inset 0 1px 0 rgba(246, 250, 253, 0.3);
+            color: #F6FAFD;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .cyber-btn-primary::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(246, 250, 253, 0.25), transparent);
+            transform: skewX(-20deg);
+            transition: 0.6s ease;
+        }
+        .cyber-btn-primary:hover {
+            background: linear-gradient(135deg, #244F7E 0%, #356EAA 50%, #5B95C3 100%);
+            box-shadow: 0 0 30px rgba(74, 127, 167, 0.65), inset 0 1px 0 rgba(246, 250, 253, 0.5);
+            transform: translateY(-1px);
+        }
+        .cyber-btn-primary:hover::after {
+            left: 140%;
+        }
+        .cyber-btn-primary:active {
+            transform: translateY(1px);
+        }
 
-        .findings-row { transition: background .2s, box-shadow .2s; }
-        .findings-row:hover { background: linear-gradient(90deg, rgba(34,211,238,.1), transparent); box-shadow: inset 3px 0 0 var(--cyan); }
-        .snippet { display: block; max-width: 260px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px 10px; font-size: 11px; color: #fda4af; background: rgba(0,0,0,.55); border: 1px solid rgba(251,113,133,.2); border-left: 2px solid var(--bad); border-radius: 6px; transition: all .25s; }
-        .findings-row:hover .snippet { max-width: 460px; white-space: normal; word-break: break-all; box-shadow: 0 0 16px rgba(251,113,133,.25); }
+        /* Ghost Button */
+        .cyber-btn-ghost {
+            background: rgba(15, 37, 68, 0.5);
+            border: 1px solid rgba(179, 207, 229, 0.16);
+            color: #B3CFE5;
+            transition: all 0.2s ease;
+        }
+        .cyber-btn-ghost:hover {
+            background: rgba(74, 127, 167, 0.25);
+            border-color: #4A7FA7;
+            color: #F6FAFD;
+            box-shadow: 0 0 16px rgba(74, 127, 167, 0.3);
+        }
+        .cyber-btn-ghost.danger:hover {
+            background: rgba(255, 77, 109, 0.15);
+            border-color: #FF4D6D;
+            color: #FF4D6D;
+            box-shadow: 0 0 16px rgba(255, 77, 109, 0.3);
+        }
 
-        /* ---------- Chat ---------- */
-        .msg-user { align-self: flex-end; max-width: 88%; padding: 10px 13px; border-radius: 14px 14px 2px 14px; color: #e0f2fe; background: linear-gradient(135deg, rgba(34,211,238,.22), rgba(99,102,241,.22)); border: 1px solid rgba(34,211,238,.45); box-shadow: 0 0 18px -4px rgba(34,211,238,.4); animation: pop .3s cubic-bezier(.2,.8,.2,1); }
-        .msg-ai { align-self: flex-start; max-width: 94%; padding: 10px 13px; border-radius: 14px 14px 14px 2px; color: #e2e8f0; background: linear-gradient(135deg, rgba(244,114,182,.10), rgba(139,92,246,.10)); border: 1px solid rgba(244,114,182,.3); box-shadow: 0 0 18px -6px rgba(244,114,182,.4); animation: pop .3s cubic-bezier(.2,.8,.2,1); line-height: 1.6; }
-        @keyframes pop { from { opacity: 0; transform: translateY(8px) scale(.97); } to { opacity: 1; transform: none; } }
-        .md-body p { margin: 0 0 .5rem; } .md-body p:last-child { margin: 0; }
-        .md-body ul, .md-body ol { margin: .4rem 0 .4rem 1.1rem; } .md-body ul { list-style: square; } .md-body ol { list-style: decimal; }
-        .md-body li::marker { color: var(--magenta); }
-        .md-body a { color: var(--cyan); text-decoration: underline; text-underline-offset: 3px; }
-        .md-body strong { color: #fff; }
-        .md-body code { padding: 1px 6px; border-radius: 5px; font-size: 11px; color: var(--cyan); background: rgba(0,0,0,.5); border: 1px solid rgba(34,211,238,.25); }
-        .md-body pre { margin: .5rem 0; padding: 10px 12px; overflow-x: auto; border-radius: 10px; background: rgba(0,0,0,.65); border: 1px solid rgba(255,255,255,.1); border-left: 2px solid var(--cyan); }
-        .md-body pre code { padding: 0; border: 0; background: none; color: #a5f3fc; }
-        .md-body h1, .md-body h2, .md-body h3 { color: #fff; font-weight: 700; margin: .5rem 0 .3rem; }
-        #typingIndicator { align-self: flex-start; }
-        #chatInput { transition: all .25s; }
-        #chatInput:focus { border-color: var(--cyan); box-shadow: 0 0 0 3px rgba(34,211,238,.15), 0 0 22px rgba(34,211,238,.3); background: rgba(0,0,0,.6); }
-        .status-dot { width: 8px; height: 8px; border-radius: 9999px; background: var(--ok); box-shadow: 0 0 10px var(--ok); animation: blink 2s ease-in-out infinite; }
-        @keyframes blink { 50% { opacity: .35; } }
+        /* Interactive File Dropzone */
+        .cyber-dropzone {
+            border: 2px dashed rgba(179, 207, 229, 0.25);
+            background: rgba(6, 13, 26, 0.5);
+            transition: all 0.25s ease;
+        }
+        .cyber-dropzone:hover, .cyber-dropzone.drag-active {
+            border-color: #4A7FA7;
+            background: rgba(26, 61, 99, 0.25);
+            box-shadow: 0 0 30px -5px rgba(74, 127, 167, 0.35), inset 0 0 20px rgba(74, 127, 167, 0.15);
+        }
 
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: linear-gradient(var(--cyan), var(--magenta)); border-radius: 9999px; }
-        :focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
-        @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+        /* Threat Severity Badges */
+        .badge-critical {
+            background: rgba(255, 77, 109, 0.12);
+            color: #FF4D6D;
+            border: 1px solid rgba(255, 77, 109, 0.35);
+            box-shadow: 0 0 12px rgba(255, 77, 109, 0.2);
+        }
+        .badge-high {
+            background: rgba(249, 115, 22, 0.12);
+            color: #FB923C;
+            border: 1px solid rgba(249, 115, 22, 0.35);
+            box-shadow: 0 0 12px rgba(249, 115, 22, 0.2);
+        }
+        .badge-warning {
+            background: rgba(251, 191, 36, 0.12);
+            color: #FCD34D;
+            border: 1px solid rgba(251, 191, 36, 0.35);
+            box-shadow: 0 0 12px rgba(251, 191, 36, 0.2);
+        }
+        .badge-info {
+            background: rgba(56, 189, 248, 0.12);
+            color: #38BDF8;
+            border: 1px solid rgba(56, 189, 248, 0.35);
+            box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
+        }
+        .badge-success {
+            background: rgba(16, 185, 129, 0.12);
+            color: #34D399;
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            box-shadow: 0 0 12px rgba(16, 185, 129, 0.2);
+        }
+
+        /* History List Item */
+        .history-item {
+            background: rgba(10, 25, 49, 0.65);
+            border: 1px solid rgba(179, 207, 229, 0.1);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+        .history-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #4A7FA7, #B3CFE5);
+            transform: scaleY(0);
+            transition: transform 0.25s ease;
+        }
+        .history-item:hover {
+            transform: translateX(4px);
+            border-color: rgba(74, 127, 167, 0.4);
+            background: rgba(26, 61, 99, 0.4);
+            box-shadow: 0 10px 25px -8px rgba(10, 25, 49, 0.7);
+        }
+        .history-item:hover::before {
+            transform: scaleY(1);
+        }
+
+        /* Table Findings Row */
+        .finding-card {
+            background: rgba(10, 25, 49, 0.55);
+            border: 1px solid rgba(179, 207, 229, 0.08);
+            transition: all 0.2s ease;
+        }
+        .finding-card:hover {
+            background: rgba(26, 61, 99, 0.35);
+            border-color: rgba(74, 127, 167, 0.3);
+            box-shadow: inset 3px 0 0 #4A7FA7;
+        }
+
+        /* Chat Message Bubbles */
+        .chat-user-bubble {
+            background: linear-gradient(135deg, rgba(26, 61, 99, 0.8) 0%, rgba(15, 37, 68, 0.9) 100%);
+            border: 1px solid rgba(179, 207, 229, 0.25);
+            box-shadow: 0 4px 20px -5px rgba(10, 25, 49, 0.6);
+        }
+        .chat-ai-bubble {
+            background: linear-gradient(135deg, rgba(15, 37, 68, 0.7) 0%, rgba(10, 25, 49, 0.85) 100%);
+            border: 1px solid rgba(74, 127, 167, 0.25);
+            box-shadow: 0 4px 20px -5px rgba(74, 127, 167, 0.15);
+        }
+
+        /* Code snippets in chat */
+        .chat-markdown pre {
+            background: #040912 !important;
+            border: 1px solid rgba(179, 207, 229, 0.15) !important;
+            border-left: 3px solid #4A7FA7 !important;
+            padding: 10px 14px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 8px 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: #B3CFE5;
+        }
+        .chat-markdown code {
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(74, 127, 167, 0.15);
+            color: #F6FAFD;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-size: 11px;
+        }
+        .chat-markdown p { margin-bottom: 6px; }
+        .chat-markdown p:last-child { margin-bottom: 0; }
+        .chat-markdown ul, .chat-markdown ol { margin: 6px 0 6px 16px; }
+        .chat-markdown li { list-style: disc; margin-bottom: 3px; }
+        .chat-markdown strong { color: #F6FAFD; font-weight: 600; }
+
+        /* Scrollbar Customization */
+        ::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(6, 13, 26, 0.5);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1A3D63;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4A7FA7;
+        }
+
+        /* Glowing Pulse Dot */
+        .live-dot {
+            position: relative;
+            display: inline-flex;
+            height: 8px;
+            width: 8px;
+        }
+        .live-dot-ping {
+            position: absolute;
+            display: inline-flex;
+            height: 100%;
+            width: 100%;
+            border-radius: 9999px;
+            background-color: #10B981;
+            opacity: 0.75;
+            animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+        .live-dot-core {
+            position: relative;
+            display: inline-flex;
+            border-radius: 9999px;
+            height: 8px;
+            width: 8px;
+            background-color: #10B981;
+            box-shadow: 0 0 8px #10B981;
+        }
     </style>
 </head>
-<body class="bg-cyber text-slate-100 min-h-screen selection:bg-cyan-400 selection:text-black flex flex-col relative antialiased">
-    <div class="grid-floor"></div>
-    <div class="scanlines"></div>
+<body class="cyber-bg min-h-screen text-cyber-frost flex flex-col relative selection:bg-cyber-steel selection:text-white">
 
-    <!-- Top Navigation Bar -->
-    <header class="border-b border-cyan-400/20 bg-[#05060f]/70 backdrop-blur-2xl sticky top-0 z-50 shadow-[0_1px_30px_-10px_rgba(34,211,238,.5)]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex flex-col sm:flex-row items-center justify-between gap-3">
-            <div class="flex items-center space-x-3 w-full sm:w-auto justify-between sm:justify-start">
-                <div class="flex items-center space-x-3">
-                    <div class="icon-chip shrink-0 !w-10 !h-10 !text-lg">🛡️</div>
-                    <div>
-                        <h1 class="text-sm sm:text-base font-bold text-white tracking-wide flex items-center flex-wrap gap-1.5">
-                            CodeShield Enterprise
-                            <span class="text-[9px] sm:text-[10px] text-cyan-300 border border-cyan-400/40 bg-cyan-400/10 px-2 py-0.5 rounded font-mono font-medium shadow-[0_0_12px_rgba(34,211,238,.25)]">Secure Workspace</span>
-                        </h1>
-                        <p class="text-[11px] sm:text-xs text-slate-400 font-normal">Multi-Vector Security Auditing & AI Workspace</p>
+    <!-- Ambient Visual Glow Orbs -->
+    <div class="ambient-glow -top-40 left-1/4 w-[600px] h-[350px] bg-cyber-steel/15"></div>
+    <div class="ambient-glow top-1/2 -right-40 w-[500px] h-[500px] bg-cyber-surface/30"></div>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-50 border-b border-cyber-mist/10 bg-[#060D1A]/85 backdrop-blur-xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between">
+            
+            <!-- Logo & Brand Badge -->
+            <div class="flex items-center gap-3.5">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyber-surface to-cyber-abyss border border-cyber-mist/20 flex items-center justify-center shadow-[0_0_20px_rgba(74,127,167,0.3)]">
+                    <svg class="w-5 h-5 text-cyber-mist" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        <path d="m9 12 2 2 4-4"/>
+                    </svg>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="font-display font-bold text-base sm:text-lg tracking-tight text-cyber-frost">CodeShield</span>
+                        <span class="font-mono text-[9px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded bg-cyber-steel/20 border border-cyber-mist/25 text-cyber-mist">
+                            v2.5 PRO
+                        </span>
                     </div>
+                    <p class="text-[11px] font-mono text-cyber-mist/60 hidden sm:block">
+                        Proprietary Multi-Vector SAST Engine & AI Copilot
+                    </p>
                 </div>
-                <button onclick="logout()" class="sm:hidden ghost-btn danger text-[11px] px-3 py-1.5 rounded-lg font-medium">Sign Out</button>
             </div>
 
-            <div class="hidden sm:flex items-center space-x-3">
-                <div class="flex items-center space-x-2.5 bg-black/40 px-3.5 py-1.5 rounded-lg border border-white/10 text-xs font-mono">
-                    <span class="status-dot"></span>
-                    <span id="userNameDisplay" class="text-slate-200 font-medium">Developer</span>
+            <!-- Telemetry & Identity Area -->
+            <div class="flex items-center gap-3 sm:gap-4">
+                
+                <!-- System Status HUD -->
+                <div class="hidden md:flex items-center gap-2.5 px-3.5 py-1.5 rounded-lg bg-cyber-abyss/80 border border-cyber-mist/15 text-xs font-mono">
+                    <span class="live-dot">
+                        <span class="live-dot-ping"></span>
+                        <span class="live-dot-core"></span>
+                    </span>
+                    <span class="text-cyber-mist/80">SAST: <span class="text-cyber-frost font-semibold">ARMED</span></span>
+                    <span class="text-cyber-mist/30">|</span>
+                    <span class="text-cyber-mist/80">GEMINI: <span class="text-emerald-400 font-semibold">ONLINE</span></span>
                 </div>
-                <button onclick="logout()" class="ghost-btn danger text-xs px-3.5 py-1.5 rounded-lg font-medium">Sign Out</button>
+
+                <!-- User Profile Display -->
+                <div class="flex items-center gap-2.5 px-3 py-1.5 rounded-lg bg-cyber-surface/30 border border-cyber-mist/15 text-xs">
+                    <div class="w-6 h-6 rounded-md bg-cyber-surface border border-cyber-mist/30 flex items-center justify-center font-mono font-bold text-[11px] text-cyber-mist">
+                        <span id="userAvatar">D</span>
+                    </div>
+                    <span id="userNameDisplay" class="font-medium text-cyber-frost max-w-[120px] truncate">
+                        Developer
+                    </span>
+                </div>
+
+                <!-- Sign Out -->
+                <button onclick="logout()" title="Terminate Session" class="cyber-btn-ghost danger px-3 py-1.5 rounded-lg text-xs font-mono font-medium flex items-center gap-1.5">
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                    <span class="hidden sm:inline">Sign Out</span>
+                </button>
             </div>
+
         </div>
     </header>
 
-    <!-- Main Workspace Container -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-10 flex-1 w-full space-y-6 sm:space-y-8 relative z-10">
+    <!-- Main Workspace -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 flex-1 w-full space-y-6 sm:space-y-8 relative z-10">
 
-        <!-- Hero -->
-        <div class="text-center space-y-3 py-2 sm:py-4">
-            <h2 class="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white max-w-4xl mx-auto leading-[1.1]">
-                <span class="glitch">Build & Audit Code</span>
-                <span class="neon-title block sm:inline">Directly In Your Workspace</span>
-            </h2>
-            <p class="text-xs sm:text-sm text-slate-400 max-w-xl mx-auto leading-relaxed px-2">
-                Automated static analysis combined with composable Gemini AI security intelligence to detect vulnerabilities in real-time.
-            </p>
-        </div>
-
-        <!-- Repository Submission -->
-        <div class="glass-container rounded-2xl p-5 sm:p-8 overflow-hidden">
-            <div class="absolute -top-24 -right-24 w-80 h-80 bg-fuchsia-500/15 rounded-full blur-3xl pointer-events-none"></div>
-            <div class="absolute -bottom-24 -left-24 w-80 h-80 bg-cyan-400/10 rounded-full blur-3xl pointer-events-none"></div>
-            <div class="relative z-10">
-                <div class="flex items-center justify-between mb-3">
-                    <h3 class="text-sm sm:text-base font-bold text-white flex items-center gap-3 tracking-wide">
-                        <span class="icon-chip">📦</span>
-                        <span>Repository Submission</span>
-                    </h3>
-                    <span class="text-[10px] text-cyan-300 border border-cyan-400/40 bg-cyan-400/10 px-2.5 py-0.5 rounded font-mono font-semibold">ZIP ARCHIVE</span>
-                </div>
-                <p class="text-xs text-slate-400 mb-5 max-w-2xl">Upload your project repository to run automated static vulnerability checks and record encrypted session audit logs.</p>
-                <form id="uploadForm" class="flex flex-col md:flex-row items-center gap-3 sm:gap-4">
-                    <div class="relative w-full">
-                        <input type="file" id="projectZip" name="projectZip" accept=".zip" required
-                            class="block w-full text-xs text-slate-300 bg-black/40 border border-cyan-400/30 rounded-xl p-2 cursor-pointer focus:outline-none">
+        <!-- Executive Metrics HUD (Interactive Security Health Score) -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+            
+            <!-- Security Health Grade -->
+            <div class="cyber-card rounded-xl p-4 sm:p-5 flex items-center justify-between">
+                <div>
+                    <span class="text-[10px] sm:text-xs font-mono uppercase tracking-wider text-cyber-mist/60 block mb-1">
+                        Security Health Index
+                    </span>
+                    <div class="flex items-baseline gap-2">
+                        <span id="hudGrade" class="font-display text-2xl sm:text-3xl font-bold text-emerald-400">
+                            A+
+                        </span>
+                        <span id="hudStatusText" class="text-[11px] font-mono text-emerald-300/80">OPTIMAL</span>
                     </div>
-                    <button type="submit" id="scanBtn"
-                        class="w-full md:w-auto datacore-btn px-7 sm:px-9 py-3.5 text-xs shrink-0 flex items-center justify-center space-x-2">
-                        <span>⚡ Execute Security Scan</span>
-                    </button>
-                </form>
+                </div>
+                <div class="w-11 h-11 rounded-xl bg-cyber-abyss border border-cyber-mist/20 flex items-center justify-center text-cyber-mist">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                </div>
             </div>
+
+            <!-- Total Recorded Audits -->
+            <div class="cyber-card rounded-xl p-4 sm:p-5 flex items-center justify-between">
+                <div>
+                    <span class="text-[10px] sm:text-xs font-mono uppercase tracking-wider text-cyber-mist/60 block mb-1">
+                        Encrypted Audits
+                    </span>
+                    <div class="flex items-baseline gap-2">
+                        <span id="hudTotalScans" class="font-display text-2xl sm:text-3xl font-bold text-cyber-frost">
+                            0
+                        </span>
+                        <span class="text-[11px] font-mono text-cyber-mist/60">SESSIONS</span>
+                    </div>
+                </div>
+                <div class="w-11 h-11 rounded-xl bg-cyber-abyss border border-cyber-mist/20 flex items-center justify-center text-cyber-mist">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Active Detection Vector Count -->
+            <div class="cyber-card rounded-xl p-4 sm:p-5 flex items-center justify-between">
+                <div>
+                    <span class="text-[10px] sm:text-xs font-mono uppercase tracking-wider text-cyber-mist/60 block mb-1">
+                        Detection Vectors
+                    </span>
+                    <div class="flex items-baseline gap-2">
+                        <span class="font-display text-2xl sm:text-3xl font-bold text-cyber-frost">
+                            7
+                        </span>
+                        <span class="text-[11px] font-mono text-cyber-mist/60">PATTERNS</span>
+                    </div>
+                </div>
+                <div class="w-11 h-11 rounded-xl bg-cyber-abyss border border-cyber-mist/20 flex items-center justify-center text-cyber-mist">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="22" y1="12" x2="18" y2="12"></line>
+                        <line x1="6" y1="12" x2="2" y2="12"></line>
+                        <line x1="12" y1="6" x2="12" y2="2"></line>
+                        <line x1="12" y1="22" x2="12" y2="18"></line>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- AI Engine Intelligence -->
+            <div class="cyber-card rounded-xl p-4 sm:p-5 flex items-center justify-between">
+                <div>
+                    <span class="text-[10px] sm:text-xs font-mono uppercase tracking-wider text-cyber-mist/60 block mb-1">
+                        Copilot Intelligence
+                    </span>
+                    <div class="flex items-baseline gap-2">
+                        <span class="font-display text-xl sm:text-2xl font-bold text-cyber-mist">
+                            Gemini 2.5
+                        </span>
+                    </div>
+                </div>
+                <div class="w-11 h-11 rounded-xl bg-cyber-surface/40 border border-cyber-steel/40 flex items-center justify-center text-cyber-mist shadow-[0_0_15px_rgba(74,127,167,0.3)]">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                    </svg>
+                </div>
+            </div>
+
         </div>
 
-        <!-- Loading -->
-        <div id="loading" class="hidden text-center py-12 glass-container rounded-2xl">
-            <div class="inline-block animate-spin rounded-full h-10 w-10 border-[3px] border-cyan-400 border-t-transparent mb-4 shadow-[0_0_24px_rgba(34,211,238,.6)]"></div>
-            <p class="text-cyan-200 text-xs font-semibold tracking-wide font-mono">Executing static analyzer across workspace files...</p>
-            <p class="text-slate-500 text-[11px] mt-1 font-mono">Isolating audit results to user session</p>
+        <!-- Repository Upload & Audit Engine Section -->
+        <div class="cyber-card corner-notch rounded-2xl p-5 sm:p-7">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-5 border-b border-cyber-mist/10 pb-4">
+                <div>
+                    <div class="flex items-center gap-2 mb-1">
+                        <h2 class="font-display text-lg sm:text-xl font-bold text-cyber-frost tracking-tight">
+                            Target Repository Audit
+                        </h2>
+                        <span class="font-mono text-[10px] px-2 py-0.5 rounded bg-cyber-steel/20 border border-cyber-mist/30 text-cyber-mist font-semibold uppercase">
+                            STREAM PARSER
+                        </span>
+                    </div>
+                    <p class="text-xs text-cyber-mist/70 font-sans">
+                        Deploy local static code analysis across archive contents. Secrets, injection sinks, and insecure protocols are detected in O(1) streaming time.
+                    </p>
+                </div>
+                <div class="flex items-center gap-2 self-start md:self-auto">
+                    <span class="text-[11px] font-mono text-cyber-mist/60 flex items-center gap-1.5">
+                        <svg class="w-3.5 h-3.5 text-cyber-steel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                        </svg>
+                        Encrypted File Extraction
+                    </span>
+                </div>
+            </div>
+
+            <form id="uploadForm" class="space-y-4">
+                
+                <!-- Interactive Drag and Drop Zone -->
+                <div id="dropzone" class="cyber-dropzone rounded-xl p-6 sm:p-8 text-center cursor-pointer relative group">
+                    <input type="file" id="projectZip" name="projectZip" accept=".zip" required class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10">
+                    
+                    <div id="dropzoneEmpty" class="space-y-3">
+                        <div class="w-12 h-12 mx-auto rounded-xl bg-cyber-surface/60 border border-cyber-mist/20 flex items-center justify-center text-cyber-mist group-hover:scale-105 group-hover:border-cyber-steel transition-all duration-300 shadow-[0_0_20px_rgba(74,127,167,0.2)]">
+                            <svg class="w-6 h-6 text-cyber-mist" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="17 8 12 3 7 8"/>
+                                <line x1="12" y1="3" x2="12" y2="15"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-xs sm:text-sm font-display font-medium text-cyber-frost">
+                                <span class="text-cyber-mist font-semibold underline decoration-cyber-steel underline-offset-4">Click to browse</span> or drag & drop ZIP archive
+                            </p>
+                            <p class="text-[11px] font-mono text-cyber-mist/50 mt-1">
+                                Supported: .ZIP archives containing source code (Node.js, Python, Configs, etc.)
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Selected File State -->
+                    <div id="dropzoneFilled" class="hidden items-center justify-between p-3.5 rounded-lg bg-cyber-abyss/90 border border-cyber-steel/40 text-left">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-cyber-surface border border-cyber-mist/20 flex items-center justify-center text-cyber-mist">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                </svg>
+                            </div>
+                            <div>
+                                <p id="selectedFileName" class="text-xs font-mono font-semibold text-cyber-frost">archive.zip</p>
+                                <p id="selectedFileSize" class="text-[10px] font-mono text-cyber-mist/60">0 KB</p>
+                            </div>
+                        </div>
+                        <span class="text-[11px] font-mono text-cyber-steel hover:text-cyber-frost transition-colors px-3 py-1 rounded bg-cyber-surface/60">
+                            Change File
+                        </span>
+                    </div>
+
+                </div>
+
+                <!-- Submit Bar -->
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-1">
+                    <div class="text-[11px] font-mono text-cyber-mist/60 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-cyber-steel"></span>
+                        <span>Multi-user data isolation strictly active</span>
+                    </div>
+
+                    <button type="submit" id="scanBtn" class="cyber-btn-primary w-full sm:w-auto px-8 py-3 rounded-xl font-display font-semibold text-xs tracking-wide uppercase flex items-center justify-center gap-2 shrink-0">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                        </svg>
+                        <span>Execute Security Scan</span>
+                    </button>
+                </div>
+
+            </form>
+
+            <!-- Loading Telemetry State -->
+            <div id="loading" class="hidden mt-6 pt-6 border-t border-cyber-mist/10">
+                <div class="p-6 rounded-xl bg-cyber-abyss/80 border border-cyber-mist/20 text-center space-y-3">
+                    <div class="inline-block relative">
+                        <div class="w-10 h-10 border-2 border-cyber-steel border-t-transparent rounded-full animate-spin"></div>
+                    </div>
+                    <div>
+                        <p class="font-mono text-xs font-semibold text-cyber-frost tracking-wide">
+                            PARSING WORKSPACE & RUNNING VECTOR MATCHERS...
+                        </p>
+                        <p class="font-mono text-[11px] text-cyber-mist/60 mt-1">
+                            Filtering noise (.git, node_modules) and evaluating AST tokens
+                        </p>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
-        <!-- Grid Layout -->
+        <!-- Main Workspace Grid: Audit Explorer (Left) & Gemini Copilot (Right) -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
-
-            <!-- Left: Audit Logs & Results -->
+            
+            <!-- Left 2 Cols: History View / Scan Results Explorer -->
             <div class="lg:col-span-2 space-y-6">
 
-                <div id="historyCard" class="glass-container rounded-2xl p-5 sm:p-6 space-y-4 min-h-[450px] sm:min-h-[500px] flex flex-col justify-between">
+                <!-- 1. Audit History View -->
+                <div id="historyCard" class="cyber-card corner-notch rounded-2xl p-5 sm:p-6 space-y-4 min-h-[480px] flex flex-col justify-between">
                     <div class="space-y-4">
-                        <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-white/10 pb-4 gap-3">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-cyber-mist/10 pb-4 gap-3">
                             <div class="flex items-center gap-3">
-                                <span class="icon-chip">📁</span>
+                                <div class="w-9 h-9 rounded-xl bg-cyber-surface border border-cyber-mist/20 flex items-center justify-center text-cyber-mist">
+                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                                    </svg>
+                                </div>
                                 <div>
-                                    <h3 class="text-sm font-bold text-white tracking-wide">Secure Audit Logs</h3>
-                                    <p class="text-[11px] sm:text-xs text-slate-400 mt-0.5">Confidential scan records tied to your account</p>
+                                    <h3 class="font-display font-bold text-sm sm:text-base text-cyber-frost tracking-tight">
+                                        Audit Records & History
+                                    </h3>
+                                    <p class="text-xs text-cyber-mist/60 font-sans">
+                                        Confidential session records tied to your authenticated identity
+                                    </p>
                                 </div>
                             </div>
-                            <span id="scanCountBadge" class="self-start sm:self-auto text-[10px] text-cyan-300 border border-cyan-400/40 bg-cyan-400/10 px-3 py-1 rounded font-mono font-semibold shadow-[0_0_14px_rgba(34,211,238,.25)]">0 Saved Scans</span>
+                            <span id="scanCountBadge" class="self-start sm:self-auto font-mono text-[11px] font-semibold text-cyber-mist border border-cyber-steel/40 bg-cyber-steel/15 px-3 py-1 rounded-lg">
+                                0 Audits Saved
+                            </span>
                         </div>
-                        <div id="scanHistoryList" class="space-y-3 max-h-[350px] overflow-y-auto pr-1">
-                            <div class="glass-inner-card rounded-xl p-8 sm:p-12 text-center border-dashed">
-                                <p class="text-xs text-slate-500 font-medium">No previous scan records found for your account. Upload a ZIP archive above to start.</p>
+
+                        <!-- Past Scan List -->
+                        <div id="scanHistoryList" class="space-y-2.5 max-h-[380px] overflow-y-auto pr-1">
+                            <div class="rounded-xl p-10 text-center border border-dashed border-cyber-mist/15 bg-cyber-abyss/40">
+                                <svg class="w-8 h-8 mx-auto text-cyber-mist/40 mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                                    <path d="M6 8h.01M10 8h.01"></path>
+                                </svg>
+                                <p class="text-xs text-cyber-mist/60 font-medium">No previous scan records discovered. Submit an archive above to begin.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="border-t border-white/10 pt-3 text-[10px] sm:text-[11px] text-slate-500 font-mono flex flex-col sm:flex-row justify-between items-center gap-2">
-                        <span class="flex items-center gap-2"><span class="status-dot !w-1.5 !h-1.5"></span> Encrypted Account Session</span>
-                        <span>Strict Multi-User Isolation</span>
+
+                    <div class="border-t border-cyber-mist/10 pt-3 text-[10px] font-mono text-cyber-mist/50 flex flex-col sm:flex-row justify-between items-center gap-2">
+                        <span class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                            ISOLATED USER STORAGE
+                        </span>
+                        <span>RETENTION POLICY: ACTIVE SESSION</span>
                     </div>
                 </div>
 
-                <div id="resultsContainer" class="hidden glass-container rounded-2xl overflow-hidden min-h-[450px] sm:min-h-[500px] flex flex-col justify-between">
+                <!-- 2. Detailed Findings View -->
+                <div id="resultsContainer" class="hidden cyber-card corner-notch rounded-2xl overflow-hidden min-h-[480px] flex flex-col justify-between">
                     <div>
-                        <div class="panel-head px-4 sm:px-6 py-4 border-b border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <!-- Header & Navigation -->
+                        <div class="px-5 sm:px-6 py-4 border-b border-cyber-mist/10 bg-cyber-panel/50 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                             <div>
-                                <h3 id="resultTitle" class="font-bold text-white text-sm tracking-wide">Vulnerability Audit Log</h3>
-                                <p id="resultSub" class="text-xs text-slate-400 mt-0.5 font-mono">Scan results ready for review</p>
+                                <div class="flex items-center gap-2">
+                                    <h3 id="resultTitle" class="font-display font-bold text-sm sm:text-base text-cyber-frost tracking-tight">
+                                        Audit Report
+                                    </h3>
+                                    <span id="resultTotalBadge" class="badge-critical font-mono text-[10px] font-bold px-2 py-0.5 rounded">
+                                        0 ISSUES
+                                    </span>
+                                </div>
+                                <p id="resultSub" class="text-[11px] text-cyber-mist/60 font-mono mt-0.5">
+                                    Scanned on --
+                                </p>
                             </div>
                             <div class="flex items-center gap-2">
-                                <button onclick="showHistoryView()" class="ghost-btn text-xs font-semibold px-3.5 py-1.5 rounded-lg">⬅ Back</button>
-                                <button onclick="downloadJSON()" class="ghost-btn text-xs font-semibold px-3.5 py-1.5 rounded-lg !text-cyan-300 !border-cyan-400/40">📥 Export</button>
+                                <button onclick="showHistoryView()" class="cyber-btn-ghost px-3 py-1.5 rounded-lg text-xs font-mono font-medium flex items-center gap-1.5">
+                                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                                        <polyline points="12 19 5 12 12 5"></polyline>
+                                    </svg>
+                                    <span>Back</span>
+                                </button>
+                                <button onclick="downloadJSON()" class="cyber-btn-ghost !border-cyber-steel/50 !text-cyber-mist px-3 py-1.5 rounded-lg text-xs font-mono font-medium flex items-center gap-1.5">
+                                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                        <polyline points="7 10 12 15 17 10"></polyline>
+                                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                                    </svg>
+                                    <span>Export JSON</span>
+                                </button>
                             </div>
                         </div>
+
+                        <!-- Live Category & Search Filter Bar -->
+                        <div class="p-3 sm:p-4 border-b border-cyber-mist/10 bg-cyber-abyss/60 flex flex-col sm:flex-row items-center justify-between gap-3">
+                            <!-- Category Filter Tabs -->
+                            <div class="flex items-center gap-1.5 overflow-x-auto w-full sm:w-auto text-[11px] font-mono pb-1 sm:pb-0">
+                                <button onclick="setFindingFilter('all')" id="filterAll" class="filter-tab px-2.5 py-1 rounded bg-cyber-surface text-cyber-frost border border-cyber-mist/20 font-semibold">
+                                    All (<span id="countAll">0</span>)
+                                </button>
+                                <button onclick="setFindingFilter('critical')" id="filterCritical" class="filter-tab px-2.5 py-1 rounded text-cyber-mist/70 hover:text-cyber-mist">
+                                    Secrets (<span id="countCritical">0</span>)
+                                </button>
+                                <button onclick="setFindingFilter('injection')" id="filterInjection" class="filter-tab px-2.5 py-1 rounded text-cyber-mist/70 hover:text-cyber-mist">
+                                    Injection (<span id="countInjection">0</span>)
+                                </button>
+                                <button onclick="setFindingFilter('network')" id="filterNetwork" class="filter-tab px-2.5 py-1 rounded text-cyber-mist/70 hover:text-cyber-mist">
+                                    Network (<span id="countNetwork">0</span>)
+                                </button>
+                                <button onclick="setFindingFilter('todo')" id="filterTodo" class="filter-tab px-2.5 py-1 rounded text-cyber-mist/70 hover:text-cyber-mist">
+                                    Debt (<span id="countTodo">0</span>)
+                                </button>
+                            </div>
+
+                            <!-- Live Search Filter -->
+                            <div class="relative w-full sm:w-56">
+                                <span class="absolute inset-y-0 left-0 flex items-center pl-2.5 pointer-events-none text-cyber-mist/40">
+                                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="11" cy="11" r="8"></circle>
+                                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                    </svg>
+                                </span>
+                                <input type="text" id="findingSearch" oninput="filterFindingsLive()" placeholder="Filter findings..."
+                                    class="w-full bg-cyber-base/80 border border-cyber-mist/15 rounded-lg pl-8 pr-3 py-1.5 text-[11px] font-mono text-cyber-frost placeholder-cyber-mist/30 focus:outline-none focus:border-cyber-steel">
+                            </div>
+                        </div>
+
+                        <!-- Findings Table -->
                         <div class="overflow-x-auto max-h-[380px]">
-                            <table class="w-full text-left border-collapse min-w-[500px]">
-                                <thead class="sticky top-0 bg-[#070918]/95 backdrop-blur-md text-cyan-300/80 text-[10px] uppercase tracking-wider font-semibold border-b border-cyan-400/20 font-mono">
+                            <table class="w-full text-left border-collapse min-w-[550px]">
+                                <thead class="sticky top-0 bg-[#060D1A]/95 backdrop-blur-md text-cyber-mist text-[10px] uppercase font-mono tracking-wider border-b border-cyber-mist/15">
                                     <tr>
-                                        <th class="py-3 px-4 sm:px-5">Vulnerability Type</th>
-                                        <th class="py-3 px-4 sm:px-5">File Path & Line</th>
+                                        <th class="py-3 px-4 sm:px-5">Severity & Type</th>
+                                        <th class="py-3 px-4 sm:px-5">Target File : Line</th>
                                         <th class="py-3 px-4 sm:px-5">Detected Snippet</th>
+                                        <th class="py-3 px-4 sm:px-5 text-right">Copilot Action</th>
                                     </tr>
                                 </thead>
-                                <tbody id="findingsTableBody" class="divide-y divide-white/5 text-xs text-slate-300 font-normal">
+                                <tbody id="findingsTableBody" class="divide-y divide-cyber-mist/5 text-xs text-cyber-frost">
+                                    <!-- Rendered dynamically -->
                                 </tbody>
                             </table>
                         </div>
                     </div>
+
+                    <!-- Bottom Status -->
+                    <div class="p-3 border-t border-cyber-mist/10 bg-cyber-panel/40 text-[10px] font-mono text-cyber-mist/50 flex justify-between items-center">
+                        <span>One-click AI remediation available for each detected threat</span>
+                        <span id="findingsShowingText">Showing all findings</span>
+                    </div>
                 </div>
 
             </div>
 
-            <!-- Right: Gemini Chatbot -->
-            <div id="chatCard" class="glass-container rounded-2xl flex flex-col h-[480px] sm:h-[500px] overflow-hidden">
-                <div class="panel-head px-4 sm:px-5 py-4 border-b border-white/10 flex items-center justify-between">
-                    <div class="flex items-center space-x-3">
-                        <div class="icon-chip !border-fuchsia-400/40 !bg-fuchsia-400/10 !shadow-[0_0_16px_rgba(244,114,182,.3)]">🤖</div>
+            <!-- Right Col: Gemini Security AI Copilot -->
+            <div id="chatCard" class="cyber-card corner-notch rounded-2xl flex flex-col h-[520px] overflow-hidden">
+                
+                <!-- Terminal Header -->
+                <div class="px-4 py-3.5 border-b border-cyber-mist/10 bg-cyber-panel/50 flex items-center justify-between">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-7 h-7 rounded-lg bg-cyber-surface border border-cyber-mist/20 flex items-center justify-center text-cyber-mist">
+                            <svg class="w-4 h-4 text-cyber-mist" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2a8 8 0 0 0-8 8c0 5 8 12 8 12s8-7 8-12a8 8 0 0 0-8-8z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                        </div>
                         <div>
-                            <h3 class="font-bold text-white text-xs tracking-wide flex items-center gap-2">Gemini AI Assistant <span class="status-dot !w-1.5 !h-1.5"></span></h3>
-                            <p class="text-[10px] text-fuchsia-300 font-mono">Composable Security API</p>
+                            <div class="flex items-center gap-1.5">
+                                <h3 class="font-display font-bold text-xs text-cyber-frost tracking-tight">Gemini AI Copilot</h3>
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                            </div>
+                            <p class="text-[10px] font-mono text-cyber-mist/60">gemini-2.5-flash // SAST Advisor</p>
                         </div>
                     </div>
-                    <button onclick="clearChat()" class="ghost-btn danger text-[10px] px-2.5 py-1 rounded-md font-medium">Clear</button>
+                    
+                    <button onclick="clearChat()" class="cyber-btn-ghost danger text-[10px] px-2.5 py-1 rounded font-mono font-medium">
+                        Clear Log
+                    </button>
                 </div>
 
-                <div id="chatMessages" class="flex-1 p-3 sm:p-4 overflow-y-auto flex flex-col gap-3 text-xs bg-black/25">
-                    <div class="msg-ai">
-                        👋 Welcome! I am your Gemini AI Assistant. Ask me any question below regarding code fixes, security advisories, or bug remediation!
+                <!-- Quick Prompt Chips -->
+                <div class="p-2.5 border-b border-cyber-mist/10 bg-cyber-abyss/40 flex items-center gap-1.5 overflow-x-auto text-[10px] font-mono">
+                    <button onclick="askPresetPrompt('Explain SQL Injection risk and show parameterized query fix')" class="shrink-0 px-2.5 py-1 rounded-full bg-cyber-surface/50 hover:bg-cyber-surface border border-cyber-mist/15 text-cyber-mist transition-colors">
+                        🛡️ Fix SQL Injection
+                    </button>
+                    <button onclick="askPresetPrompt('How to safely store and rotate AWS credentials in production?')" class="shrink-0 px-2.5 py-1 rounded-full bg-cyber-surface/50 hover:bg-cyber-surface border border-cyber-mist/15 text-cyber-mist transition-colors">
+                        🔑 AWS Key Best Practices
+                    </button>
+                    <button onclick="askPresetPrompt('Why is plain HTTP insecure and how do I enforce HTTPS?')" class="shrink-0 px-2.5 py-1 rounded-full bg-cyber-surface/50 hover:bg-cyber-surface border border-cyber-mist/15 text-cyber-mist transition-colors">
+                        🌐 Enforce HTTPS
+                    </button>
+                </div>
+
+                <!-- Chat Stream Area -->
+                <div id="chatMessages" class="flex-1 p-3.5 sm:p-4 overflow-y-auto flex flex-col gap-3 text-xs bg-cyber-base/40">
+                    <div class="chat-ai-bubble p-3.5 rounded-xl rounded-tl-sm text-cyber-frost leading-relaxed max-w-[94%]">
+                        <div class="flex items-center gap-1.5 mb-1 text-[10px] font-mono text-cyber-mist/70">
+                            <span class="w-1.5 h-1.5 rounded-full bg-cyber-steel"></span>
+                            <span>COPILOT INTELLIGENCE</span>
+                        </div>
+                        <p class="text-xs">
+                            👋 Greetings, Engineer. I am your <strong>CodeShield AI Copilot</strong>. I analyze SAST telemetry, explain vulnerabilities (CWE/OWASP), and formulate remediations. Ask any question below or click <strong>Fix with Copilot</strong> on any scan finding.
+                        </p>
                     </div>
                 </div>
 
-                <form id="chatForm" onsubmit="sendChatMessage(event)" class="p-3 border-t border-white/10 bg-black/40 flex gap-2">
-                    <input type="text" id="chatInput" placeholder="Ask Gemini security questions..." required autocomplete="off"
-                        class="flex-1 bg-black/40 border border-white/10 rounded-lg px-3.5 py-2.5 text-xs text-slate-100 placeholder-slate-500 focus:outline-none font-mono">
-                    <button type="submit" class="datacore-btn px-5 py-2.5 text-xs shrink-0">Send</button>
+                <!-- Chat Input Console -->
+                <form id="chatForm" onsubmit="sendChatMessage(event)" class="p-3 border-t border-cyber-mist/10 bg-cyber-abyss/80 flex gap-2">
+                    <input type="text" id="chatInput" placeholder="Ask security question or paste code..." required autocomplete="off"
+                        class="flex-1 bg-cyber-base/90 border border-cyber-mist/15 rounded-xl px-3.5 py-2.5 text-xs text-cyber-frost placeholder-cyber-mist/40 focus:outline-none focus:border-cyber-steel font-mono">
+                    
+                    <button type="submit" id="chatSubmitBtn" class="cyber-btn-primary px-4 py-2.5 rounded-xl text-xs font-mono font-semibold shrink-0 flex items-center justify-center gap-1.5">
+                        <span>Send</span>
+                        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                    </button>
                 </form>
+
             </div>
 
         </div>
 
     </main>
 
-    <!-- Script Logic -->
+    <!-- Custom Floating Cyber Toast Notification -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="cyber-card rounded-xl px-4 py-3 flex items-center gap-2.5 shadow-2xl border border-cyber-mist/30">
+            <span id="toastIcon" class="text-cyber-mist">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+            </span>
+            <span id="toastText" class="text-xs font-mono text-cyber-frost font-medium">Notification message</span>
+        </div>
+    </div>
+
+    <!-- Script Application Logic -->
     <script>
+        // Authentication guard
         const user = JSON.parse(localStorage.getItem('codeshield_user'));
         if (!user) {
             window.location.href = '/login.html';
         } else {
-            document.getElementById('userNameDisplay').textContent = user.name;
+            document.getElementById('userNameDisplay').textContent = user.name || 'Developer';
+            document.getElementById('userAvatar').textContent = (user.name ? user.name[0] : 'D').toUpperCase();
         }
 
         function logout() {
@@ -346,10 +859,65 @@
             window.location.href = '/login.html';
         }
 
+        function showToast(message, isError = false) {
+            const toast = document.getElementById('toast');
+            const toastText = document.getElementById('toastText');
+            toastText.textContent = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+                toast.classList.remove('translate-y-0', 'opacity-100');
+            }, 3200);
+        }
+
         let allScans = [];
         let currentFindings = [];
         let currentScanFilename = '';
+        let currentFilter = 'all';
 
+        // Drag and Drop File handling
+        const dropzone = document.getElementById('dropzone');
+        const projectZip = document.getElementById('projectZip');
+        const dropzoneEmpty = document.getElementById('dropzoneEmpty');
+        const dropzoneFilled = document.getElementById('dropzoneFilled');
+        const selectedFileName = document.getElementById('selectedFileName');
+        const selectedFileSize = document.getElementById('selectedFileSize');
+
+        projectZip.addEventListener('change', () => {
+            if (projectZip.files.length > 0) {
+                const file = projectZip.files[0];
+                selectedFileName.textContent = file.name;
+                selectedFileSize.textContent = formatBytes(file.size);
+                dropzoneEmpty.classList.add('hidden');
+                dropzoneFilled.classList.remove('hidden');
+                dropzoneFilled.classList.add('flex');
+            }
+        });
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropzone.addEventListener(eventName, (e) => {
+                e.preventDefault();
+                dropzone.classList.add('drag-active');
+            }, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropzone.addEventListener(eventName, (e) => {
+                e.preventDefault();
+                dropzone.classList.remove('drag-active');
+            }, false);
+        });
+
+        function formatBytes(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
+        }
+
+        // Fetch User Scan History
         async function fetchScanHistory() {
             try {
                 const res = await fetch(`/api/scans?email=${encodeURIComponent(user.email)}`);
@@ -357,38 +925,99 @@
                 if (data.success) {
                     allScans = data.scans;
                     renderScanHistory(allScans);
+                    updateHudMetrics(allScans);
                 }
             } catch (err) {
                 console.error("Failed to fetch scan history:", err);
             }
         }
 
+        function updateHudMetrics(scans) {
+            document.getElementById('hudTotalScans').textContent = scans.length;
+            
+            if (scans.length === 0) {
+                document.getElementById('hudGrade').textContent = 'A+';
+                document.getElementById('hudGrade').className = 'font-display text-2xl sm:text-3xl font-bold text-emerald-400';
+                document.getElementById('hudStatusText').textContent = 'OPTIMAL';
+                document.getElementById('hudStatusText').className = 'text-[11px] font-mono text-emerald-300/80';
+                return;
+            }
+
+            // Calculate aggregate health grade based on the latest scan
+            const latestScan = scans[0];
+            const criticals = (latestScan.findings || []).filter(f => 
+                f.type.includes('Access Key') || f.type.includes('Token') || f.type.includes('Password') || f.type.includes('SQL')
+            ).length;
+
+            let grade = 'A';
+            let gradeClass = 'text-emerald-400';
+            let statusText = 'SAFE';
+
+            if (criticals > 5) {
+                grade = 'F';
+                gradeClass = 'text-rose-500';
+                statusText = 'CRITICAL DEFICIT';
+            } else if (criticals > 2) {
+                grade = 'D';
+                gradeClass = 'text-orange-400';
+                statusText = 'ELEVATED RISK';
+            } else if (criticals > 0) {
+                grade = 'B';
+                gradeClass = 'text-amber-400';
+                statusText = 'MODERATE';
+            } else if (latestScan.total > 0) {
+                grade = 'A';
+                gradeClass = 'text-cyber-mist';
+                statusText = 'MINOR DEBT';
+            } else {
+                grade = 'A+';
+                gradeClass = 'text-emerald-400';
+                statusText = 'OPTIMAL';
+            }
+
+            const gradeElem = document.getElementById('hudGrade');
+            gradeElem.textContent = grade;
+            gradeElem.className = `font-display text-2xl sm:text-3xl font-bold ${gradeClass}`;
+            document.getElementById('hudStatusText').textContent = statusText;
+        }
+
         function renderScanHistory(scans) {
             const list = document.getElementById('scanHistoryList');
-            document.getElementById('scanCountBadge').textContent = `${scans.length} Saved Scans`;
+            document.getElementById('scanCountBadge').textContent = `${scans.length} Audits Saved`;
 
             if (scans.length === 0) {
                 list.innerHTML = `
-                    <div class="glass-inner-card rounded-xl p-8 sm:p-12 text-center border-dashed">
-                        <p class="text-xs text-slate-500 font-medium">No previous scan records found for your account. Upload a ZIP archive above to start.</p>
+                    <div class="rounded-xl p-10 text-center border border-dashed border-cyber-mist/15 bg-cyber-abyss/40">
+                        <svg class="w-8 h-8 mx-auto text-cyber-mist/40 mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                            <path d="M6 8h.01M10 8h.01"></path>
+                        </svg>
+                        <p class="text-xs text-cyber-mist/60 font-medium">No previous scan records discovered. Submit an archive above to begin.</p>
                     </div>`;
                 return;
             }
 
             list.innerHTML = '';
             scans.forEach((scan) => {
-                const badgeColor = scan.total > 0 ? 'chip-bad' : 'chip-ok';
+                const badgeClass = scan.total > 0 ? 'badge-critical' : 'badge-success';
+                const badgeText = scan.total > 0 ? `${scan.total} Threats Detected` : `Zero Vulnerabilities`;
+                
                 const item = `
-                    <div onclick="loadScanResult(${scan.id})" class="scan-item glass-inner-card rounded-xl p-3.5 pl-4 flex items-center justify-between cursor-pointer">
+                    <div onclick="loadScanResult(${scan.id})" class="history-item rounded-xl p-3.5 pl-4 flex items-center justify-between cursor-pointer">
                         <div class="space-y-1">
-                            <p class="text-xs font-semibold text-slate-100 flex items-center gap-2">
-                                <span>📦 ${scan.filename}</span>
+                            <p class="text-xs font-mono font-semibold text-cyber-frost flex items-center gap-2">
+                                <svg class="w-3.5 h-3.5 text-cyber-steel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                </svg>
+                                <span>${escapeHtml(scan.filename)}</span>
                             </p>
-                            <p class="text-[10px] text-slate-400 font-mono">Recorded: ${scan.timestamp}</p>
+                            <p class="text-[10px] text-cyber-mist/50 font-mono">Timestamp: ${scan.timestamp}</p>
                         </div>
                         <div class="flex items-center gap-3">
-                            <span class="chip ${badgeColor}">${scan.total} Issues</span>
-                            <span class="arrow text-slate-500 text-sm">➔</span>
+                            <span class="font-mono text-[10px] font-semibold px-2.5 py-0.5 rounded ${badgeClass}">
+                                ${badgeText}
+                            </span>
+                            <span class="text-cyber-mist/40 hover:text-cyber-mist text-xs">➔</span>
                         </div>
                     </div>
                 `;
@@ -402,34 +1031,152 @@
 
             currentFindings = scan.findings;
             currentScanFilename = scan.filename;
+            currentFilter = 'all';
             displayFindings(scan.findings, scan.filename, scan.timestamp);
         }
 
-        function displayFindings(findings, filename, timestamp) {
-            const findingsTableBody = document.getElementById('findingsTableBody');
-            findingsTableBody.innerHTML = '';
-
-            document.getElementById('resultTitle').textContent = `Audit Report: ${filename}`;
-            document.getElementById('resultSub').textContent = `Scanned on ${timestamp} — Total Threats: ${findings.length}`;
-
-            if (findings.length === 0) {
-                findingsTableBody.innerHTML = `<tr><td colspan="3" class="py-10 px-5 text-center text-emerald-300 font-medium" style="text-shadow:0 0 14px rgba(52,211,153,.6)">✅ Safe Repository! No vulnerabilities detected.</td></tr>`;
-            } else {
-                findings.forEach((f) => {
-                    const badgeColor = f.type === 'TODO Comment' ? 'chip-warn' : 'chip-bad';
-                    const row = `
-                        <tr class="findings-row">
-                            <td class="py-3.5 px-4 sm:px-5"><span class="chip ${badgeColor}">${f.type}</span></td>
-                            <td class="py-3.5 px-4 sm:px-5 font-mono text-cyan-300 text-xs whitespace-nowrap">${f.file} <span class="text-fuchsia-400">(L${f.line})</span></td>
-                            <td class="py-3.5 px-4 sm:px-5"><code class="snippet font-mono">${escapeHtml(f.content)}</code></td>
-                        </tr>
-                    `;
-                    findingsTableBody.innerHTML += row;
-                });
+        function getSeverityBadge(type) {
+            if (type.includes('AWS') || type.includes('GitHub') || type.includes('Password') || type.includes('API Key')) {
+                return { badgeClass: 'badge-critical', label: 'CRITICAL SECRET' };
             }
+            if (type.includes('SQL')) {
+                return { badgeClass: 'badge-critical', label: 'CRITICAL INJECTION' };
+            }
+            if (type.includes('HTTP')) {
+                return { badgeClass: 'badge-warning', label: 'INSECURE PROTOCOL' };
+            }
+            return { badgeClass: 'badge-info', label: 'TECHNICAL DEBT' };
+        }
+
+        function displayFindings(findings, filename, timestamp) {
+            document.getElementById('resultTitle').textContent = `Audit Report: ${filename}`;
+            document.getElementById('resultSub').textContent = `Scanned: ${timestamp} // Total Threats Detected: ${findings.length}`;
+            
+            const badge = document.getElementById('resultTotalBadge');
+            badge.textContent = `${findings.length} ISSUES`;
+            badge.className = findings.length > 0 ? 'badge-critical font-mono text-[10px] font-bold px-2 py-0.5 rounded' : 'badge-success font-mono text-[10px] font-bold px-2 py-0.5 rounded';
+
+            // Update category counts
+            const secrets = findings.filter(f => f.type.includes('Key') || f.type.includes('Token') || f.type.includes('Password')).length;
+            const injections = findings.filter(f => f.type.includes('SQL')).length;
+            const networks = findings.filter(f => f.type.includes('HTTP')).length;
+            const todos = findings.filter(f => f.type.includes('TODO')).length;
+
+            document.getElementById('countAll').textContent = findings.length;
+            document.getElementById('countCritical').textContent = secrets;
+            document.getElementById('countInjection').textContent = injections;
+            document.getElementById('countNetwork').textContent = networks;
+            document.getElementById('countTodo').textContent = todos;
+
+            renderFindingsTable(findings);
 
             document.getElementById('historyCard').classList.add('hidden');
             document.getElementById('resultsContainer').classList.remove('hidden');
+        }
+
+        function setFindingFilter(filter) {
+            currentFilter = filter;
+            document.querySelectorAll('.filter-tab').forEach(b => {
+                b.className = 'filter-tab px-2.5 py-1 rounded text-cyber-mist/70 hover:text-cyber-mist';
+            });
+            const activeBtn = {
+                'all': 'filterAll',
+                'critical': 'filterCritical',
+                'injection': 'filterInjection',
+                'network': 'filterNetwork',
+                'todo': 'filterTodo'
+            }[filter];
+            if (activeBtn) {
+                document.getElementById(activeBtn).className = 'filter-tab px-2.5 py-1 rounded bg-cyber-surface text-cyber-frost border border-cyber-mist/20 font-semibold';
+            }
+            filterFindingsLive();
+        }
+
+        function filterFindingsLive() {
+            const query = (document.getElementById('findingSearch').value || '').toLowerCase();
+            let filtered = currentFindings.filter(f => {
+                if (currentFilter === 'critical') {
+                    return f.type.includes('Key') || f.type.includes('Token') || f.type.includes('Password');
+                }
+                if (currentFilter === 'injection') {
+                    return f.type.includes('SQL');
+                }
+                if (currentFilter === 'network') {
+                    return f.type.includes('HTTP');
+                }
+                if (currentFilter === 'todo') {
+                    return f.type.includes('TODO');
+                }
+                return true;
+            });
+
+            if (query) {
+                filtered = filtered.filter(f => 
+                    f.type.toLowerCase().includes(query) ||
+                    f.file.toLowerCase().includes(query) ||
+                    f.content.toLowerCase().includes(query)
+                );
+            }
+
+            renderFindingsTable(filtered);
+            document.getElementById('findingsShowingText').textContent = `Showing ${filtered.length} of ${currentFindings.length} findings`;
+        }
+
+        function renderFindingsTable(findings) {
+            const tbody = document.getElementById('findingsTableBody');
+            tbody.innerHTML = '';
+
+            if (findings.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="4" class="py-12 px-5 text-center">
+                            <div class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-emerald-500/10 text-emerald-400 mb-2 border border-emerald-500/20">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </div>
+                            <p class="text-xs font-mono font-medium text-emerald-400">SAFE AUDIT // ZERO MATCHING THREATS</p>
+                            <p class="text-[11px] text-cyber-mist/50 font-mono mt-0.5">No vulnerability signatures identified in this filter</p>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            findings.forEach((f, idx) => {
+                const { badgeClass, label } = getSeverityBadge(f.type);
+                const findingJson = encodeURIComponent(JSON.stringify(f));
+                
+                const row = `
+                    <tr class="finding-card">
+                        <td class="py-3 px-4 sm:px-5">
+                            <span class="font-mono text-[9px] font-bold px-2 py-0.5 rounded ${badgeClass} uppercase block w-fit mb-1">
+                                ${label}
+                            </span>
+                            <span class="font-mono text-xs text-cyber-frost font-medium">${escapeHtml(f.type)}</span>
+                        </td>
+                        <td class="py-3 px-4 sm:px-5 font-mono text-xs whitespace-nowrap">
+                            <span class="text-cyber-mist">${escapeHtml(f.file)}</span>
+                            <span class="text-cyber-steel font-bold">:L${f.line}</span>
+                        </td>
+                        <td class="py-3 px-4 sm:px-5">
+                            <div class="bg-[#040810] border border-cyber-mist/10 rounded-lg p-2 max-w-xs sm:max-w-md font-mono text-[11px] text-rose-300 overflow-x-auto">
+                                <code>${escapeHtml(f.content)}</code>
+                            </div>
+                        </td>
+                        <td class="py-3 px-4 sm:px-5 text-right whitespace-nowrap">
+                            <button onclick="remediateWithAI('${findingJson}')" class="cyber-btn-ghost !text-cyber-mist hover:!text-cyber-frost px-2.5 py-1 rounded text-[11px] font-mono flex items-center gap-1.5 ml-auto">
+                                <svg class="w-3.5 h-3.5 text-cyber-steel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2a8 8 0 0 0-8 8c0 5 8 12 8 12s8-7 8-12a8 8 0 0 0-8-8z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                                <span>Fix with AI</span>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+                tbody.innerHTML += row;
+            });
         }
 
         function showHistoryView() {
@@ -438,8 +1185,10 @@
             fetchScanHistory();
         }
 
+        // Execute Security Scan Submission
         const uploadForm = document.getElementById('uploadForm');
         const loading = document.getElementById('loading');
+        const scanBtn = document.getElementById('scanBtn');
 
         uploadForm.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -451,6 +1200,8 @@
             formData.append('email', user.email);
 
             loading.classList.remove('hidden');
+            scanBtn.disabled = true;
+            scanBtn.classList.add('opacity-50');
 
             try {
                 const response = await fetch('/api/scan', {
@@ -460,40 +1211,43 @@
 
                 const data = await response.json();
                 if (data.success) {
+                    showToast('Scan completed successfully!');
                     await fetchScanHistory();
                     loadScanResult(data.scanId);
                 } else {
-                    alert('Error: ' + data.error);
+                    showToast(data.error || 'Scan execution failed.', true);
                 }
             } catch (err) {
                 console.error(err);
-                alert('Failed to connect to backend server.');
+                showToast('Failed to connect to backend server.', true);
             } finally {
                 loading.classList.add('hidden');
+                scanBtn.disabled = false;
+                scanBtn.classList.remove('opacity-50');
             }
         });
 
-        // Chatbot Implementation
+        // Gemini AI Copilot Implementation
         const chatMessages = document.getElementById('chatMessages');
         let chatHistory = [];
 
         function appendMessage(role, text) {
             const msgDiv = document.createElement('div');
             if (role === 'user') {
-                msgDiv.className = 'msg-user';
-                msgDiv.textContent = text;
+                msgDiv.className = 'chat-user-bubble self-end max-w-[88%] p-3.5 rounded-xl rounded-tr-sm text-cyber-frost text-xs leading-relaxed';
+                msgDiv.innerHTML = `<p class="font-mono text-[10px] text-cyber-mist/70 mb-1">ENGINEER</p><div>${escapeHtml(text)}</div>`;
             } else {
-                msgDiv.className = 'msg-ai md-body';
-                msgDiv.innerHTML = marked.parse(text);
+                msgDiv.className = 'chat-ai-bubble self-start max-w-[95%] p-3.5 rounded-xl rounded-tl-sm text-cyber-frost text-xs leading-relaxed chat-markdown';
+                msgDiv.innerHTML = `<p class="font-mono text-[10px] text-cyber-steel font-semibold mb-1">COPILOT REMEDIATION</p><div>${marked.parse(text)}</div>`;
             }
             chatMessages.appendChild(msgDiv);
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
 
-        async function sendChatMessage(e) {
+        async function sendChatMessage(e, customPrompt = null) {
             if (e) e.preventDefault();
             const input = document.getElementById('chatInput');
-            const text = input.value.trim();
+            const text = customPrompt || input.value.trim();
             if (!text) return;
 
             input.value = '';
@@ -502,8 +1256,11 @@
 
             const typingDiv = document.createElement('div');
             typingDiv.id = 'typingIndicator';
-            typingDiv.className = 'text-fuchsia-300 italic text-[11px] animate-pulse px-1 font-mono';
-            typingDiv.textContent = 'Gemini AI is generating response...';
+            typingDiv.className = 'chat-ai-bubble self-start p-3 rounded-xl text-cyber-mist/70 font-mono text-[11px] flex items-center gap-2 animate-pulse';
+            typingDiv.innerHTML = `
+                <div class="w-3 h-3 border-2 border-cyber-steel border-t-transparent rounded-full animate-spin"></div>
+                <span>Gemini 2.5 analyzing vulnerability context...</span>
+            `;
             chatMessages.appendChild(typingDiv);
             chatMessages.scrollTop = chatMessages.scrollHeight;
 
@@ -521,40 +1278,79 @@
                     appendMessage('model', data.reply);
                     chatHistory.push({ role: 'model', text: data.reply });
                 } else {
-                    alert(data.error);
+                    showToast(data.error || 'Gemini Copilot unavailable.', true);
                 }
             } catch (err) {
                 console.error(err);
                 document.getElementById('typingIndicator')?.remove();
-                alert('Failed to connect to Gemini AI.');
+                showToast('Failed to reach Gemini AI endpoint.', true);
+            }
+        }
+
+        function askPresetPrompt(promptText) {
+            sendChatMessage(null, promptText);
+        }
+
+        function remediateWithAI(findingJsonStr) {
+            try {
+                const f = JSON.parse(decodeURIComponent(findingJsonStr));
+                const prompt = `Please provide a security remediation for this vulnerability found in my code:\n` +
+                               `• Threat Type: ${f.type}\n` +
+                               `• File & Line: ${f.file} (Line ${f.line})\n` +
+                               `• Flagged Code Snippet:\n\`\`\`\n${f.content}\n\`\`\`\n` +
+                               `Explain why this pattern is dangerous and provide the secure refactored code.`;
+                sendChatMessage(null, prompt);
+                showToast(`Sent ${f.type} to Gemini Copilot`);
+                
+                // On mobile or narrow screens, scroll to chatCard
+                if (window.innerWidth < 1024) {
+                    document.getElementById('chatCard').scrollIntoView({ behavior: 'smooth' });
+                }
+            } catch (e) {
+                console.error(e);
             }
         }
 
         function clearChat() {
             chatHistory = [];
             chatMessages.innerHTML = `
-                <div class="msg-ai">
-                    👋 Chat cleared. Ask me any question below!
+                <div class="chat-ai-bubble p-3.5 rounded-xl rounded-tl-sm text-cyber-frost leading-relaxed max-w-[94%]">
+                    <p class="text-xs">
+                        Session log cleared. Ready to formulate security advisories and code fixes.
+                    </p>
                 </div>
             `;
+            showToast('Chat history cleared');
         }
 
         function downloadJSON() {
-            if (currentFindings.length === 0) return;
-            const exportData = { filename: currentScanFilename, timestamp: new Date().toISOString(), total: currentFindings.length, findings: currentFindings };
-            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(exportData, null, 4));
+            if (currentFindings.length === 0) {
+                showToast('No active findings to export.', true);
+                return;
+            }
+            const exportData = {
+                platform: "CodeShield Enterprise v2.5",
+                target: currentScanFilename,
+                auditTimestamp: new Date().toISOString(),
+                totalThreats: currentFindings.length,
+                findings: currentFindings
+            };
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(exportData, null, 2));
             const downloadAnchor = document.createElement('a');
             downloadAnchor.setAttribute("href", dataStr);
-            downloadAnchor.setAttribute("download", `codeshield_audit_${Date.now()}.json`);
+            downloadAnchor.setAttribute("download", `codeshield_${Date.now()}.json`);
             document.body.appendChild(downloadAnchor);
             downloadAnchor.click();
             downloadAnchor.remove();
+            showToast('Audit JSON report exported');
         }
 
         function escapeHtml(text) {
+            if (!text) return '';
             return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
         }
 
+        // Initialize scan history on page load
         fetchScanHistory();
     </script>
 </body>
