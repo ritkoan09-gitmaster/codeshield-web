@@ -5,30 +5,58 @@ const AdmZip = require('adm-zip');
 const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
+const os = require('os');
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../public')));
 
-const upload = multer({ dest: path.join(__dirname, '../uploads') });
+const isVercel = Boolean(process.env.VERCEL);
+const DATA_DIR = isVercel ? os.tmpdir() : path.join(__dirname, '..');
+const uploadsDir = path.join(DATA_DIR, 'uploads');
+if (!fs.existsSync(uploadsDir)) {
+    fs.mkdirSync(uploadsDir, { recursive: true });
+}
 
-const USERS_FILE = path.join(__dirname, '../users.json');
-const SCANS_FILE = path.join(__dirname, '../scans.json');
+const upload = multer({ dest: uploadsDir });
+
+const USERS_FILE = path.join(DATA_DIR, 'users.json');
+const SCANS_FILE = path.join(DATA_DIR, 'scans.json');
 
 function getUsers() {
-    if (!fs.existsSync(USERS_FILE)) return [];
-    return JSON.parse(fs.readFileSync(USERS_FILE, 'utf8'));
+    if (fs.existsSync(USERS_FILE)) {
+        try {
+            return JSON.parse(fs.readFileSync(USERS_FILE, 'utf8'));
+        } catch (e) {}
+    }
+    const seed = path.join(__dirname, '../users.json');
+    if (fs.existsSync(seed)) {
+        try {
+            return JSON.parse(fs.readFileSync(seed, 'utf8'));
+        } catch (e) {}
+    }
+    return [];
 }
 function saveUsers(users) {
     fs.writeFileSync(USERS_FILE, JSON.stringify(users, null, 2));
 }
 
 function getScans() {
-    if (!fs.existsSync(SCANS_FILE)) return [];
-    return JSON.parse(fs.readFileSync(SCANS_FILE, 'utf8'));
+    if (fs.existsSync(SCANS_FILE)) {
+        try {
+            return JSON.parse(fs.readFileSync(SCANS_FILE, 'utf8'));
+        } catch (e) {}
+    }
+    const seed = path.join(__dirname, '../scans.json');
+    if (fs.existsSync(seed)) {
+        try {
+            return JSON.parse(fs.readFileSync(seed, 'utf8'));
+        } catch (e) {}
+    }
+    return [];
 }
 function saveScanRecord(record) {
     const scans = getScans();
@@ -184,6 +212,10 @@ app.post('/api/ai-chat', async (req, res) => {
     }
 });
 
-app.listen(PORT, () => {
-    console.log(`[+] CodeShield Enterprise Backend running on http://localhost:${PORT}`);
-});
+if (require.main === module) {
+    app.listen(PORT, () => {
+        console.log(`[+] CodeShield Enterprise Backend running on http://localhost:${PORT}`);
+    });
+}
+
+module.exports = app;
